@@ -19,7 +19,7 @@
 	
 	
 	}
-	elseif ($_GET["usernic"]) {
+	elseif (isset($_GET["usernic"])) {
 		$uid = $_GET["usernic"];
 		$sql = mq("select * from user where nic_name='".$uid."'");
 		$member = $sql->fetch_array();
@@ -38,12 +38,35 @@
 		<button value="닫기" onclick="window.close()">닫기</button>
 	<?php
 		}
-	
 	?>
-
+	<?php
+	}
+	elseif ($_GET["useremail"]) {
+		$uemail = $_GET["useremail"];
+		$sql = mq("select * from user where email='".$uemail."@gm.hannam.ac.kr"."'");
+		$member = $sql->fetch_array();
+	
+		if($member==0)
+		{
+			
+	?>
+		<div style='font-family:"malgun gothic"';><?php echo $uemail; ?>@gm.hannam.ac.kr는 사용가능한 이메일입니다.</div>
+		<button value="닫기" onclick="email_check()">닫기</button>
+	<?php
+		}else{
+	?>
+		<div style='font-family:"malgun gothic"; color:red;'><?php echo $uemail; ?>@gm.hannam.ac.kr은 중복된 이메일입니다.<div>
+	
+		<button value="닫기" onclick="window.close()">닫기</button>
+	<?php
+		}
+	?>
 	<?php
 	}
 	?>
+	
+	
+	
 	
 
 	<script>
@@ -53,6 +76,10 @@
 	}
 	function nic_check(){
 		opener.document.getElementById("nik_ch").value =1;
+		window.close();
+	}
+	function email_check(){
+		opener.document.getElementById("email_ch").value =1;
 		window.close();
 	}
 	</script>

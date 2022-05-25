@@ -31,6 +31,12 @@
   $sql = "select * from user where id='$id' and pw='$pw'";
   $result = mysqli_query($connect,$sql);
   $num2 = mysqli_num_rows($result);
+
+  $sql = "select * from user where id='$id' and pw='$pw' and active='1'";
+  $result = mysqli_query($connect,$sql);
+  $num3 = mysqli_num_rows($result);
+
+  
   if (!$num1) {
     echo "
     <script>
@@ -42,6 +48,13 @@
     echo "
     <script>
       window.alert('아이디/비밀번호가 틀렸습니다 다시 입력하세요')
+      history.go(-1)
+      </script>";
+  }
+  elseif (!$num3) {
+    echo "
+    <script>
+      window.alert('활성화 되지 않은 계정입니다. 이메일 인증을 진행 해 주세요')
       history.go(-1)
       </script>";
   }

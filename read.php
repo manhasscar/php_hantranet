@@ -73,10 +73,20 @@
 	width: 30px;
 }
 .dat_delete {
-	display: none;
+	
+	display:none;
 }
 .dat_edit {
+	
 	display:none;
+}
+.dat_delete_bt{
+	color:black;
+	font-size:12px;
+}
+.dat_edit_bt {
+	color:black;
+	font-size:12px;
 }
 .dap_sm {
 	position: absolute;
@@ -208,7 +218,22 @@
 			<div><b><?php echo $reply['name'];?></b></div>
 			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
 			<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
-
+			<?php
+			  if (isset($_SESSION['userid']) && $board['id'] == $_SESSION['userid']){
+				 
+				  ?>
+			  	
+				  <a class="dat_edit_bt" href="#">수정</a>
+				<a class="dat_delete_bt" href="#">삭제</a>
+			  
+              <?php
+			}
+			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
+				<a class="dat_edit_bt" href="#">수정</a>
+				<a class="dat_delete_bt" href="#">삭제</a>
+			<?php
+			}
+			?>	
 		</div>
 	<?php 
 	} 

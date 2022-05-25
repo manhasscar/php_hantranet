@@ -7,8 +7,8 @@
     <style>
       * {margin: 0; padding: 0;}
       #sign_up_box{
-        width:400px;
-        height:150px;
+        width:520px;
+        height:200px;
         border:solid 2px gray;
         position: absolute;
         left: 50%; top: 50%;
@@ -47,11 +47,24 @@
               }
           }
 
+        function check_email(){
+        var useremail = document.getElementById("uemail").value;
+        if(useremail)
+         {
+             url = "check.php?useremail="+useremail;
+             window.open(url,"chkid","width=300,height=100");
+         }
+         else{
+              alert("이메일을 입력하세요");
+              }
+          }
+
       function passwordCheck(){
           var pw = document.getElementById("pw").value;
           var pw_ck = document.getElementById("pw_ck").value;
           var id_ch = document.getElementById("id_ch").value;
           var nik_ch = document.getElementById("nik_ch").value;
+          var email_ch = document.getElementById("email_ch").value;
           if (pw=="")  {
             alert("비밀번호를 입력해주세요.");
           }
@@ -60,6 +73,9 @@
           }
           else if(nik_ch==0){
             alert("닉네임 중복확인을 해주세요");
+          }
+          else if(email_ch==0){
+            alert("이메일 중복확인을 해주세요");
           }
           else if(pw != pw_ck){
             alert("비밀번호가 일치하지 않습니다 확인해 주세요.");
@@ -95,6 +111,18 @@
           <td>
             <button type="button" name="button" onclick="check_nik()">중복확인</button>
             <input type="hidden" id="nik_ch" name="" value="0">
+          </td>
+        </tr>
+        <tr>
+          <td>이메일</td>
+          <td>
+            <input type="text" name="email" id="uemail">@gm.hannam.ac.kr
+            
+          </td>
+          
+          <td>
+            <button type="button" name="button" onclick="check_email()">중복확인</button>
+            <input type="hidden" id="email_ch" name="" value="0">
           </td>
         </tr>
         <tr>
