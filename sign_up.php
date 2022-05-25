@@ -3,12 +3,14 @@
   <head>
     <meta charset="utf-8">
     <title>회원가입</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style media="screen">
-    <style>
+      
+    
       * {margin: 0; padding: 0;}
       #sign_up_box{
-        width:520px;
-        height:200px;
+        width:460px;
+        height:290px;
         border:solid 2px gray;
         position: absolute;
         left: 50%; top: 50%;
@@ -19,7 +21,14 @@
       }
       #sign_up_button{
         position: absolute;
-        left: 40%; top: 80%;
+        left: 40%; top: 85%;
+      }
+      button{
+        background-color: white;
+        border:solid 1px gray;
+        padding: 3px;
+        
+        
       }
 
     </style>
@@ -95,7 +104,8 @@
     <form class="" action="sign_up_search.php" method="post" id="sign">
       <table>
         <tr>
-          <td>아이디</td>
+          <br>
+          <th>아이디</th>
           <td>
             <input type="text" name="id" id="uid">
           </td>
@@ -104,8 +114,9 @@
             <input type="hidden" id="id_ch" name="" value="0">
           </td>
         </tr>
+        <td><br></td>
         <tr>
-          <td>닉네임</td>
+          <th>닉네임</th>
           <td>
             <input type="text" name="name" id="nic">
           </td>
@@ -114,10 +125,11 @@
             <input type="hidden" id="nik_ch" name="" value="0">
           </td>
         </tr>
+        <td><br></td>
         <tr>
-          <td>이메일</td>
+          <th>이메일</th>
           <td>
-            <input type="text" name="email" id="uemail">@gm.hannam.ac.kr
+            <input type="text" name="email" id="uemail"><th>@gm.hannam.ac.kr</th>
             
           </td>
           
@@ -126,14 +138,16 @@
             <input type="hidden" id="email_ch" name="" value="0">
           </td>
         </tr>
+        <td><br></td>
         <tr>
-          <td>비밀번호</td>
+          <th>비밀번호</th>
           <td>
             <input type="password" id="pw" name="passw">
           </td>
         </tr>
+        <td><br></td>
         <tr>
-          <td>비밀번호 확인</td>
+          <th>비밀번호 확인</th>
           <td>
             <input type="password" id="pw_ck" name="pass_check">
           </td>

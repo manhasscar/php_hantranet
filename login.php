@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>로그인</title>
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
       * {margin: 0; padding: 0;}
       #login_box{
         width:400px;
         height:150px;
-        border:solid 2px gray;
+        border:solid 2px white;
         position: absolute;
         left: 50%; top: 50%;
         margin-left: -200px;
@@ -24,6 +25,8 @@
         left: 50%; top: 50%;
         margin-left: 80px;
         margin-top: -60px;
+        background-color: white;
+        border:solid 1px gray;
       }
       a{
         color: white;

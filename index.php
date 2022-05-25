@@ -33,6 +33,7 @@ session_start();
       background-color: #4aa8d8;
       color: white;
       text-decoration: none;
+      margin:3px;
     }
 
       #left{
