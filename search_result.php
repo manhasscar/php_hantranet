@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
-<link rel="stylesheet" type="text/css" href="css/style.css" />
+<link rel="stylesheet" type="text/css" href="mystyle.css" />
 </head>
 <body>
 <div id="board_area">

@@ -9,7 +9,7 @@
   <head>
     <meta charset="utf-8">
     <title>게시판</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
     #page_num {
       font-size: 14px;
@@ -24,6 +24,10 @@
     .fo_re {
       font-weight: bold;
       color:red;
+    }
+
+    #board_list{
+      font-size: 15px;
     }
     </style>
     </head>
@@ -95,6 +99,9 @@
               {
                   //title변수에 DB에서 가져온 title을 선택
                   $title=$board["title"];
+                  $con_idx = $board["idx"];
+                  $reply_count = mq("SELECT COUNT(*) AS cnt FROM ".$board_id."_reply where con_num=$con_idx");
+                  $con_reply_count = $reply_count->fetch_array();
                   if(strlen($title)>30)
                   {
                     //title이 30을 넘어서면 ...표시
@@ -105,9 +112,9 @@
           
             
           <tbody>
-            <tr>
+            <tr id="board_list">
               <td width="70"><?php echo $board['idx']; ?></td>
-              <td width="500"><a href="read.php?board_id=<?php echo $board_id?>&idx=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
+              <td width="500"><a href="read.php?board_id=<?php echo $board_id?>&idx=<?php echo $board["idx"];?>"><?php echo $title."[".$con_reply_count["cnt"]."]";?></a></td>
               <td width="120"><?php echo $board['name']?></td>
               <td width="100"><?php echo $board['date']?></td>
               <td width="100"><?php echo $board['hit']; ?></td>

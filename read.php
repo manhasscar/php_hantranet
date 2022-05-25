@@ -77,8 +77,8 @@
 	display:none;
 }
 .dat_edit {
-	
 	display:none;
+	
 }
 .dat_delete_bt{
 	color:black;
@@ -140,12 +140,13 @@
 <body>
 	<?php
 	
-    $board_id = $_GET['board_id'];
+    	$board_id = $_GET['board_id'];
 		$bno = $_GET['idx']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from ".$board_id." where idx ='".$bno."'"));
 		$hit = $hit['hit'] + 1;
 		$fet = mq("update ".$board_id." set hit = '".$hit."' where idx = '".$bno."'");
 		$sql = mq("select * from ".$board_id." where idx='".$bno."'"); /* 받아온 idx값을 선택 */
+		
 		$board = $sql->fetch_array();
 		$_SESSION['board_id'] = $board_id;
 		$_SESSION['board_idx'] = $bno; 
@@ -219,18 +220,19 @@
 			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
 			<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
 			<?php
+
 			  if (isset($_SESSION['userid']) && $board['id'] == $_SESSION['userid']){
 				 
 				  ?>
 			  	
 				  <a class="dat_edit_bt" href="#">수정</a>
-				<a class="dat_delete_bt" href="#">삭제</a>
+				<a class="dat_delete_bt" href="reply_delete.php?idx=<?php echo $reply['idx']; ?>">삭제</a>
 			  
               <?php
 			}
 			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
 				<a class="dat_edit_bt" href="#">수정</a>
-				<a class="dat_delete_bt" href="#">삭제</a>
+				<a class="dat_delete_bt" href="reply_delete.php?idx=<?php echo $reply['idx']; ?>">삭제</a>
 			<?php
 			}
 			?>	
@@ -238,6 +240,7 @@
 	<?php 
 	} 
 	?>
+	
 
 	<!--- 댓글 입력 폼 -->
 	<div class="dap_ins">

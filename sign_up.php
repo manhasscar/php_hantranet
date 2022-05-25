@@ -14,7 +14,8 @@
         left: 50%; top: 50%;
         margin-left: -200px;
         margin-top: -100px;
-        background-color: orange;
+        background-color: #4aa8d8;
+        color: white;
       }
       #sign_up_button{
         position: absolute;

@@ -23,14 +23,14 @@ session_start();
     nav {
       width: 100%;
       height: 23px;
-      border-top: 1px solid red;
-      border-bottom: 1px solid red;
+      border-top: 1px solid #09C;
+      border-bottom: 1px solid #09C;
       margin-right: 10%;
-      background-color: black;
+      background-color: #4aa8d8;
       color: white;
     }
     nav a{
-      background-color: black;
+      background-color: #4aa8d8;
       color: white;
       text-decoration: none;
     }
@@ -41,7 +41,7 @@ session_start();
         width: 200px;
       }
       #left ul{
-        background-color: black;
+        background-color: #4aa8d8;
         list-style: none;
         margin: 0;
         padding: 0;
@@ -49,10 +49,10 @@ session_start();
       #left ul li{
         margin-left: 20px;
         padding-top: 5px;
-        background-color: black;
+        background-color: #4aa8d8;
       }
       #left ul li a{
-        background-color: black;
+        background-color: #4aa8d8;
         color: white;
         text-decoration: none;
       }
@@ -75,12 +75,23 @@ session_start();
       .f{
         text-align: center;
       }
+    #title{
+      display: table;
+    }
+    #title > h1 {
+      display: table-cell; 
+      text-align:center;
+      vertical-align: middle;
+    }
+    #title > h1 > a {
+      color: #4aa8d8
+    }
     </style>
   </head>
   <body>
-    <header align=center>
+    <header id=title>
       <h1>
-        <a href="index.php">HantraNet</a>
+        <a  href="index.php">HantraNet</a>
       </h1>
     </header>
     <?php
