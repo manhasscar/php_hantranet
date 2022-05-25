@@ -7,7 +7,12 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+    *{
+      font-family: 'Nanum Gothic', 'sans-serif', Arial ;
+    }  
     .my_G {
       margin-top: 40px;
     }
