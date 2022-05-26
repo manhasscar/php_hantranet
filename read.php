@@ -212,7 +212,7 @@
 <div class="reply_view">
 	<h3>댓글목록</h3>
 		<?php
-			$sql3 = mq("select * from ".$board_id."_reply where con_num='".$bno."' order by idx desc");
+			$sql3 = mq("select * from ".$board_id."_reply where con_num='".$bno."' order by idx asc");
 			while($reply = $sql3->fetch_array()){
 		?>
 		<div class="dap_lo">

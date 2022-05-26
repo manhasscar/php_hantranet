@@ -8,6 +8,7 @@ session_start();
   <head>
     <meta charset="utf-8">
     <title>HantraNet.</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
     *{

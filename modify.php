@@ -2,8 +2,8 @@
 
 <?php
 	include ('db_connect.php');
-    $board_id = $_SESSION['board_id'];
-    $board_idx = $_SESSION['board_idx'];
+  $board_id = $_SESSION['board_id'];
+  $board_idx = $_SESSION['board_idx'];
 	$bno = $_GET['idx'];
 	$sql = mq("select * from ".$board_id." where idx='$bno';");
 	$board = $sql->fetch_array();
@@ -68,9 +68,9 @@
                         <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required><?php echo $board['title']; ?></textarea>
                     </div>
                     <div class="wi_line"></div>
-                    <div id="in_name">
-                        <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100" required><?php echo $board['name']; ?></textarea>
-                    </div>
+                    <!--<div id="in_name">
+                        <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100" required><?php// echo $board['name']; ?></textarea>
+                    </div>-->
                     <div class="wi_line"></div>
                     <div id="in_content">
                         <textarea name="content" id="ucontent" placeholder="내용" required><?php echo $board['content']; ?></textarea>

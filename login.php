@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>로그인</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
       * {margin: 0; padding: 0;}

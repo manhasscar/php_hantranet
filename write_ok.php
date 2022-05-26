@@ -51,9 +51,13 @@
 
   if($username && $title && $content){
       $sql = mq("insert into ".$board_id."(id,name,title,content,date,file) values('".$username."','".$usernic."','".$title."','".$content."','".$date."','".$_FILES['SelectFile']['name']."');");
+      $sql2 = mq("select * from ".$board_id." where id='".$username."' and title='".$title."';");
+      while($idx = $sql2->fetch_array()){
+        $idx2 = $idx['idx'];
+      }
       echo "<script>
       alert('글쓰기 완료되었습니다.');
-      location.href='board.php?board_id=$board_id';</script>";
+      location.href='read.php?board_id=$board_id&idx=$idx2'</script>";
     }
     else{
       echo "<script>
