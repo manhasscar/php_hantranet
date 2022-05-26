@@ -1,7 +1,7 @@
 <?php
 
-  $connect = mysqli_connect("localhost","root","","site_db");
-  
+  //$connect = mysqli_connect("localhost","root","","site_db");
+  include ('db_connect.php');
 
   $id = $_POST['userid'];
   $pw = $_POST['userpw'];
@@ -24,17 +24,17 @@
   else {
 
 
-  $sql = "select * from user where id='$id'";
-  $result = mysqli_query($connect,$sql);
-  $num1 = mysqli_num_rows($result);
+  $sql = mq("select * from user where id='$id'");
+  //$result = mysqli_query($db,$sql);
+  $num1 = mysqli_num_rows($sql);
 
-  $sql = "select * from user where id='$id' and pw='$pw'";
-  $result = mysqli_query($connect,$sql);
-  $num2 = mysqli_num_rows($result);
+  $sql = mq("select * from user where id='$id' and pw='$pw'");
+  //$result = mysqli_query($db,$sql);
+  $num2 = mysqli_num_rows($sql);
 
-  $sql = "select * from user where id='$id' and pw='$pw' and active='1'";
-  $result = mysqli_query($connect,$sql);
-  $num3 = mysqli_num_rows($result);
+  $sql = mq("select * from user where id='$id' and pw='$pw' and active='1'");
+  //$result = mysqli_query($db,$sql);
+  $num3 = mysqli_num_rows($sql);
 
   
   if (!$num1) {
@@ -60,7 +60,7 @@
   }
   else {
     session_start();
-    $user = mysqli_fetch_array($result);
+    $user = mysqli_fetch_array($sql);
     $_SESSION['userid'] = $id;
     $_SESSION['user_nic'] = $user[2];
     echo "
@@ -69,7 +69,7 @@
     </script>";
   }
 }
-mysql_close($connect);
+
 ?>
 
 <meta charset="utf-8">
