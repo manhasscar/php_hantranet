@@ -8,7 +8,7 @@
   $board_id = $_GET['board_id'];
   $title = $_POST['title'];
   $content = $_POST['content'];
-  $date = date('Y-m-d');
+  $date = date("Y-m-d H:i:s");
 
   $upload_dir = 'uploads/';
   $upload_file = $upload_dir . $_FILES['SelectFile']['name'];
