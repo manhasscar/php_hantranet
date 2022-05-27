@@ -6,7 +6,7 @@
   $pw = $_POST['passw'];
   $email = $_POST['email'];
   $hash = md5( rand(0,1000) );
-  $date=date("Y-m-d");
+  $date=date("Y-m-d H:i:s");
   $sql = mq("insert into user (id, nic_name, pw, email, hash, user_date) values ('".$id."','".$nic."','".$pw."','".$email.'@gm.hannam.ac.kr'."','".$hash."','".$date."')");
 
   $msg = "링크를 클릭해 계정을 활성화 해 주세요.:

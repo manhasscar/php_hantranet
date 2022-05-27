@@ -135,6 +135,12 @@
 	text-align: center;
 }
 
+button{
+      background-color: white;
+      
+      border: solid 1px gray;
+    }
+
   </style>
 </head>
 <body>

@@ -13,8 +13,9 @@
     <style>
     #page_num {
       font-size: 14px;
-      margin-left: 260px;
+      margin-left: 35%;
       margin-top:30px;
+      
     }
     #page_num ul li {
       float: left;
@@ -28,6 +29,12 @@
 
     #board_list{
       font-size: 15px;
+    }
+    
+    button{
+      background-color: white;
+      padding: 2px;
+      border: solid 1px gray;
     }
     </style>
     </head>

@@ -56,6 +56,11 @@
     width:100px;
     height:30px;
   }
+  button{
+      background-color: white;
+      padding: 2px;
+      border: solid 1px gray;
+    }
 </style>
 </head>
 <body>
