@@ -227,7 +227,7 @@ button{
 			<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
 			<?php
 
-			  if (isset($_SESSION['userid']) && $board['id'] == $_SESSION['userid']){
+			  if (isset($_SESSION['userid']) && $reply['id'] == $_SESSION['userid']){
 				 
 				  ?>
 			  	
