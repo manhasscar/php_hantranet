@@ -167,7 +167,7 @@ session_start();
     <a target="iframe1" href="#">중고거래</a>
     <ul class="depth_1">
       <li><a href="#">중고거래 게시판</a></li>
-      <li><a href="#">MENU 1_2</a></li>
+      <li><a href="book_list.php">도서거래 게시판</a></li>
       <li><a href="#">MENU 1_3</a></li>
     </ul>
   </li>
@@ -213,7 +213,7 @@ session_start();
         <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
         <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
 
-        <li><a target="iframe1" href="board.php?board_id=music">음악</a></li>
+        <li><a target="iframe1" href="book_list.php">도서 거래 게시판</a></li>
         <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
       </ul>
     </aside>

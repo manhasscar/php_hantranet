@@ -36,9 +36,11 @@
       <div id="board_area">
         <h1>거래 게시판</h1>
         <div id="search_box">
-          <form action="search_result.php" method="get">
+          <form action="book_search_result.php" method="get">
             <select name="catgo">
-              <option value="major">학과선택</option>
+              <option value="제목">제목</option>
+              <option value="저자">저자</option>
+              <option value="출판사">출판사</option>
             </select>
             <input type="text" name="search" size="40" required="required" /> <button>검색</button>
           </form>
