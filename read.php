@@ -231,13 +231,13 @@ button{
 				 
 				  ?>
 			  	
-				  <a class="dat_edit_bt" href="#">수정</a>
+				  <!--<a class="dat_edit_bt" href="#">수정</a>-->
 				<a class="dat_delete_bt" href="reply_delete.php?idx=<?php echo $reply['idx']; ?>">삭제</a>
 			  
               <?php
 			}
 			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<a class="dat_edit_bt" href="#">수정</a>
+				<!--<a class="dat_edit_bt" href="#">수정</a>-->
 				<a class="dat_delete_bt" href="reply_delete.php?idx=<?php echo $reply['idx']; ?>">삭제</a>
 			<?php
 			}

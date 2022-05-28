@@ -16,22 +16,24 @@ session_start();
 
     }
     body{
+      width: 100%;
     }
     header {
       width: 1200px;
       height: 100px;
     }
     nav {
-      width:1522px;
+      
+      width:1200px;
       height: 22px;
       border-top: 1px solid #09C;
       border-bottom: 1px solid #09C;
       margin-right: 10%;
       background-color: #4aa8d8;
       color: white;
+      text-align:right;
     }
     nav a{
-      float:left;
       
       background-color: #4aa8d8;
       color: white;
@@ -139,16 +141,19 @@ session_start();
     font-size:12px;
   }
   .menu{
-    
+    position: absolute;
+    top: 102px;
     height:22px;
     width:500px;
-    margin-left:250px;
-    margin-right:450px;
-    float:left;
+    
+    
     background-color: #4aa8d8;
   }
   #login > a{
     margin-left:50px;
+  }
+  .warrper{
+    width:1200px;
   }
     </style>
   </head>
@@ -158,13 +163,18 @@ session_start();
         <a  href="index.php">HantraNet</a>
       </h1>
     </header>
-    
+  <div class="warrper">
     <ul class="menu">
   <li>
-    <a target="iframe1" href="board.php?board_id=board">자유</a>
+    <a target="iframe1" href="board.php?board_id=board">커뮤니티</a>
+    <ul class="depth_1">
+      <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
+      <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
+      
+    </ul>
   </li>
   <li>
-    <a target="iframe1" href="#">중고거래</a>
+    <a target="iframe1" href="book_list.php?board_id=book_board">중고거래</a>
     <ul class="depth_1">
       <li><a href="#">중고거래 게시판</a></li>
       <li><a href="#">MENU 1_2</a></li>
@@ -183,7 +193,7 @@ session_start();
     <?php
       if(isset($_SESSION['userid'])){
 
-    echo "<nav >
+    echo "<nav>
       <a>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
       <a href='logout.php'>로그아웃</a>
       <a target='iframe1' href='my_page.php'>마이페이지</a>
@@ -195,7 +205,7 @@ session_start();
 
     ?>
     
-    <nav id = "login">
+    <nav >
       
       <a href="login.php">로그인</a>
       <a href="sign_up.php">회원가입</a>
@@ -204,10 +214,10 @@ session_start();
     <?php
     }
     ?>
-
+  
     
     
-    <aside id="left">
+    <!--<aside id="left">
       <h4>카테고리</h4>
       <ul>
         <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
@@ -216,13 +226,13 @@ session_start();
         <li><a target="iframe1" href="board.php?board_id=music">음악</a></li>
         <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
       </ul>
-    </aside>
+    </aside>-->
     <section id="main">
       <article id="article1">
         <iframe name="iframe1" src="main.php" width="1200px" height="700px" frameBorder="0" seamless></iframe>
       </article>
     </section>
-    
+    </div>
   </body>
   
 </html>

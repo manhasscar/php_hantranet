@@ -3,23 +3,26 @@
   <head>
     <meta charset="utf-8">
     <title>게시판</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
       #board_area {
-	  width: 80%;
+	  width: 100%;
 	  position: relative;
 	  margin: 0 auto;
     }
     #page_num {
+      display: flex;
       font-size: 14px;
       /* margin-left: 260px; */
       /* margin-top:30px; */
       margin: 20px auto;
+     
+    
     }
     #page_num ul li {
-      float: left;
+      float:left;
       margin-left: 10px;
-      text-align: center;
+      
     }
     .fo_re {
       font-weight: bold;
@@ -28,7 +31,13 @@
     #image{
       float:left;
     }
+    button{
+      background-color: white;
+	    padding: 2px;
+	    border: solid 1px gray;
+    }
   
+    
     </style> 
     </head>
     <body>
@@ -91,7 +100,7 @@
 					if($board["file"]){
            
     
-						$bo_image="<img src = 'uploads/$board[file_copied]' style=width:170px; height:114px>";
+						$bo_image="<img src = 'uploads/$board[file_copied]' style=width:120px; height:80px>";
           }
               ?>
             
@@ -150,7 +159,7 @@
                   if($page == $i){
                     echo "<li class='fo_re'>[$i]</li>"; //현재 페이지에 해당하는 번호에 굵은 빨간색을 적용
                   }else{
-                    echo "<li><a href='book_list.php?boapage=$i'>[$i]</a></li>";
+                    echo "<li><a href='book_list.php?page=$i'>[$i]</a></li>";
                 }
               }
                 if($page < $total_page){

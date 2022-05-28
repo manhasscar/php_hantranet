@@ -13,14 +13,16 @@
     <style>
     #page_num {
       font-size: 14px;
-      margin-left: 35%;
+      display: flex;
       margin-top:30px;
+      justify-content: center;
+      
       
     }
     #page_num ul li {
-      float: left;
+      float:left;
       margin-left: 10px;
-      text-align: center;
+      
     }
     .fo_re {
       font-weight: bold;
