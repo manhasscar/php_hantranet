@@ -124,7 +124,7 @@ session_start();
         <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
         <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
 
-        <li><a target="iframe1" href="board.php?board_id=music">음악</a></li>
+        <li><a target="iframe1" href="book_list.php">음악</a></li>
         <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
       </ul>
     </aside>
