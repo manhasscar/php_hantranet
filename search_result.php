@@ -18,6 +18,16 @@
 ?>
   <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
   <h4 style="margin-top:30px;"><a href="board.php?board_id=board">홈으로</a></h4>
+  <div id="search_box2">
+      <form action="search_result.php" method="get">
+      <select name="catgo">
+        <option value="title">제목</option>
+        <option value="name">글쓴이</option>
+        <option value="content">내용</option>
+      </select>
+      <input type="text" name="search" size="40" required="required"/> <button>검색</button>
+    </form>
+  </div>
     <table class="list-table">
       <thead>
           <tr>
@@ -54,7 +64,7 @@
       <?php } ?>
     </table>
 
-    <div id="search_box2">
+    <!--<div id="search_box2">
       <form action="search_result.php" method="get">
       <select name="catgo">
         <option value="title">제목</option>
@@ -63,7 +73,7 @@
       </select>
       <input type="text" name="search" size="40" required="required"/> <button>검색</button>
     </form>
-  </div>
+  </div>-->
 </div>
 </body>
 </html>

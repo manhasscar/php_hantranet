@@ -14,7 +14,7 @@
     $price = $_POST['price'];
     $category = $_POST['category'];
     $content = $_POST['content'];
-    $date = date('Y-m-d');
+    $date = date('Y-m-d H:i:s');
   
     $upload_dir = 'uploads/'; //경로
 	$upfile_name	 = $_FILES["file"]["name"]; //업로드된 파일명
@@ -64,13 +64,16 @@
 	$sql = mq("insert into book_board (user_name, book_name, bo_author, bo_publisher, bo_date,  bo_price, bo_state, category, college, major, file, file_type, date, file_copied) 
 	values('".$usernic."', '".$name."', '".$author."', '".$publisher."', '".$publidate."', '".$price."', '".$content."' ,'".$category."', '".$college."', '".$major."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
-	
+	$sql2 = mq("select * from book_board where user_name='".$usernic."' and date='".$date."';");
+      while($idx = $sql2->fetch_array()){
+        $idx2 = $idx['idx'];
+      } //글 작성이후 작성한 글로 바로 갈수 있게.
 
 	// mysqli_close($db);                // DB 연결 끊기
 
 	echo "<script>
 			alert('글쓰기 완료되었습니다.');
-			location.href='book_list.php';
+			location.href='book_read.php?num=$idx2';
 		</script>";
 	}else{
 		echo "<script>

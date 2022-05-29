@@ -48,7 +48,7 @@
     margin-left:10px;
   }
   .board_img > img{
-	  width: 60%;
+	  width: 30%;
   }
   /* 댓글 */
 .reply_view {
@@ -76,6 +76,10 @@
 }
 .dat_edit {
 	display:none;
+}
+.dat_delete_bt{
+	color:black;
+	font-size:12px;
 }
 .dap_sm {
 	position: absolute;
@@ -123,6 +127,11 @@
 	display:table-cell;
 	text-align: center;
 }
+button{
+      background-color: white;
+      
+      border: solid 1px gray;
+    }
   </style>
 </head>
 <body>
@@ -156,11 +165,14 @@
 			<!-- <div>
 				파일 : <a href="uploads/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
 			</div> -->
+			<?php
+			}
+			?>
             <div class="proudctimage">
 			    <div class="borad_img">
                 <?php 
-                echo "<img src = 'uploads/$board[file_copied]' style=width:170px; height:114px>"
-                ?>;
+                echo "<img src = 'uploads/$board[file_copied]' style=width:170px; height:114px>";
+                ?>
 			    </div>
             </div>
             <div class="prdouct_area">
@@ -171,12 +183,14 @@
                                 echo "교양";
                                 elseif($board['category']=="전공")
                                 echo "전공"." > ".$board['college']." > ".$board['major'];
+								else
+								echo "기타";
                             ?>
                         <p class="book_name">
                             <?php echo $board['book_name'];?>
                         </p>
                         <div class="prouctprice">
-                            <strong class="cost"><?=$board['bo_price']?>
+                            <strong class="cost"><?=$board['bo_price']?></strong>
                         </div>
                     </div>
                  </div>
@@ -184,9 +198,7 @@
 
 
 
-			<?php
-			}
-			?>
+			
 			<div id="bo_content">
 				<?php echo nl2br("$board[bo_state]"); ?>
 			</div>
@@ -202,13 +214,13 @@
 				  ?>
 			  	
 			        <li><a href="board_modify_form.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
-			        <li><a href="delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
+			        <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 			  
               <?php
 			}
 			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
 				<li><a href="board_modify_form.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
-			    <li><a href="delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
+			    <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 			<?php
 			}
 			?>
@@ -227,6 +239,23 @@
 			<div><b><?php echo $reply['name'];?></b></div>
 			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
 			<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
+			<?php
+
+			  if (isset($_SESSION['userid']) && $reply['id'] == $_SESSION['userid']){
+				 
+				  ?>
+			  	
+				  <!--<a class="dat_edit_bt" href="#">수정</a>-->
+				<a class="dat_delete_bt" href="book_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
+			  
+              <?php
+			}
+			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
+				<!--<a class="dat_edit_bt" href="#">수정</a>-->
+				<a class="dat_delete_bt" href="book_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
+			<?php
+			}
+			?>	
 
 		</div>
 	<?php 

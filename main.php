@@ -1,5 +1,5 @@
 <?php
-  
+
   include ('db_connect.php');
   
   if(isset($_GET['board_id'])){

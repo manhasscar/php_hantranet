@@ -9,6 +9,7 @@
 	  width: 100%;
 	  position: relative;
 	  margin: 0 auto;
+    margin-top:20px;
     }
     #page_num {
       display: flex;
@@ -36,6 +37,17 @@
 	    padding: 2px;
 	    border: solid 1px gray;
     }
+    #wrarper{
+      position: fixed;
+      top:0px;
+      background-color:white;
+      width:1200px;
+
+    }
+    .list-table {
+    	width: 100%;
+	    margin-top: 80px;
+    }
   
     
     </style> 
@@ -43,6 +55,7 @@
     <body>
       <nav>
       <div id="board_area">
+        <div id="wrarper">
         <h1>거래 게시판</h1>
         <div id="search_box">
           <form action="book_search_result.php" method="get">
@@ -54,6 +67,7 @@
             <input type="text" name="search" size="40" required="required" /> <button>검색</button>
           </form>
         </div>
+  </div>
           <table class="list-table">
             <thead>
                 <tr>

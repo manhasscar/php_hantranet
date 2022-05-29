@@ -1,9 +1,11 @@
 <?php
-session_start();
 
+session_start();
 ?>
 
+
 <!DOCTYPE html>
+
 <html>
   <head>
     <meta charset="utf-8">
@@ -158,6 +160,7 @@ session_start();
     </style>
   </head>
   <body>
+ 
     <header id=title>
       <h1>
         <a  href="index.php">HantraNet</a>
@@ -176,9 +179,8 @@ session_start();
   <li>
     <a target="iframe1" href="book_list.php?board_id=book_board">중고거래</a>
     <ul class="depth_1">
-      <li><a href="#">중고거래 게시판</a></li>
-      <li><a href="book_list.php">도서거래 게시판</a></li>
-      <li><a href="#">MENU 1_3</a></li>
+      <li><a target="iframe1" href="book_list.php">도서거래 게시판</a></li>
+      <li><a target="iframe1" href="book_list.php">임시 게시판</a></li>
     </ul>
   </li>
   <li>
@@ -214,9 +216,9 @@ session_start();
     <?php
     }
     ?>
-  
+   
     
-    
+   
     <!--<aside id="left">
       <h4>카테고리</h4>
       <ul>
@@ -227,6 +229,7 @@ session_start();
         <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
       </ul>
     </aside>-->
+    
     <section id="main">
       <article id="article1">
         <iframe name="iframe1" src="main.php" width="1200px" height="700px" frameBorder="0" seamless></iframe>
@@ -236,3 +239,18 @@ session_start();
   </body>
   
 </html>
+
+<script>
+  if(document.iframe1.location.pathname == '/site/main.php'){
+    <aside id="left">
+      <h4>카테고리</h4>
+      <ul>
+        <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
+        <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
+
+        <li><a target="iframe1" href="book_list.php">도서 거래 게시판</a></li>
+        <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
+      </ul>
+    </aside>
+  }
+    </script>
