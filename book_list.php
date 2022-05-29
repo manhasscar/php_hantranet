@@ -57,6 +57,7 @@
       <div id="board_area">
         <div id="wrarper">
         <h1>거래 게시판</h1>
+        <h4>중고거래 게시판입니다.</h4>
         <div id="search_box">
           <form action="book_search_result.php" method="get">
             <select name="catgo">

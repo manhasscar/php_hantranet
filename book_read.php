@@ -213,13 +213,13 @@ button{
 				 
 				  ?>
 			  	
-			        <li><a href="board_modify_form.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
+			        <li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			        <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 			  
               <?php
 			}
 			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<li><a href="board_modify_form.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
+				<li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			    <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 			<?php
 			}

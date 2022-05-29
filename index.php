@@ -48,6 +48,7 @@ session_start();
         position: fixed;
         left: 30px;top: 200px;bottom: 0;
         width: 200px;
+        display: none;
       }
       #left ul{
         background-color: #4aa8d8;
@@ -149,6 +150,7 @@ session_start();
     width:500px;
     
     
+    
     background-color: #4aa8d8;
   }
   #login > a{
@@ -217,9 +219,10 @@ session_start();
     }
     ?>
    
-    
    
-    <!--<aside id="left">
+  
+   
+    <aside id="left">
       <h4>카테고리</h4>
       <ul>
         <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
@@ -228,7 +231,7 @@ session_start();
         <li><a target="iframe1" href="book_list.php">도서 거래 게시판</a></li>
         <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
       </ul>
-    </aside>-->
+    </aside>
     
     <section id="main">
       <article id="article1">
@@ -240,17 +243,4 @@ session_start();
   
 </html>
 
-<script>
-  if(document.iframe1.location.pathname == '/site/main.php'){
-    <aside id="left">
-      <h4>카테고리</h4>
-      <ul>
-        <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
-        <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
 
-        <li><a target="iframe1" href="book_list.php">도서 거래 게시판</a></li>
-        <li><a target="iframe1" href="board.php?board_id=movie">영화</a></li>
-      </ul>
-    </aside>
-  }
-    </script>
