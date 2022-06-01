@@ -132,9 +132,23 @@ button{
       
       border: solid 1px gray;
     }
+	a { 
+		text-decoration:none !important 
+	
+	}
+#popup_menu_area{
+	
+	position: absolute;
+	background-color: #4aa8d8;
+	width: 150px;
+	height: 23px;
+	text-align: center;
+}
+
+
   </style>
 </head>
-<body>
+<body link="black" vlink="black" alink="navy">
 	<?php
 		$bno = $_GET['num']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from book_board where idx ='".$bno."'"));
@@ -153,11 +167,15 @@ button{
 		  <h2><?php echo $board['book_name'];?></h2>
 		</div>
 		   <div id="user_info">
-			      <p><?php echo $board['user_name']; ?> <?php echo $board['date']; ?> </p>
+			      <p><a href="javascript:doDisplay();"><?php echo $board['user_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
                   <!-- 조회:<?php echo $board['hit']; ?> -->
 				  <div id="bo_line"></div> 
 			</div>
-			<div></div>
+			<div>
+			
+
+	</div>
+			
 			
 			<?php
 			if ($board['file']){
@@ -168,6 +186,14 @@ button{
 			<?php
 			}
 			?>
+
+<div id="popup_menu_area" style="z-index: 9999; display: none;">
+			
+				<a href = "message_send_in_board.php?rv_id=<?php echo $board['user_name']; ?>">쪽지 보내기</a>
+			
+		
+	
+</div>
             <div class="proudctimage">
 			    <div class="borad_img">
                 <?php 
@@ -277,3 +303,24 @@ button{
 </div>
 </body>
 </html>
+<script type="text/javascript">
+var bDisplay = true;
+let elem = document.querySelector('#user_info');
+let rect = elem.getBoundingClientRect();
+
+function doDisplay(){
+	var con = document.getElementById("popup_menu_area");
+	
+	
+	if(con.style.display =='none'){
+		con.style.display = 'block';
+		con.style.top = "50px";
+		con.style.right = "20px";
+	}else{
+		con.style.display = 'none';
+	}
+}
+
+
+
+</script>

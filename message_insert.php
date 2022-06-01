@@ -5,7 +5,7 @@
     $rv_id = $_POST['rv_id'];
     $content = $_POST['content'];
 	$content = htmlspecialchars($content, ENT_QUOTES);
-	$regist_day = date("Y-m-d (H:i)");  // 현재의 '년-월-일-시-분'을 저장
+	$regist_day = date("Y-m-d H:i:s");  // 현재의 '년-월-일-시-분'을 저장
 
 	if(!$send_id) {
 		echo("

@@ -5,6 +5,8 @@
 	 if(isset($_SESSION['board_idx']))
 	  $board_idx=$_SESSION['board_idx'];
 	else $board_idx="";
+
+    $rv_id = $_GET['rv_id'];
 	
 ?>
 
@@ -38,9 +40,9 @@
 		exit;
 	}
 	else{
-		$sql=mq("select * from book_board where idx='".$board_idx."'"); 
+		/*$sql=mq("select * from book_board where idx='".$board_idx."'"); 
 		$board = $sql -> fetch_array();
-		$rv_id= $board['nic_name'];
+		$rv_id= $board['nic_name'];*/
 	}
 ?>
 <section>
