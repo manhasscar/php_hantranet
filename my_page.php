@@ -70,6 +70,11 @@
         ?>
         </td>
       </tr>
+      <tr>
+        <td></td>
+        <td><a href="message_box.php?mode=rv">쪽지</a>
+        </td>
+      </tr>
       <?php
     }
     ?>
