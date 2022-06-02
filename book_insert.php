@@ -1,6 +1,6 @@
 <?php
     include ('db_connect.php');
-    session_start();
+    
 	if (isset($_POST['college'])) $college = $_POST['college'];
 	else $college = "";
 	if (isset($_POST['major'])) $major = $_POST['major'];

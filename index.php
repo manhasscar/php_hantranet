@@ -158,13 +158,15 @@ include('db_connect.php');
   }
   .warrper{
     width:1200px;
+    
   }
   #new_message{
+    margin-left: 998px;
     position:absolute;
     top:75px;
-    right:155px;
     background-color: white;
     border: solid 1px gray;
+    width: 200px;
   }
     </style>
   </head>
@@ -215,9 +217,11 @@ include('db_connect.php');
     if(isset($_SESSION['userid']) && $row_num >= 1){
 
       echo "
+      
       <div id = 'new_message'>
-      <a target='iframe1' href='message_box.php?mode=receive'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
+      <a target='iframe1' href='message_box.php?mode=rv'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
       </div>
+      
       <nav>
         <a>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
         <a href='logout.php'>로그아웃</a>

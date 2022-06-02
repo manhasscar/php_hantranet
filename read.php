@@ -140,10 +140,14 @@ button{
       
       border: solid 1px gray;
     }
+a { 
+		text-decoration:none !important 
+	
+	}
 
   </style>
 </head>
-<body>
+<body link="black" vlink="black" alink="navy">
 	<?php
 	
     	$board_id = $_GET['board_id'];

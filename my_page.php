@@ -45,9 +45,13 @@
       border-bottom:1px solid #CCC; height:20px;
       font-size: 14px
     }
+    a { 
+		text-decoration:none !important 
+	
+	  }
     </style>
   </head>
-  <body>
+  <body link="black" vlink="black" alink="navy">
     <h1>내 정보</h1>
     <table class="my_G">
       <?php
@@ -72,7 +76,7 @@
       </tr>
       <tr>
         <td></td>
-        <td><a href="message_box.php?mode=rv">쪽지</a>
+        <td><a href="message_box.php?mode=rv">쪽지함</a>
         </td>
       </tr>
       <?php
