@@ -128,15 +128,25 @@
             ?> 
           <tbody>
             <tr id="board_list">
-              <!-- <td width="70"><?php echo $message['idx']; ?></td> -->
+              
+              <?php if($mode=="send"){ ?>
+                <!-- <td width="70"><?php echo $message['idx']; ?></td> -->
               <td width="120"><?php echo $msg_id?></td>
-              <?php if($mode=="send"){
-              ?>
                 <td width="500"><a href="message_sendview.php?mode=<?=$mode?>&num=<?=$idx?>"><?php echo  $content;?></a></td>
-              <?php
+
+                <?php
+                
+              }
+              else if($mode != "send" && $message['read_ok'] == 0) { ?>
+              
+              <td width="120"><strong><?php echo $msg_id?></strong></td>
+               <td width="500"><strong><a href="message_rvview.php?mode=<?=$mode?>&num=<?=$idx?>"><?php echo  $content;?></a></strong></td>
+                <?php
               }
               else{
                 ?>
+                <!-- <td width="70"><?php echo $message['idx']; ?></td> -->
+              <td width="120"><?php echo $msg_id?></td>
               <td width="500"><a href="message_rvview.php?mode=<?=$mode?>&num=<?=$idx?>"><?php echo  $content;?></a></td>
               <?php }?>
               <td width="100"><?php echo $message['regist_day']?></td>

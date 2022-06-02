@@ -139,10 +139,12 @@ button{
 #popup_menu_area{
 	
 	position: absolute;
-	background-color: #4aa8d8;
+	
 	width: 150px;
 	height: 23px;
 	text-align: center;
+	background-color: white;
+    border: solid 1px gray;
 }
 
 

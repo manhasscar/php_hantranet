@@ -1,6 +1,6 @@
 <?php
+include('db_connect.php');
 
-session_start();
 ?>
 
 
@@ -159,6 +159,13 @@ session_start();
   .warrper{
     width:1200px;
   }
+  #new_message{
+    position:absolute;
+    top:75px;
+    right:155px;
+    background-color: white;
+    border: solid 1px gray;
+  }
     </style>
   </head>
   <body>
@@ -195,12 +202,39 @@ session_start();
 </ul>
   
     <?php
-      if(isset($_SESSION['userid'])){
+    if (isset($_SESSION['user_nic'])){
+      $user_nic = $_SESSION['user_nic'];
+    }
+    else{ $user_nic = '';}
+    
+    $sql = mq("select * from message where read_ok = 0 and rv_id = '".$user_nic."'");
+    $row_num = mysqli_num_rows($sql);
 
-    echo "<nav>
+
+
+    if(isset($_SESSION['userid']) && $row_num >= 1){
+
+      echo "
+      <div id = 'new_message'>
+      <a target='iframe1' href='message_box.php?mode=receive'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
+      </div>
+      <nav>
+        <a>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
+        <a href='logout.php'>로그아웃</a>
+        <a target='iframe1' href='my_page.php'>마이페이지</a>
+        
+      </nav>";
+  
+      }
+      else if(isset($_SESSION['userid'])){
+
+    echo "
+    
+    <nav>
       <a>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
       <a href='logout.php'>로그아웃</a>
       <a target='iframe1' href='my_page.php'>마이페이지</a>
+      
     </nav>";
 
     }
@@ -242,5 +276,24 @@ session_start();
   </body>
   
 </html>
+
+<script type="text/javascript">
+
+
+function doDisplay(){
+	var msg = document.getElementById("new_message");
+	
+	
+	if(msg.style.display =='none'){
+		msg.style.display = 'block';
+		
+	}else{
+		msg.style.display = 'none';
+	}
+}
+
+
+
+</script>
 
 

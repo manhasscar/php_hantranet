@@ -176,6 +176,9 @@ button{
 		</form>
 	</div>
 </div>
+<?php 
+$sql = mq("update message set read_ok = 1 where idx='".$bno."'");
+?>
 
 	<!-- 목록, 수정, 삭제 -->
 	     <div id="bo_ser">
