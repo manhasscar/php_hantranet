@@ -1,14 +1,20 @@
-<?php
-	include ('db_connect.php');
-	if(isset($_SESSION['userid'])) $username = $_SESSION['userid'];
-    else $userid = "";
-?>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>게시판</title>
+  <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+  <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <style>
+.row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
   #board_read {
     width:100%;
     position: relative;
@@ -146,11 +152,16 @@ button{
 	background-color: white;
     border: solid 1px gray;
 }
-
-
   </style>
 </head>
-<body link="black" vlink="black" alink="navy">
+<body id="top">
+<header>
+    <?php include "header.php";?>
+</header>
+<div class="wrapper row3">
+	<main class="hoc container clear">
+		<div class="content"> 
+	<h1>
 	<?php
 		$bno = $_GET['num']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from book_board where idx ='".$bno."'"));
@@ -161,6 +172,7 @@ button{
 		$_SESSION['board_idx'] = $bno; 
 		
 	?>
+	</h1>
 <!-- 글 불러오기 -->
 
   <div id="board_read">
@@ -174,8 +186,6 @@ button{
 				  <div id="bo_line"></div> 
 			</div>
 			<div>
-			
-
 	</div>
 			
 			

@@ -3,7 +3,24 @@
 <meta charset="UTF-8">
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <style>
+  	.row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+	.container {
+	padding: 20px 0;
+}
+.row3 {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
   #board_write {
     width:900px;
     position:relative;
@@ -54,8 +71,14 @@
 </style>
 </head>
 <body>
-  <?php $board_id=$_GET['board_id'];?>
-    <div id="board_write">
+<header>
+    <?php include "header.php";?>
+</header>	 
+<div class="wrapper row3">
+	<main class="hoc container clear"> 
+    	<div class="content"> 
+      <?php $board_id=$_GET['board_id'];?>
+       <div id="board_write">
         <h4>글을 작성하는 공간입니다.</h4>
             <div id="write_area">
                 <form enctype="multipart/form-data" action="write_ok.php?board_id=<?php echo $board_id;?>" method="post">
@@ -77,5 +100,7 @@
                 </form>
             </div>
         </div>
+    </div>
+  </div>
     </body>
 </html>

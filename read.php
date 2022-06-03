@@ -1,15 +1,30 @@
-<?php
-	include ('db_connect.php');
-	if(!isset($_SESSION['userid'])){
-  
-	}
-?>
 <!doctype html>
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>게시판</title>
+  <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+  <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+  <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <style>
+	  .row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
+.comment{
+	margin-top: 80px ;
+}
+#comments .comcont {
+    display: block;
+    margin: 0;
+	padding: 10px 0 15px 0;
+    border-bottom: solid 1px gray;
+}
   #board_read {
     width:100%;
     position: relative;
@@ -147,7 +162,14 @@ a {
 
   </style>
 </head>
-<body link="black" vlink="black" alink="navy">
+<body id="top">
+<header>
+    <?php include "header.php";?>
+</header>
+<div class="wrapper row3">
+	<main class="hoc container clear">
+		<div class="content"> 
+	<h1>
 	<?php
 	
     	$board_id = $_GET['board_id'];
@@ -162,6 +184,7 @@ a {
 		$_SESSION['board_idx'] = $bno; 
 		
 	?>
+	</h1>
 <!-- 글 불러오기 -->
 
   <div id="board_read">
@@ -219,38 +242,41 @@ a {
 
   </div>
   <!--- 댓글 불러오기 -->
-<div class="reply_view">
-	<h3>댓글목록</h3>
-		<?php
-			$sql3 = mq("select * from ".$board_id."_reply where con_num='".$bno."' order by idx asc");
-			while($reply = $sql3->fetch_array()){
-		?>
-		<div class="dap_lo">
-			<div><b><?php echo $reply['name'];?></b></div>
-			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
-			<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
-			<?php
-
-			  if (isset($_SESSION['userid']) && $reply['id'] == $_SESSION['userid']){
-				 
-				  ?>
-			  	
-				  <!--<a class="dat_edit_bt" href="#">수정</a>-->
+  <div id="comments">
+        <h2>댓글목록</h2>
+        <ul>
+          <li>
+            <article>
+              <header>
+                <address>
+				<?php
+					$sql3 = mq("select * from ".$board_id."_reply where con_num='".$bno."' order by idx asc");
+					while($reply = $sql3->fetch_array()){
+				?>
+               	<?php echo $reply['name'];?>
+                </address>
+              </header>
+              <div class="comcont">
+                <p><?php echo nl2br("$reply[content]"); ?></p>
+				<p><?php echo $reply['date']; ?></p>
+				<?php
+					if (isset($_SESSION['userid']) && $reply['id'] == $_SESSION['userid']){
+				?>
 				<a class="dat_delete_bt" href="reply_delete.php?idx=<?php echo $reply['idx']; ?>">삭제</a>
-			  
-              <?php
-			}
-			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<!--<a class="dat_edit_bt" href="#">수정</a>-->
+             	<?php
+				}
+				elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
 				<a class="dat_delete_bt" href="reply_delete.php?idx=<?php echo $reply['idx']; ?>">삭제</a>
-			<?php
-			}
-			?>	
-		</div>
-	<?php 
-	} 
-	?>
-	
+				<?php
+				}
+				?>	
+              </div>
+			  <?php }
+			  ?>
+            </article>
+          </li>
+        </ul>
+	</div>
 
 	<!--- 댓글 입력 폼 -->
 	<div class="dap_ins">

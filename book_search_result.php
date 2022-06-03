@@ -76,7 +76,7 @@
 					<div id="book">
             <ul>
               <li>
-					    <?php echo $book_name;?><br>
+					    <a href="book_read.php?num=<?=$board['idx']?>"><?php echo $book_name;?><br></a>
 					    <?php echo $board['bo_author'];?><br>
 					    <?php echo $board['bo_date'];?>
               </li>
@@ -84,10 +84,8 @@
 					</div>
                   </div>
 				</td>
-                <!-- <td width="120"><?php echo $book_name;?><br><?php echo $board['bo_author'];?><br><?php echo $board['bo_date'];?></td> -->
-                <!-- <td width="120"><?php echo $board['bo_date'];?></td> -->
                 <td width="120"><?php echo $board['bo_price']; ?></td>
-				<td width="100"><?php echo $board['user_name']; ?></td>
+				<td width="100"><?php echo $board['nic_name']; ?></td>
 				<td width="100"><?php echo $board['date']; ?></td>
               </tr>
             </tbody>

@@ -4,12 +4,89 @@
 <meta charset="utf-8">
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/board.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<style>
+	.row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+	.container {
+	padding: 20px 0;
+}
+.row3 {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
+.heading{
+    color: #171414;
+    font-weight: bold;
+}
+a {
+    color: #05B3F2;
+}
+p{
+    color: #171414;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+    #page_num ul li {
+      float: left;
+      float:left;
+      margin-left: 10px;
+      text-align: center;
+      
+    }
+    .fo_re {
+      font-weight: bold;
+    }
+    #write_btn, .btn, .btn.inverse:hover {
+    color: #FFFFFF;
+    background-color: #05B3F2;
+    border-color: #05B3F2;
+    border-radius: 10px;
+    background-clip: padding-box;
+    }
+    #wrarper{
+      position: fixed;
+      top:0px;
+      background-color:white;
+      width:1200px;
+
+    }
+	button {
+	color: #FFFFFF;
+    background-color: #05B3F2;
+    padding: 2px; 
+    border-radius: 10px;
+	border-color: #05B3F2;
+    /* background-clip: padding-box;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer; */
+}
+#board_box .buttons { text-align: right; margin: 20px 0 40px 0; }
+#board_box .buttons li { display: inline; }
+#board_box .buttons button { padding: 5px 10px; cursor: pointer; }
+</style>
+
 <script>
   function check_input() {
       if (!document.board_form.name.value)
       {
           alert("제목을 입력하세요!");
-          document.board_form.subject.focus();
+          document.board_form.name.focus();
           return;
       }
       if (!document.board_form.content.value)
@@ -46,9 +123,15 @@
    }
 </script>
 </head>
-<body> 
+<body>
+<header>
+    <?php include "header.php";?>
+</header>	 
 <section>
-   	<div id="board_box">
+<div class="wrapper row3">
+	<main class="hoc container clear"> 
+    	<div class="content"> 
+   		<div id="board_box">
 	    <h3 id="board_title">
 	    		글 쓰기
 		</h3>
@@ -104,7 +187,9 @@
 				<li><button type="button" onclick="location.href='book_list.php'">목록</button></li>
 			</ul>
 	    </form>
-	</div> <!-- board_box -->
+	</div> 
+</div>
+</div><!-- board_box -->
 </section> 
 <script src="book_form.js">
 </script>

@@ -16,7 +16,7 @@ include ('db_connect.php');
       if (!document.board_form.name.value)
       {
           alert("제목을 입력하세요!");
-          document.board_form.subject.focus();
+          document.board_form.name.focus();
           return;
       }
       if (!document.board_form.content.value)

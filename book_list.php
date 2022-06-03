@@ -1,41 +1,109 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
     <title>게시판</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+    <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
-      #board_area {
-	  width: 100%;
-	  position: relative;
-	  margin: 0 auto;
-    margin-top:20px;
-    }
-    #page_num {
-      display: flex;
+  .row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+.row3 {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
+.splitclrs {
+    color: #929292;
+    background: linear-gradient(to right, #fff 0%,#Fff 50%,#FFFFFF 50%,#FFFFFF 100%);
+}
+.heading{
+    color: #171414;
+    font-weight: bold;
+}
+p{
+    color: #171414;
+}
+.plus{
+    float: right !important;
+}
+.list-table {
+	width: 100%;
+	margin-top: 40px;
+}
+.list-table thead th{
+	height:40px;
+	border-top:2px solid #09C;
+	border-bottom:1px solid #CCC;
+	font-weight: bold;
+	font-size: 17px;
+}
+.list-table tbody td{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid #CCC; height:20px;
+	font-size: 14px
+}
+th {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#FFFFFF;}
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
+    color: inherit;
+    background-color: #ffffff;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+td{
+    color: #000000;
+}
+#page_num {
       font-size: 14px;
-      /* margin-left: 260px; */
-      /* margin-top:30px; */
-      margin: 20px auto;
-     
-    
+      margin-left: auto;
+      display: flex;
+      margin-top:30px;
+      justify-content: center;
+      
+      
     }
     #page_num ul li {
+      float: left;
       float:left;
       margin-left: 10px;
+      text-align: center;
       
     }
     .fo_re {
       font-weight: bold;
-      color:red;
     }
-    #image{
-      float:left;
-    }
-    button{
-      background-color: white;
-	    padding: 2px;
-	    border: solid 1px gray;
+    #write_btn, .btn, .btn.inverse:hover {
+    color: #FFFFFF;
+    background-color: #05B3F2;
+    border-color: #05B3F2;
+    border-radius: 10px;
+    background-clip: padding-box;
     }
     #wrarper{
       position: fixed;
@@ -44,18 +112,15 @@
       width:1200px;
 
     }
-    .list-table {
-    	width: 100%;
-	    margin-top: 80px;
-    }
   
-    
-    </style> 
-    </head>
-    <body>
-      <nav>
-      <div id="board_area">
-        <div id="wrarper">
+    </style>
+    <body id="top">
+    <header>
+        <?php include "header.php";?>
+    </header>
+      <div class="wrapper row3">
+        <main class="hoc container clear">
+        <div class="content"> 
         <h1>거래 게시판</h1>
         <h4>중고거래 게시판입니다.</h4>
         <div id="search_box">
@@ -68,7 +133,6 @@
             <input type="text" name="search" size="40" required="required" /> <button>검색</button>
           </form>
         </div>
-  </div>
           <table class="list-table">
             <thead>
                 <tr>
@@ -80,7 +144,6 @@
                 </tr>
             </thead>
               <?php
-			  	      include('db_connect.php');
                 if(isset($_GET['page'])){
                   $page = $_GET['page'];
                 }
@@ -112,11 +175,9 @@
                     if(strlen($book_name)>30)
                     {
                       //title이 30을 넘어서면 ...표시
-                      $title=str_replace($board["book_name"],mb_substr($board["book_name"],0,30,"utf-8")."...",$board["book_name"]);
+                      $title=str_replace($book_name,mb_substr($book_name,0,30,"utf-8")."...",$book_name);
                     }
 					if($board["file"]){
-           
-    
 						$bo_image="<img src = 'uploads/$board[file_copied]' style=width:120px; height:80px>";
           }
               ?>
@@ -125,27 +186,25 @@
             <tbody>
               <tr>
                 <td width="70"><?php echo $board['idx']; ?></td>
-				<td width="500">
-					<div class="items">
-						<div id="image">
-							<?php echo $bo_image; ?>
-						</div>
-					<div id="book">
-            <ul>
-              <li>
-					      <a href="book_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $book_name;?><br>
-					    <?php echo $board['bo_author']?><br>
-					    <?php echo $board['bo_date']?>
-              </li>
-                  </ul>
-					</div>
-                  </div>
-				</td>
-                <!-- <td width="120"><?php echo $book_name;?><br><?php echo $board['bo_author']?><br><?php echo $board['bo_date']?></td> -->
-                <!-- <td width="120"><?php echo $board['bo_date']?></td> -->
-                <td width="120"><?php echo $board['bo_price']; ?></td>
-			      	<td width="100"><?php echo $board['user_name']; ?></td>
-			    	<td width="100"><?php echo $board['date']; ?></td>
+                <td width="500">
+                  <div class="items">
+                    <div id="image">
+                      <?php echo $bo_image; ?>
+                    </div>
+                  <div id="book">
+               <ul>
+                <li>
+                    <a href="book_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $book_name;?></a><br>
+                  <?php echo $board['bo_author']?><br>
+                  <?php echo $board['bo_date']?>
+                  </li>
+                </ul>
+					    </div>
+              </div>
+			    	  </td>
+              <td width="120"><?php echo $board['bo_price']; ?></td>
+			      	<td width="100"><?php echo $board['nic_name']; ?></td>
+			    	  <td width="100"><?php echo $board['date']; ?></td>
               </tr>
             </tbody>
                   
@@ -155,7 +214,7 @@
                   
           
           </table>
-                  
+          </div>         
           <!---페이징 넘버 --->
           <div id="page_num">
             <ul>
@@ -193,18 +252,20 @@
             </ul>
           </div>
           <?php
-            
-             if(isset($_SESSION['userid'])){
-                ?>
-                <div id="write_btn">
-                  <a href=book_form.php><button>글쓰기</button></a>
-                </div>
-                <?php
-              
-            }
+            if(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){
+              ?>
+              <footer><a class="btn" href="book_form.php">글쓰기</a></footer>
+              <?php
 
-          ?>
+             }
+            elseif(isset($_SESSION['userid'])){
+             ?>
+              <footer><a class="btn" href="book_form.php">글쓰기</a></footer>
+        <?php
+        }
+        ?>
         
         </div>
+
       </body>
   </html>
