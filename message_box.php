@@ -1,5 +1,5 @@
 <?php
-  include ('db_connect.php');
+  
   if(isset($_SESSION['userid'])) $userid= $_SESSION['userid'];  
   else $userid ="";
   if(isset($_SESSION['user_nic'])) $usernic  = $_SESSION['user_nic'];
@@ -12,6 +12,7 @@
     <meta charset="utf-8">
     <title>쪽지함</title>
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <style>
     #page_num {
       font-size: 14px;
@@ -43,6 +44,9 @@
     </style>
     </head>
     <body>
+    <header>
+        <?php include "header.php";?>
+    </header>
     <div id="board_area">
       <?php
         $mode = $_GET["mode"];

@@ -203,7 +203,7 @@ td{
               </div>
 			    	  </td>
               <td width="120"><?php echo $board['bo_price']; ?></td>
-			      	<td width="100"><?php echo $board['nic_name']; ?></td>
+			      	<td width="100"><?php echo $board['user_name']; ?></td>
 			    	  <td width="100"><?php echo $board['date']; ?></td>
               </tr>
             </tbody>
