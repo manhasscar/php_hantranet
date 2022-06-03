@@ -11,6 +11,9 @@
     color: #4aa8d8;
     background-color: #FFFFFF;
 }
+.row3 {
+	color: black;
+}
 .row4 {
     color: #CBCBCB;
     background-color: #4aa8d8;
@@ -105,19 +108,20 @@
 	height: 72px;
 }
 #re_content {
-	width:80%;
+	width:100%;
 	height: 56px;
-  resize: none;
+	resize: none;
+	margin: 0px;
 }
 .dap_ins {
 	margin-top:50px;
 }
 .re_bt {
-	position: absolute;
+	position: relative;
 	width:100px;
 	height:56px;
 	font-size:16px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 #foot_box {
 	height: 50px;
@@ -181,7 +185,7 @@ button{
 		  <h2><?php echo $board['book_name'];?></h2>
 		</div>
 		   <div id="user_info">
-			      <p><a href="javascript:doDisplay();"><?php echo $board['user_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
+			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['user_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
                   <!-- 조회:<?php echo $board['hit']; ?> -->
 				  <div id="bo_line"></div> 
 			</div>
@@ -304,7 +308,7 @@ button{
 	<div class="dap_ins">
 		<form action="book_reply_ok.php?board_id=book_board&num=<?php echo $bno; ?>" method="post">
 			<input type="hidden" name="dat_user" id="dat_user" class="dat_user" size="15" placeholder="아이디" value=<?php isset($_SESSION['userid'])?>>
-			<div style="margin-top:10px; ">
+			<div style="margin-top:10px;display:flex; ">
 				<textarea name="content" class="reply_content" id="re_content" ></textarea>
 				<button id="rep_bt" class="re_bt">댓글</button>
 			</div>

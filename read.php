@@ -12,6 +12,9 @@
     color: #4aa8d8;
     background-color: #FFFFFF;
 }
+.row3{
+	color:black;
+}
 .row4 {
     color: #CBCBCB;
     background-color: #4aa8d8;
@@ -121,19 +124,20 @@
 	height: 72px;
 }
 #re_content {
-	width:80%;
+	width:100%;
 	height: 56px;
-  resize: none;
+  	resize: none;
+	margin: 0px;
 }
 .dap_ins {
 	margin-top:50px;
 }
 .re_bt {
-	position: absolute;
+	position: relative;
 	width:100px;
 	height:56px;
 	font-size:16px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 #foot_box {
 	height: 50px;
@@ -242,21 +246,21 @@ a {
 
   </div>
   <!--- 댓글 불러오기 -->
-  <div id="comments">
+  <div id="comments" style="margin-top:100px;">
         <h2>댓글목록</h2>
         <ul>
           <li>
             <article>
-              <header>
-                <address>
+              
+                
 				<?php
 					$sql3 = mq("select * from ".$board_id."_reply where con_num='".$bno."' order by idx asc");
 					while($reply = $sql3->fetch_array()){
 				?>
                	<?php echo $reply['name'];?>
-                </address>
-              </header>
-              <div class="comcont">
+                
+             
+              <div class="dap_lo">
                 <p><?php echo nl2br("$reply[content]"); ?></p>
 				<p><?php echo $reply['date']; ?></p>
 				<?php
@@ -282,7 +286,7 @@ a {
 	<div class="dap_ins">
 		<form action="reply_ok.php?board_id=<?php echo $board_id;?>&idx=<?php echo $bno; ?>" method="post">
 			<input type="hidden" name="dat_user" id="dat_user" class="dat_user" size="15" placeholder="아이디" value=<?php isset($_SESSION['userid'])?>>
-			<div style="margin-top:10px; ">
+			<div style="margin-top:10px;display:flex; ">
 				<textarea name="content" class="reply_content" id="re_content" ></textarea>
 				<button id="rep_bt" class="re_bt">댓글</button>
 			</div>

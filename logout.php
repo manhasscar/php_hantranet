@@ -5,6 +5,6 @@
   session_destroy();
   echo"
   <script>
-    location.href='index.php'
+    location.href='index1.php'
     </script>";
 ?>

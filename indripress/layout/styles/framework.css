@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
 /*
 Template Name: Indripress
 Author: <a href="http://www.os-templates.com/">OS Templates</a>
@@ -52,8 +53,8 @@ img{width:auto; max-width:100%; height:auto; margin:0; padding:0; border:none; l
 
 /* Fonts
 --------------------------------------------------------------------------------------------------------------- */
-body, input, textarea, select{font-family:Verdana, Geneva, sans-serif;}
-h1, h2, h3, h4, h5, h6, .heading{font-family:Georgia, "Times New Roman", Times, serif;}
+body, input, textarea, select{font-family: 'Nanum Gothic', 'sans-serif', Arial;}
+h1, h2, h3, h4, h5, h6, .heading{font-family: 'Nanum Gothic', 'sans-serif', Arial;}
 
 
 /* Forms
@@ -67,7 +68,7 @@ label{margin-bottom:5px;}
 
 /* Generalise
 --------------------------------------------------------------------------------------------------------------- */
-h1, h2, h3, h4, h5, h6, .heading{margin:0 0 20px 0; font-size:22px; line-height:normal; font-weight:normal; text-transform:uppercase;}
+h1, h2, h3, h4, h5, h6, .heading{margin:0 0 20px 0; font-size:22px; line-height:normal; font-weight:bold; text-transform:uppercase;}
 .heading.nospace{margin-bottom:0;}
 
 address{font-style:normal; font-weight:normal;}

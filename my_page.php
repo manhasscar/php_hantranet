@@ -183,6 +183,8 @@ td{
       <div class = "content three_quarter">
   </div>
   </div>
+  </body>
+  </html>
   <!-- <div class="tab">
     <button class="tablinks" onclick="openCity(event, 'mycontent')" id="defaultOpen">내가 쓴 글</button>
     <button class="tablinks" onclick="openCity(event, 'myreply')">내가 쓴 댓글</button>

@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>게시판</title>
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+    
     <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 </head>
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+    *{
+      font-family: 'Nanum Gothic', 'sans-serif', Arial ;
+    } 
+
     .row1 {
     color: #4aa8d8;
     background-color: #FFFFFF;

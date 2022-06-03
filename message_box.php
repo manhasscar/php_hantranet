@@ -14,6 +14,76 @@
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <style>
+      .row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+.row3 {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
+.splitclrs {
+    color: #929292;
+    background: linear-gradient(to right, #fff 0%,#Fff 50%,#FFFFFF 50%,#FFFFFF 100%);
+}
+.heading{
+    color: #171414;
+    font-weight: bold;
+}
+p{
+    color: #171414;
+}
+.plus{
+    float: right !important;
+}
+.list-table {
+	width: 100%;
+	margin-top: 40px;
+}
+.list-table thead th{
+	height:40px;
+	border-top:2px solid #09C;
+	border-bottom:1px solid #CCC;
+	font-weight: bold;
+	font-size: 17px;
+}
+.list-table tbody td{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid #CCC; height:20px;
+	font-size: 14px
+}
+th {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#FFFFFF;}
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
+    color: inherit;
+    background-color: #ffffff;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+td{
+    color: #000000;
+}
     #page_num {
       font-size: 14px;
       display: flex;
@@ -47,6 +117,9 @@
     <header>
         <?php include "header.php";?>
     </header>
+    <div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
     <div id="board_area">
       <?php
         $mode = $_GET["mode"];
@@ -163,6 +236,7 @@
                 
         
         </table>
+        </div>
                 
         <!---페이징 넘버 --->
         <div id="page_num">

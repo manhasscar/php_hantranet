@@ -1,5 +1,5 @@
 <?php
-	include ('db_connect.php');
+	
 	if(isset($_SESSION['user_nic'])) $user_nic=$_SESSION['user_nic'];
 	else $user_nic="";
 ?>
@@ -8,7 +8,78 @@
 <head>
   <meta charset="UTF-8">
   <title>게시판</title>
+  <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <style>
+.row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+.row3 {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
+.splitclrs {
+    color: #929292;
+    background: linear-gradient(to right, #fff 0%,#Fff 50%,#FFFFFF 50%,#FFFFFF 100%);
+}
+.heading{
+    color: #171414;
+    font-weight: bold;
+}
+p{
+    color: #171414;
+}
+.plus{
+    float: right !important;
+}
+.list-table {
+	width: 100%;
+	margin-top: 40px;
+}
+.list-table thead th{
+	height:40px;
+	border-top:2px solid #09C;
+	border-bottom:1px solid #CCC;
+	font-weight: bold;
+	font-size: 17px;
+}
+.list-table tbody td{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid #CCC; height:20px;
+	font-size: 14px
+}
+th {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#FFFFFF;}
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
+    color: inherit;
+    background-color: #ffffff;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+td{
+    color: #000000;
+}
   #board_read {
     width:100%;
     position: relative;
@@ -143,6 +214,12 @@ button{
   </style>
 </head>
 <body>
+<header>
+        <?php include "header.php";?>
+    </header>
+	<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
 	<?php
 		$mode = $_GET["mode"];
 		$bno = $_GET['num']; /* bno함수에 idx값을 받아와 넣음*/
@@ -176,6 +253,7 @@ button{
 		</form>
 	</div>
 </div>
+</div>
 <?php 
 $sql = mq("update message set read_ok = 1 where idx='".$bno."'");
 ?>
@@ -193,6 +271,8 @@ $sql = mq("update message set read_ok = 1 where idx='".$bno."'");
 		    </ul>
 	  </div> 
 
-  </div> 
+  </div>
+</div>
+
 </body>
 </html>

@@ -111,6 +111,13 @@ td{
       background-color:white;
       width:1200px;
 
+
+    }
+    #search_box{
+      display:flex;
+    }
+    .items{
+      display:flex;
     }
   
     </style>
@@ -124,7 +131,7 @@ td{
         <h1>거래 게시판</h1>
         <h4>중고거래 게시판입니다.</h4>
         <div id="search_box">
-          <form action="book_search_result.php" method="get">
+          <form action="book_search_result.php" method="get" style="display:flex;">
             <select name="catgo">
               <option value="제목">제목</option>
               <option value="저자">저자</option>
@@ -178,7 +185,7 @@ td{
                       $title=str_replace($book_name,mb_substr($book_name,0,30,"utf-8")."...",$book_name);
                     }
 					if($board["file"]){
-						$bo_image="<img src = 'uploads/$board[file_copied]' style=width:120px; height:80px>";
+						$bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
           }
               ?>
             

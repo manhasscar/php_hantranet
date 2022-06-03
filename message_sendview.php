@@ -143,6 +143,9 @@ button{
   </style>
 </head>
 <body>
+<header>
+        <?php include "header.php";?>
+    </header>
 	<?php
 		$rep_number = $_SESSION['message_idx'];
 		$mode = $_GET["mode"];

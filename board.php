@@ -115,6 +115,12 @@ td{
       width:1200px;
 
     }
+    #search_box{
+      display:flex;
+    }
+    #serch_box > form{
+      display:flex;
+    }
 
 </style>
 <body id="top">
@@ -130,7 +136,7 @@ td{
     <h1>자유게시판</h1>
     <h4>자유롭게 글을 쓸 수 있는 게시판입니다.</h4>
     <div id="search_box">
-        <form action="search_result.php" method="get">
+        <form action="search_result.php" method="get" style="display: flex;">
           <select name="catgo">
             <option value="title">제목</option>
             <option value="name">글쓴이</option>
