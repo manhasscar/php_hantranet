@@ -101,6 +101,12 @@ h1 {
           document.board_form.category.focus();
           return;
       }
+      if (!document.board_form.price.value)
+      {
+          alert("가격은 숫자만 입력 가능합니다!");    
+          document.board_form.price.focus();
+          return;
+      }
 	  if (!document.board_form.college.value)
       {
           alert("단과대를 선택하세요!");    
@@ -155,21 +161,21 @@ h1 {
 	    		</li>
                 <li>
 	    			<span class="col1">판매가격 : </span>
-	    			<span class="col2"><input name="price" type="text"></span>
+	    			<span class="col2"><input name="price" type="number"></span>
 	    		</li> 
 				<li>
 					<span class="col1">분류 : </span>
-					<select name ="category" >
+					<span><select name ="category" >
                         <option value="" selected>선택하세요!</option>
                         <option value="전공" >전공</option>
                         <option value="교양" >교양</option>
                         <option value="기타" >기타</option>
-                    </select>
+                    </select></span>
 				</li>
 				<li>
 					<span class="col1">전공: </span>
-					<select id="major1" name="college" onchange="changeMajor2();"></select>
-        			<select id="major2" name="major"></select>
+					<span><select id="major1" name="college" onchange="changeMajor2();"></select></span>
+        			<span><select id="major2" name="major"></select></span>
 				</li>
 	    		<li id="text_area">	
 	    			<span class="col1">상태 : </span>

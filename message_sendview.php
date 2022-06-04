@@ -1,5 +1,5 @@
 <?php
-	include ('db_connect.php');
+	
 	if(isset($_SESSION['user_nic'])) $user_nic=$_SESSION['user_nic'];
 	else $user_nic="";
 ?>
@@ -8,7 +8,78 @@
 <head>
   <meta charset="UTF-8">
   <title>게시판</title>
+  <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
   <style>
+.row1 {
+    color: #4aa8d8;
+    background-color: #FFFFFF;
+}
+.row3 {
+    color: #222222;
+    background-color: #FFFFFF;
+}
+.row4 {
+    color: #CBCBCB;
+    background-color: #4aa8d8;
+}
+.splitclrs {
+    color: #929292;
+    background: linear-gradient(to right, #fff 0%,#Fff 50%,#FFFFFF 50%,#FFFFFF 100%);
+}
+.heading{
+    color: #171414;
+    font-weight: bold;
+}
+p{
+    color: #171414;
+}
+.plus{
+    float: right !important;
+}
+.list-table {
+	width: 100%;
+	margin-top: 40px;
+}
+.list-table thead th{
+	height:40px;
+	border-top:2px solid #09C;
+	border-bottom:1px solid #CCC;
+	font-weight: bold;
+	font-size: 17px;
+}
+.list-table tbody td{
+	text-align:center;
+	padding:10px 0;
+	border-bottom:1px solid #CCC; height:20px;
+	font-size: 14px
+}
+th {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#FFFFFF;}
+tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
+    color: inherit;
+    background-color: #ffffff;
+}
+h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+td{
+    color: #000000;
+}
   #board_read {
     width:100%;
     position: relative;
@@ -38,9 +109,10 @@
   }
   #bo_ser {
     font-size:14px;
-    color:#333;
-    position: absolute;
+    color:black;
+    position: relative;
     right: 0;
+	float:right;
   }
   #bo_ser > ul > li {
     list-style: none;
@@ -139,6 +211,12 @@ button{
       
       border: solid 1px gray;
     }
+	a { 
+		text-decoration:none !important;
+		
+		color:black;
+	
+	}
 
   </style>
 </head>
@@ -146,6 +224,9 @@ button{
 <header>
         <?php include "header.php";?>
     </header>
+	<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
 	<?php
 		$rep_number = $_SESSION['message_idx'];
 		$mode = $_GET["mode"];
@@ -157,6 +238,9 @@ button{
 		$_SESSION['message_idx'] = $bno; 
 		
 	?>
+	<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content"> 
   <div id="board_read">
 	  	<div id="msg_header">
 					<p>받는사람  <?php echo $message['rv_id'];?> </p>
@@ -169,6 +253,8 @@ button{
 		<br><br><br>
 		<div id="bo_line"></div> 
  </div>
+</div>
+</div>
 
 	<!-- 목록, 수정, 삭제 -->
 
@@ -183,7 +269,7 @@ button{
 		    </ul>
 		</div> 
   <!--- 댓글 불러오기 -->
-<div class="reply_view">
+<!--<div class="reply_view">
 	<h3>답장</h3>
 		<?php
 			$sql2 = mq("select * from message where rep_number='".$bno."' order by idx asc");
@@ -194,7 +280,8 @@ button{
 			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
 			<div class="rep_me dap_to"><?php echo $reply['regist_day']; ?></div>
 		</div>
-		<?php } ?>
-</div>			 
+		<?php } ?>-->
+</div>
+			</div>	 
 </body>
 </html>

@@ -91,7 +91,7 @@
                         <textarea name="content" id="ucontent" placeholder="내용" required></textarea>
                     </div>
 
-                      <input type="file" name="SelectFile" />
+                      <input style="float: left;position: absolute;" type="file" name="SelectFile" />
 
 
                     <div class="bt_se">

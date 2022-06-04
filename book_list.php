@@ -222,7 +222,7 @@ td{
 					    </div>
               </div>
 			    	  </td>
-              <td width="120"><?php echo $board['bo_price']; ?></td>
+              <td width="120"><?php echo $board['bo_price']; ?>원</td>
 			      	<td width="100"><?php echo $board['user_name']; ?></td>
 			    	  <td width="100"><?php echo $board['date']; ?></td>
               </tr>
@@ -274,13 +274,13 @@ td{
           <?php
             if(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){
               ?>
-              <footer><a class="btn" href="book_form.php">글쓰기</a></footer>
+              <footer><a style="float:right;" class="btn" href="book_form.php">글쓰기</a></footer>
               <?php
 
              }
             elseif(isset($_SESSION['userid'])){
              ?>
-              <footer><a class="btn" href="book_form.php">글쓰기</a></footer>
+              <footer><a style="float:right;" class="btn" href="book_form.php">글쓰기</a></footer>
         <?php
         }
         ?>

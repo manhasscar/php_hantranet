@@ -109,9 +109,10 @@ td{
   }
   #bo_ser {
     font-size:14px;
-    color:#333;
-    position: absolute;
+    color:black;
+    position: relative;
     right: 0;
+	float:right;
   }
   #bo_ser > ul > li {
     list-style: none;
@@ -210,6 +211,12 @@ button{
       
       border: solid 1px gray;
     }
+	a { 
+		text-decoration:none !important;
+		
+		color:black;
+	
+	}
 
   </style>
 </head>
@@ -252,13 +259,13 @@ button{
 			</div>
 		</form>
 	</div>
-</div>
-</div>
+
 <?php 
 $sql = mq("update message set read_ok = 1 where idx='".$bno."'");
 ?>
 
 	<!-- 목록, 수정, 삭제 -->
+	
 	     <div id="bo_ser">
 		     <ul>
 			     <li>
@@ -269,7 +276,8 @@ $sql = mq("update message set read_ok = 1 where idx='".$bno."'");
 				</li>
 			
 		    </ul>
-	  </div> 
+	  </div>
+
 
   </div>
 </div>

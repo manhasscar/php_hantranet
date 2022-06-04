@@ -234,7 +234,7 @@ button{
                             <?php echo $board['book_name'];?>
                         </p>
                         <div class="prouctprice">
-                            <strong class="cost"><?=$board['bo_price']?></strong>
+                            <strong class="cost"><?=$board['bo_price']?>원</strong>
                         </div>
                     </div>
                  </div>

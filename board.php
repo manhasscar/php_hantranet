@@ -274,14 +274,14 @@ td{
           if($board_id=="notice"){
             if(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){
               ?>
-              <footer><a class="btn" href="write.php?board_id=<?php echo $board_id;?>">글쓰기</a></footer>
+              <footer><a  style="float:right;" class="btn" href="write.php?board_id=<?php echo $board_id;?>">글쓰기</a></footer>
               <?php
             
           }
         }
           elseif(isset($_SESSION['userid'])){
         ?>
-         <footer><a class="btn" href="write.php?board_id=<?php echo $board_id;?>">글쓰기</a></footer>
+         <footer><a style="float:right;" class="btn" href="write.php?board_id=<?php echo $board_id;?>">글쓰기</a></footer>
         <?php
         }
         ?>

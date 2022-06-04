@@ -111,6 +111,16 @@ td{
       padding: 2px;
       border: solid 1px gray;
     }
+    #write_btn{
+      float:right;
+      position:relative;
+    }
+    a { 
+		text-decoration:none !important;
+		
+		color:black;
+	
+	}
     </style>
     </head>
     <body>

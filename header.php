@@ -61,7 +61,7 @@
 <div class="wrapper row4">
   <nav id="mainav" class="hoc clear"> 
     <ul class="clear">
-      <li><a target="iframe1" class="drop" href="board.php?board_id=board">커뮤니티</a>
+      <li><a target="iframe1" href="board.php?board_id=board">커뮤니티</a>
         <ul>
           <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
           <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
