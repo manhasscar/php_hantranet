@@ -36,6 +36,13 @@ p{
 .plus{
     float: right !important;
 }
+a { 
+		text-decoration:none !important;
+		
+		
+	
+	}
+
 </style>
 <body id="top">
     <header>
@@ -45,7 +52,7 @@ p{
         <?php include "main1.php";?>
     </section>
     <footer>
-        <?php include "footer.php";?>
+        <?php /*include "footer.php"; */?>
     </footer>
 </body>
 </html>

@@ -117,8 +117,20 @@ td{
       display:flex;
     }
     .items{
-      display:flex;
+      display:table;
     }
+    .items > * {
+      display:table-cell;
+      vertical-align:middle;
+      line-height: 30px;
+    }
+    a { 
+		text-decoration:none !important;
+		
+		color:black;
+	
+	}
+
   
     </style>
     <body id="top">
@@ -198,7 +210,8 @@ td{
                     <div id="image">
                       <?php echo $bo_image; ?>
                     </div>
-                  <div id="book">
+                    <li style = 'width:100px'></li>
+                  <div style = 'width:150px'id="book">
                <ul>
                 <li>
                     <a href="book_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $book_name;?></a><br>

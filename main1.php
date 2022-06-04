@@ -2,7 +2,7 @@
   <div class="split clear">
     <div> 
       <p class="nospace font-xs">인기글</p>
-      <h3 class="heading">커뮤니티</h3>
+      <h3 class="heading">자유게시판</h3>
       <a class="plus" target="iframe1" href="board.php?board_id=board">더보기 &raquo;</a>
       <hr>
       <?php
@@ -16,14 +16,49 @@
                 $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
             }
     ?>
-      <p><?=$title?></p>
+      <p><a style="color:black;"href="read.php?board_id=board&idx=<?php echo $board['idx']; ?>"><?=$title?></a></p>
       <?php
         }
       ?>
     </div>
+
+      <div>
+      <p class="nospace font-xs">중고거래</p>
+      <h3 class="heading">도서 정보</h3>
+      <a class="plus" target="iframe1" href="book_list.php">더보기 &raquo;</a>
+      <hr>
+    
+      
+          <?php
+             $sql = mq("select * from book_board order by idx desc limit 5");
+             $total = mysqli_num_rows($sql);
+             
+             for($i=1; $i<=$total; $i++)
+             {   
+                 $board_book = $sql -> fetch_array();
+                 $book_name=$board_book["book_name"];
+                 if(strlen($book_name)>30)
+                 {
+                     //title이 30을 넘어서면 ...표시
+                     $book_name=str_replace($book_name,mb_substr($book_name,0,30,"utf-8")."...",$book_name);
+                 }
+                 if($board_book["file"]){
+                    $bo_image="<img src = 'uploads/$board_book[file_copied]' style=width:120px;height:80px>";
+                 }
+        ?>
+          <p><a style="color:black;" href="book_read.php?num=<?php echo $board_book['idx']; ?>"><?php echo $book_name;?></a></p>
+          <?php } ?>
+      </div>
+
+
+
+
+
+
   </div>
 </div>
-<div class="wrapper row3">
+
+<!--<div class="wrapper row3">
   <main class="hoc container clear"> 
     <ul class="nospace group emphasise">
     <div class="sectiontitle center">
@@ -35,17 +70,18 @@
           <?php
              $sql = mq("select * from book_board order by idx desc limit 3");
              $total = mysqli_num_rows($sql);
-             for($i=1; $i<=$row; $i++)
+             
+             for($i=1; $i<=$total; $i++)
              {   
-                 $
-                 $book_name=$board["book_name"];
+                 $board_book = $sql -> fetch_array();
+                 $book_name=$board_book["book_name"];
                  if(strlen($book_name)>30)
                  {
                      //title이 30을 넘어서면 ...표시
                      $book_name=str_replace($book_name,mb_substr($book_name,0,30,"utf-8")."...",$book_name);
                  }
-                 if($board["file"]){
-                    $bo_image="<img src = 'uploads/$board[file_copied]' style=width:120px; height:80px>";
+                 if($board_book["file"]){
+                    $bo_image="<img src = 'uploads/$board_book[file_copied]' style=width:120px;height:80px>";
                  }
         ?>
           <h6 class="heading font-x1"><?php echo $book_name;?></h6>
@@ -68,7 +104,8 @@
           <footer><a class="btn" href="#">Read More &raquo;</a></footer>
         </article>
       </li>
-    </ul>
+    </ul> 
+                -->
     <!-- ################################################################################################ -->
     <!-- / main body -->
     <div class="clear"></div>

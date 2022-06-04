@@ -11,6 +11,7 @@ $board_id = $_GET['board_id'];
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
     <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <style>
     .row1 {
     color: #4aa8d8;
@@ -121,6 +122,13 @@ td{
     #serch_box > form{
       display:flex;
     }
+    a { 
+		text-decoration:none !important;
+		
+		color:black;
+	
+	}
+
 
 </style>
 <body id="top">

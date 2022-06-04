@@ -160,7 +160,9 @@ button{
       border: solid 1px gray;
     }
 a { 
-		text-decoration:none !important 
+		text-decoration:none !important;
+		
+		color:black;
 	
 	}
 
@@ -257,7 +259,7 @@ a {
 					$sql3 = mq("select * from ".$board_id."_reply where con_num='".$bno."' order by idx asc");
 					while($reply = $sql3->fetch_array()){
 				?>
-               	<?php echo $reply['name'];?>
+               	<b><?php echo $reply['name'];?></b>
                 
              
               <div class="dap_lo">

@@ -8,8 +8,8 @@
 <div class="wrapper row0">
   <div id="topbar" class="hoc clear"> 
     <div class="fl_right">
-      <ul>
-         <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
+      <ul style="display:table;">
+         <li style="display:table-cell;vertical-align:bottom;"><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
         <?php
             if (isset($_SESSION['user_nic'])){
                 $user_nic = $_SESSION['user_nic'];
@@ -21,12 +21,12 @@
              if(isset($_SESSION['userid']) && $row_num >= 1){
                 echo "
                 
-                    <div id = 'new_message'>
+                    <div style='margin-left: 15px;' id = 'new_message'>
                     <a target='iframe1' href='message_box.php?mode=rv'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
                     </div>
                     
                     <li>
-                        <a>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
+                        <a style='margin-left:15px;'>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
                         <a href='logout.php'>로그아웃</a>
                         <a target='iframe1' href='my_page.php'>마이페이지</a>
                     <li>";
@@ -36,7 +36,7 @@
 
             echo "
            <li>
-            <a>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
+            <a style='margin-left:15px;'>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
             <a href='logout.php'>로그아웃</a>
             <a target='iframe1' href='my_page.php'>마이페이지</a>
             </li>>";
@@ -44,7 +44,7 @@
             else
             {
             ?>
-        <li><a href="login.php">로그인</a></li>
+        <li style='margin-left: 15px;'><a href="login.php">로그인</a></li>
         <li><a href="sign_up.php">회원가입</a><li>
         <?php
         }

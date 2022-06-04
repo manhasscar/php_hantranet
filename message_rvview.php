@@ -184,11 +184,11 @@ td{
 	margin-top:50px;
 }
 .re_bt {
-	position: absolute;
+	position: relative;
 	width:100px;
 	height:56px;
 	font-size:16px;
-	margin-left: 10px;
+	margin-left: 20px;
 }
 #foot_box {
 	height: 50px;
@@ -246,7 +246,7 @@ button{
 		<form method="post" action="message_reply.php" enctype="multipart/form-data">
 			<input type="hidden" name="send_id" id="send_id" class="send_id" size="15" placeholder="받은사람" value="<?php echo $user_nic;?>">
 			<input type="hidden" name="rv_id" id="rv_id" class="rv_id" size="15" placeholder="보낸사람" value="<?php echo $send_id;?>">
-			<div style="margin-top:10px; ">
+			<div style="margin-top:10px;display:flex; ">
 				<textarea name="content" class="reply_content" id="re_content" ></textarea>
 				<button id="rep_bt" class="re_bt">보내기</button>
 			</div>

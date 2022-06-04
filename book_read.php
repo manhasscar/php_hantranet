@@ -143,7 +143,9 @@ button{
       border: solid 1px gray;
     }
 	a { 
-		text-decoration:none !important 
+		text-decoration:none !important;
+		
+		color:black;
 	
 	}
 #popup_menu_area{
