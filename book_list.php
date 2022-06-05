@@ -7,139 +7,18 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
     <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <style>
-  .row1 {
-    color: #4aa8d8;
-    background-color: #FFFFFF;
-}
-.row3 {
-    color: #222222;
-    background-color: #FFFFFF;
-}
-
-.row4 {
-    color: #CBCBCB;
-    background-color: #4aa8d8;
-}
-.splitclrs {
-    color: #929292;
-    background: linear-gradient(to right, #fff 0%,#Fff 50%,#FFFFFF 50%,#FFFFFF 100%);
-}
-.heading{
-    color: #171414;
-    font-weight: bold;
-}
-p{
-    color: #171414;
-}
-.plus{
-    float: right !important;
-}
-.list-table {
-	width: 100%;
-	margin-top: 40px;
-}
-.list-table thead th{
-	height:40px;
-	border-top:2px solid #09C;
-	border-bottom:1px solid #CCC;
-	font-weight: bold;
-	font-size: 17px;
-}
-.list-table tbody td{
-	text-align:center;
-	padding:10px 0;
-	border-bottom:1px solid #CCC; height:20px;
-	font-size: 14px
-}
-th {
-    color: #000000;
-    background-color: #FFFFFF;
-    text-align: center;
-}
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#FFFFFF;}
-tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
-    color: inherit;
-    background-color: #ffffff;
-}
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-td{
-    color: #000000;
-}
-#page_num {
-      font-size: 14px;
-      margin-left: auto;
-      display: flex;
-      margin-top:30px;
-      justify-content: center;
-      
-      
-    }
-    #page_num ul li {
-      float: left;
-      float:left;
-      margin-left: 10px;
-      text-align: center;
-      
-    }
-    .fo_re {
-      font-weight: bold;
-    }
-    #write_btn, .btn, .btn.inverse:hover {
-    color: #FFFFFF;
-    background-color: #05B3F2;
-    border-color: #05B3F2;
-    border-radius: 10px;
-    background-clip: padding-box;
-    }
-    #wrarper{
-      position: fixed;
-      top:0px;
-      background-color:white;
-      width:1200px;
-
-
-    }
-    #search_box{
-      display:flex;
-    }
-    .items{
-      display:table;
-    }
-    .items > * {
-      display:table-cell;
-      vertical-align:middle;
-      line-height: 30px;
-    }
-    a { 
-		text-decoration:none !important;
-		
-		color:black;
-	
-	}
-
-  
-    </style>
+      .btn1, .btn1.inverse:hover{color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
+      </style>
     <body id="top">
     <header>
         <?php include "header.php";?>
     </header>
       <div class="wrapper row3">
         <main class="hoc container clear">
-        <div class="content"> 
+         <?php include('category.php');?>
+        <div class="content three_quarter"> 
         <h1>거래 게시판</h1>
         <h4>중고거래 게시판입니다.</h4>
         <div id="search_box">
@@ -207,10 +86,11 @@ td{
                 <td width="70"><?php echo $board['idx']; ?></td>
                 <td width="500">
                   <div class="items">
+                    <li style = 'width:100px'>
                     <div id="image">
                       <?php echo $bo_image; ?>
                     </div>
-                    <li style = 'width:100px'></li>
+                    </li>
                   <div style = 'width:150px'id="book">
                <ul>
                 <li>
@@ -223,7 +103,7 @@ td{
               </div>
 			    	  </td>
               <td width="120"><?php echo $board['bo_price']; ?>원</td>
-			      	<td width="100"><?php echo $board['user_name']; ?></td>
+			      	<td width="100"><?php echo $board['nic_name']; ?></td>
 			    	  <td width="100"><?php echo $board['date']; ?></td>
               </tr>
             </tbody>
@@ -234,7 +114,7 @@ td{
                   
           
           </table>
-          </div>         
+               
           <!---페이징 넘버 --->
           <div id="page_num">
             <ul>
@@ -284,8 +164,12 @@ td{
         <?php
         }
         ?>
-        
+          </div>  
         </div>
-
+      </main>
+      <div class="wrapper row4">
+      <footer id="footer" class="hoc clear"> 
+      </footer>
+      </div>
       </body>
   </html>
