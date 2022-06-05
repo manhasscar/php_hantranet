@@ -1,37 +1,50 @@
-<?php
-  include ('db_connect.php');
-?>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
-<title>게시판</title>
-<link rel="stylesheet" type="text/css" href="mystyle.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 <style>
-#image{
-      float:left;
-    }
-    button{
-      background-color: white;
-	    padding: 2px;
-	    border: solid 1px gray;
-    }
-  
+  .btn1, .btn1.inverse:hover{color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
   </style>
 </head>
-<body>
-<div id="board_area">
-
-<?php
-
-  /* 검색 변수 */
-  $catagory = $_GET['catgo'];
-  $search_con = $_GET['search'];
-?>
-
-  <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
-  <h4 style="margin-top:30px;"><a href="book_list.php">홈으로</a></h4>
-  <div id="search_box2">
-      <form action="book_search_result.php" method="get">
+<body id="top">
+    <header>
+      <?php include "header.php";?>
+    </header>
+    <div class="wrapper row3">
+      <main class="hoc container clear"> 
+         <?php include('category.php');?>
+      <div class="content three_quarter"> 
+      <?php
+      /* 검색 변수 */
+      $catagory = $_GET['catgo'];
+      $search_con = $_GET['search'];
+      ?>
+      <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
+      <?php
+      if(isset($_GET['college'])){
+        $college = $_GET['college'];
+      ?>
+      <h3><?php echo $college; ?> 
+      <?php
+      }
+      else
+        $college = "";
+      if(isset($_GET['major'])){
+        $major = $_GET["major"];
+      ?>
+      <?php echo $major; ?> </h3>
+      <?php }
+      else
+        $major ="";
+      ?>
+    
+    <h4 style="margin-top:30px;"><a href="book_list.php">홈으로</a></h4>
+    <div id="search_box">
+      <form action="book_search_result.php" method="get" style="display:flex;" >
       <select name="catgo">
         <option value="제목">제목</option>
         <option value="저자">저자</option>
@@ -51,49 +64,98 @@
             </tr>
         </thead>
         <?php
-        if($catagory == "제목")
-          $sql2 = mq("select * from book_board where replace(book_name,' ','') like '%$search_con%' order by idx desc");
+        if($college && $major){
+          if($catagory == "제목")
+            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(book_name,' ','') like '%$search_con%' order by idx desc");
+          elseif($catagory == "저자")
+            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
+          elseif($catagory == " 출판사")
+          $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+        }
+        elseif($college){
+          if($catagory == "제목")
+          $sql = mq("select * from book_board where college like '$college%' and replace(book_name,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == "저자")
-          $sql2 = mq("select * from book_board where replace(bo_author,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where college like '$college%' and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == " 출판사")
-         $sql2 = mq("select * from book_board where replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
-        while($board = $sql2->fetch_array()){
+        $sql = mq("select * from book_board where college like '$college%'  and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+        }
+        elseif($major){
+          if($catagory == "제목")
+          $sql = mq("select * from book_board where major = '$major' and replace(book_name,' ','') like '%$search_con%' order by idx desc");
+        elseif($catagory == "저자")
+          $sql = mq("select * from book_board where major = '$major' and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
+        elseif($catagory == " 출판사")
+        $sql = mq("select * from book_board where major = '$major'  and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+        }
+        else{
+          if($catagory == "제목")
+          $sql = mq("select * from book_board where replace(book_name,' ','') like '%$search_con%' order by idx desc");
+        elseif($catagory == "저자")
+          $sql = mq("select * from book_board where and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
+        elseif($catagory == " 출판사")
+        $sql = mq("select * from book_board where and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+        }
+      
+          while($board = $sql->fetch_array()){
 
             $book_name=$board["book_name"];
             if(strlen($book_name)>30)
             {
             $title=str_replace($board["book_name"],mb_substr($board["book_name"],0,30,"utf-8")."...",$board["book_name"]);
             }
+            if($board["file"]){
+              $bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
+            }
         ?>
        <tbody>
               <tr>
                 <td width="70"><?php echo $board['idx']; ?></td>
-				<td width="500">
-					<div class="items">
-						<div id="image">
-                           <?php echo "<img src = 'uploads/$board[file_copied]' style=width:60px height:40px>";?>
-						</div>
-					<div id="book">
-            <ul>
-              <li>
-					    <a href="book_read.php?num=<?=$board['idx']?>"><?php echo $book_name;?><br></a>
-					    <?php echo $board['bo_author'];?><br>
-					    <?php echo $board['bo_date'];?>
-              </li>
-                  </ul>
-					</div>
-                  </div>
-				</td>
+				        <td width="500">
+                <div class="items">
+                    <li style = 'width:100px'>
+                    <div id="image">
+                      <?php echo $bo_image; ?>
+                    </div>
+                    </li>
+                  <div style = 'width:150px'id="book">
+                <ul>
+                <li>
+					        <a href="book_read.php?num=<?=$board['idx']?>"><?php echo $book_name;?><br></a>
+					        <?php echo $board['bo_author'];?><br>
+					        <?php echo $board['bo_date'];?>
+                </li>
+                </ul>
+					      </div>
+                </div>
+				        </td>
                 <td width="120"><?php echo $board['bo_price']; ?></td>
-				<td width="100"><?php echo $board['nic_name']; ?></td>
-				<td width="100"><?php echo $board['date']; ?></td>
+				        <td width="100"><?php echo $board['nic_name']; ?></td>
+			        	<td width="100"><?php echo $board['date']; ?></td>
               </tr>
             </tbody>
 
-      <?php } ?>
-    </table>
+            <?php } ?>
+            </table>
+            <?php
+            if(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){
+              ?>
+              <footer><a style="float:right;" class="btn" href="book_form.php">글쓰기</a></footer>
+              <?php
 
-    
-</div>
-</body>
+             }
+            elseif(isset($_SESSION['userid'])){
+             ?>
+              <footer><a style="float:right;" class="btn" href="book_form.php">글쓰기</a></footer>
+        <?php
+        }
+        ?>
+          </div>
+          </main>
+      </div>
+      <div class="wrapper row4">
+      <footer id="footer" class="hoc clear"> 
+      </footer>
+      </div>
+    </body>
 </html>
