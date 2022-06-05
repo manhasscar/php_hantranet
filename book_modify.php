@@ -84,7 +84,7 @@ include ('db_connect.php');
 				<li>
 					<span class="col1">분류 : </span>
 					<select name ="category">
-                        <option value="" selected>선택하세요!</option>
+                        <option value="<?php echo $board['category']; ?>" selected><?php echo $board['category']; ?></option>
                         <option value="전공" >전공</option>
                         <option value="교양" >교양</option>
                         <option value="기타" >기타</option>

@@ -212,7 +212,7 @@ a {
 			</div>
 			<div class="borad_img">
 			<?php
-				echo "<br><br><img src = 'uploads/$board[file]' style=width:420px; height:320px;></img>";
+				echo "<br><br><img src = 'uploads/$board[file]' style='width:420px;height:320px;'></img>";
 			?>
 			</div>
 			<?php

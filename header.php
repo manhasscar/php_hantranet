@@ -22,13 +22,13 @@
                 echo "
                 
                     <div style='margin-left: 15px;' id = 'new_message'>
-                    <a target='iframe1' href='message_box.php?mode=rv'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
+                    <a  href='message_box.php?mode=rv'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
                     </div>
                     
                     <li>
                         <a style='margin-left:15px;'>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
                         <a href='logout.php'>로그아웃</a>
-                        <a target='iframe1' href='my_page.php'>마이페이지</a>
+                        <a  href='my_page.php'>마이페이지</a>
                     <li>";
             
                 }
@@ -38,7 +38,7 @@
            <li>
             <a style='margin-left:15px;'>안녕하세요 ".$_SESSION['user_nic']."님&nbsp&nbsp&nbsp</a>
             <a href='logout.php'>로그아웃</a>
-            <a target='iframe1' href='my_page.php'>마이페이지</a>
+            <a  href='my_page.php'>마이페이지</a>
             </li>>";
             }
             else
@@ -61,22 +61,22 @@
 <div class="wrapper row4">
   <nav id="mainav" class="hoc clear"> 
     <ul class="clear">
-      <li><a target="iframe1" href="board.php?board_id=board">커뮤니티</a>
+      <li><a href="board.php?board_id=board">커뮤니티</a>
         <ul>
-          <li><a target="iframe1" href="board.php?board_id=notice">공지사항</a></li>
-          <li><a target="iframe1" href="board.php?board_id=board">자유게시판</a></li>
+          <li><a  href="board.php?board_id=notice">공지사항</a></li>
+          <li><a  href="board.php?board_id=board">자유게시판</a></li>
         </ul>
       </li>
-      <li><a target="iframe1" href="book_list.php?board_id=book_board">거래게시판</a>
+      <li><a  href="book_list.php?board_id=book_board">거래게시판</a>
         <ul>
-          <li><a target="iframe1" href="book_list.php">도서거래 게시판</a></li>
-          <li><a target="iframe1" href="book_list.php">중고거래 게시판</a></li>
+          <li><a  href="book_list.php">도서거래 게시판</a></li>
+          <li><a  href="book_list.php">중고거래 게시판</a></li>
         </ul>
       </li>
-      <li><a target="iframe1" href="book_list.php?board_id=book_board">정보게시판</a>
+      <li><a  href="recruit.php">정보게시판</a>
         <ul>
-          <li><a target="iframe1" href="board1.php">구인구직 게시판</a></li>
-          <li><a target="iframe1" href="book_list.php"></a></li>
+          <li><a  href="recruit.php">구인구직 게시판</a></li>
+          <!--<li><a target="iframe1" href="book_list.php"></a></li>-->
         </ul>
       </li>
     </ul>
