@@ -145,7 +145,7 @@ File: Layout CSS
 
 /* Transition Fade
 --------------------------------------------------------------------------------------------------------------- */
-*, *::before, *::after{transition:all .3s ease-in-out;}
+*, *::before, *::after{transition:none .3s ease-in-out;}
 #mainav form *{transition:none !important;}
 
 
