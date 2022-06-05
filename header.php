@@ -73,11 +73,8 @@
           <li><a  href="book_list.php">중고거래 게시판</a></li>
         </ul>
       </li>
-      <li><a  href="recruit.php">정보게시판</a>
+      <li><a  href="recruit.php">모집게시판</a>
         <ul>
-          <li><a  href="recruit.php">구인구직 게시판</a></li>
-          <!--<li><a target="iframe1" href="book_list.php"></a></li>-->
-        </ul>
       </li>
     </ul>
   </nav>
