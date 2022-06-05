@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
     <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <style>
-      .btn1, .btn1.inverse:hover{color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
+      .btn1, .btn1.inverse:hover {color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
       </style>
     <body id="top">
     <header>

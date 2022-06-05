@@ -1,9 +1,25 @@
+<style>
+.sdb_holder > ul > li > ul {
+		
+		
+		position: relative;
+		font-size:14px;
+		
+	}
+  
+  /*.sdb_holder > ul > li:hover > ul {
+		display:block;
+	}*/
+  </style>
+
+
+
 <div class="sidebar one_quarter first"> 
       <h6>전공</h6>
       <nav class="sdb_holder">
         <ul>
-          <li class="nav"><a href="book_category_result.php?college=문과" class="btn1">문과대학</a>
-            <ul class = "subMenu">
+          <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a class="btn1">문과대학</a>
+            <ul id = "subMenu1" style="display: none;">
               <li><a href="book_category_result.php?college=문과&major=국어국문 창작학과">국어국문 창작학과</a></li>
               <li><a href="book_category_result.php?college=문과&major=영어영문학과">영어영문학과</a></li>
               <li><a href="book_category_result.php?college=문과&major=문헌정보학과">문헌정보학과</a></li>
@@ -11,8 +27,8 @@
               <li><a href="book_category_result.php?college=문과&major=기독교학과">기독교학과</a></li>
             </ul>
           </li>
-          <li class="nav"><a href="book_category_result.php?college=사범" class="btn1">사범대학</a>
-            <ul class = "subMenu">
+          <li class="nav" onclick = "dp_menu('subMenu2')" style="cursor: pointer;"><a class="btn1">사범대학</a>
+            <ul id = "subMenu2" style="display: none;">
               <li><a href="book_category_result.php?college=사범&major=국어교육과">국어교육과</a></li>
               <li><a href="book_category_result.php?college=사범&major=영어교육과">영어교육과</a></li>
               <li><a href="book_category_result.php?college=사범&major=교육학과">교육학과</a></li>
@@ -80,3 +96,16 @@
         </ul>
       </nav>
     </div>
+    <script>
+        function dp_menu(a){
+            
+            let click = document.getElementById(a);
+            if(click.style.display === "none"){
+                click.style.display = "block";
+ 
+            }else{
+                click.style.display = "none";
+ 
+            }
+        }
+    </script>
