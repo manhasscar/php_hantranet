@@ -59,8 +59,8 @@
   </header>
 </div>
 <div class="wrapper row4">
-  <nav id="mainav" class="hoc clear"> 
-    <ul class="clear">
+  <nav id="mainav" class="hoc clear" > 
+    <ul class="clear" style="display:block;">
       <li><a href="board.php?board_id=board">커뮤니티</a>
         <ul>
           <li><a  href="board.php?board_id=notice">공지사항</a></li>

@@ -187,7 +187,7 @@ button{
 		  <h2><?php echo $board['book_name'];?></h2>
 		</div>
 		   <div id="user_info">
-			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['user_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
+			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
                   <!-- 조회:<?php echo $board['hit']; ?> -->
 				  <div id="bo_line"></div> 
 			</div>
@@ -207,7 +207,7 @@ button{
 
 <div id="popup_menu_area" style="z-index: 9999; display: none;">
 			
-				<a href = "message_send_in_board.php?rv_id=<?php echo $board['user_name']; ?>">쪽지 보내기</a>
+				<a href = "message_send_in_board.php?rv_id=<?php echo $board['nic_name']; ?>">쪽지 보내기</a>
 			
 		
 	
