@@ -19,7 +19,7 @@
         <main class="hoc container clear">
          <?php include('category.php');?>
         <div class="content three_quarter"> 
-        <h1>거래 게시판</h1>
+        <h1>도서 거래 게시판</h1>
         <h4>중고거래 게시판입니다.</h4>
         <div id="search_box">
           <form action="book_search_result.php" method="get" style="display:flex;">
