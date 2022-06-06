@@ -24,7 +24,7 @@
 
       <div>
       <p class="nospace font-xs">중고거래</p>
-      <h3 class="heading">도서 정보</h3>
+      <h3 class="heading">중고 도서 정보</h3>
       <a class="plus" target="iframe1" href="book_list.php">더보기 &raquo;</a>
       <hr>
     

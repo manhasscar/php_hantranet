@@ -394,8 +394,8 @@ table a, #comments a{background-color:inherit;} */
 
 	#header{}
 
-	#mainav{display: block;}
-	#mainav ul{display: block;}
+	#mainav{}
+	#mainav ul{display:none;}
 	#mainav form{display:block;}
 
 	#breadcrumb{}

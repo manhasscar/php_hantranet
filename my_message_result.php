@@ -21,8 +21,8 @@
       <h6>My page</h6>
       <nav class="sdb_holder">
         <ul>
-          <li class="nav"><a href="my_page_result.php?info=content" class="btn1">내가 쓴 글</a>
-            <ul class = "subMenu">
+          <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a  class="btn1">내가 쓴 글</a>
+            <ul id = "subMenu1" style="display:none;">
               <li><a href="my_page_result.php?info=content">커뮤니티</a></li>
               <li><a href="my_page_result.php?info=content&board=book">거래게시판</a></li>
               <li><a href="my_page_result.php?info=content&board=recruit">정보게시판</a></li>
@@ -30,8 +30,8 @@
           </li>
           <li class="nav"><a href="my_page_result.php?info=reply" class="btn1">내가 쓴 댓글</a>
           </li>
-          <li class="nav"><a href="my_message_result.php?info=message&board=send" class="btn1">쪽지함</a>
-            <ul class = "subMenu">
+          <li class="nav" onclick = "dp_menu('subMenu2')" style="cursor: pointer;"><a  class="btn1">쪽지함</a>
+            <ul id = "subMenu2" style="display: none;">
               <li><a href="my_message_result.php?info=message&board=send">보낸쪽지함</a></li>
               <li><a href="my_message_result.php?info=message&board=rv">받은쪽지함</a></li>
             </ul>
@@ -195,3 +195,16 @@
       </div>
       </body>
   </html>
+  <script>
+        function dp_menu(a){
+            
+            let click = document.getElementById(a);
+            if(click.style.display === "none"){
+                click.style.display = "block";
+ 
+            }else{
+                click.style.display = "none";
+ 
+            }
+        }
+    </script>

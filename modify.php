@@ -1,18 +1,15 @@
 <!--- 게시글 수정 -->
 
 <?php
-	include ('db_connect.php');
-  $board_id = $_SESSION['board_id'];
-  $board_idx = $_SESSION['board_idx'];
-	$bno = $_GET['idx'];
-	$sql = mq("select * from ".$board_id." where idx='$bno';");
-	$board = $sql->fetch_array();
+	
     
  ?>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <title>게시판</title>
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 <style>
   #board_write {
     width:900px;
@@ -64,8 +61,24 @@
 </style>
 </head>
 <body>
+<header>
+    <?php include "header.php";
+	
+  $board_id = $_SESSION['board_id'];
+  $board_idx = $_SESSION['board_idx'];
+	$bno = $_GET['idx'];
+	$sql = mq("select * from ".$board_id." where idx='$bno';");
+	$board = $sql->fetch_array();
+	?>
+</header>	
+<div class="wrapper row3">
+	<main class="hoc container clear"> 
+    	<div class="content"> 
+<div id="board_write">
+    
     <div id="board_write">
-        <h1><a href="/">자유게시판</a></h1>
+      
+        <h1><a>자유게시판</a></h1>
         <h4>글을 수정합니다.</h4>
             <div id="write_area">
                 <form action="modify_ok.php?idx=<?php echo $bno; ?>" method="post">
@@ -86,6 +99,7 @@
                     </div>
                 </form>
             </div>
+  </div>
         </div>
     </body>
 </html>

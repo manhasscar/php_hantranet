@@ -1,9 +1,5 @@
 <?php
-include ('db_connect.php');
-    
-    $bno = $_GET['idx'];
-	$sql = mq("select * from book_board where idx='$bno';");
-	$board = $sql->fetch_array();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -11,6 +7,8 @@ include ('db_connect.php');
 <meta charset="utf-8">
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/board.css">
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 <script>
   function check_input() {
       if (!document.board_form.name.value)
@@ -37,6 +35,12 @@ include ('db_connect.php');
           document.board_form.college.focus();
           return;
       }
+	  if (!document.board_form.price.value)
+	  {
+          alert("가격은 숫자만 입력 가능합니다!");    
+          document.board_form.price.focus();
+          return;
+      }
 	  if (!document.board_form.major.value)
       {
           alert("전공을 선택하세요!");    
@@ -54,7 +58,19 @@ include ('db_connect.php');
 </script>
 </head>
 <body> 
+<header>
+    <?php include "header.php";
+	
+    
+    $bno = $_GET['idx'];
+	$sql = mq("select * from book_board where idx='$bno';");
+	$board = $sql->fetch_array();
+	?>
+</header>
 <section>
+<div class="wrapper row3">
+	<main class="hoc container clear"> 
+    	<div class="content"> 
    	<div id="board_box">
 	    <h3 id="board_title">
 	    		글 쓰기
@@ -79,7 +95,7 @@ include ('db_connect.php');
 	    		</li>
                 <li>
 	    			<span class="col1">판매가격 : </span>
-	    			<span class="col2"><input name="price" type="text" value=<?php echo $board['bo_price']; ?>></span>
+	    			<span class="col2"><input name="price" type="number" value=<?php echo $board['bo_price']; ?>></span>
 	    		</li> 
 				<li>
 					<span class="col1">분류 : </span>
@@ -112,6 +128,7 @@ include ('db_connect.php');
 			</ul>
 	    </form>
 	</div> <!-- board_box -->
+</div>
 </section> 
 <script src="book_form.js">
 </script>

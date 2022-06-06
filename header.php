@@ -70,7 +70,7 @@
       <li><a  href="book_list.php?board_id=book_board">거래게시판</a>
         <ul>
           <li><a  href="book_list.php">도서거래 게시판</a></li>
-          <li><a  href="book_list.php">중고거래 게시판</a></li>
+          <li><a  href="item_list.php">중고거래 게시판</a></li>
         </ul>
       </li>
       <li><a  href="recruit.php">모집게시판</a>
