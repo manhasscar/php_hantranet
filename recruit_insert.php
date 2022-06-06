@@ -56,7 +56,7 @@
 	$sql = mq("insert into recruit_board (user_id, nic_name, title, category, period_s, period_e, content, file, file_type, date, file_copied) 
 	values('".$userid."','".$usernic."', '".$title."', '".$category."', '".$startdate."', '".$enddate."', '".$content."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
-	$sql2 = mq("select * from recruit_board where nic_name='".$usernic."' and date='".$date."';");
+	$sql2 = mq("select * from recruit_board where nic_name='".$usernic."' order by idx desc limit 1;");
       while($idx = $sql2->fetch_array()){
         $idx2 = $idx['idx'];
       } //글 작성이후 작성한 글로 바로 갈수 있게.

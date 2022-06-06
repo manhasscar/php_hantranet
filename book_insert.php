@@ -64,7 +64,7 @@
 	$sql = mq("insert into book_board (user_id, nic_name, title, bo_author, bo_publisher, bo_date,  bo_price, bo_state, category, college, major, file, file_type, date, file_copied) 
 	values('".$userid."','".$usernic."', '".$name."', '".$author."', '".$publisher."', '".$publidate."', '".$price."', '".$content."' ,'".$category."', '".$college."', '".$major."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
-	$sql2 = mq("select * from book_board where nic_name='".$usernic."' and date='".$date."';");
+	$sql2 = mq("select * from book_board where nic_name='".$usernic."' order by idx desc limit 1;");
       while($idx = $sql2->fetch_array()){
         $idx2 = $idx['idx'];
       } //글 작성이후 작성한 글로 바로 갈수 있게.

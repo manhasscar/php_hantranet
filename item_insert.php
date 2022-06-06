@@ -58,7 +58,7 @@
 	$sql = mq("insert into item_board (user_id, nic_name, item_name, item_price, item_state, item_content, category, file, file_type, date, file_copied) 
 	values('".$username."', '".$usernic."', '".$name."', '".$price."', '".$state."', '".$content."' ,'".$category."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
-	$sql2 = mq("select * from item_board where nic_name='".$usernic."' and date='".$date."';");
+	$sql2 = mq("select * from item_board where nic_name='".$usernic."' order by idx desc limit 1;");
       while($idx = $sql2->fetch_array()){
         $idx2 = $idx['idx'];
       } //글 작성이후 작성한 글로 바로 갈수 있게.

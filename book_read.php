@@ -184,7 +184,7 @@ button{
   <div id="board_read">
 
 	  <div id="board_title">
-		  <h2><?php echo $board['book_name'];?></h2>
+		  <h2><?php echo $board['title'];?></h2>
 		</div>
 		   <div id="user_info">
 			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
@@ -231,7 +231,7 @@ button{
 								echo "기타";
                             ?>
                         <p class="book_name">
-                            <?php echo $board['book_name'];?>
+                            <?php echo $board['title'];?>
                         </p>
                         <div class="prouctprice">
                             <strong class="cost"><?=$board['bo_price']?>원</strong>
@@ -253,7 +253,7 @@ button{
 		     <ul>
 			        <li><a href="book_list.php">[목록으로]</a></li>
               <?php
-			  if (isset($_SESSION['userid']) && $board['user_name'] == $_SESSION['userid']){
+			  if (isset($_SESSION['userid']) && $board['user_id'] == $_SESSION['userid']){
 				 
 				  ?>
 			  	

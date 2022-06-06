@@ -120,29 +120,29 @@
                 { //만약 page가 1이라면
                   echo "<li class='fo_re'>처음</li>"; //처음이라는 글자에 빨간색 표시
                 }else{
-                  echo "<li><a href='my_page_result?page=1'>처음</a></li>"; //처음글자에 1번페이지로 갈 수있게 링크
+                  echo "<li><a href='my_page.php?page=1'>처음</a></li>"; //처음글자에 1번페이지로 갈 수있게 링크
                 }
                 if($page > 1)
                 {
                   $pre = $page-1;
-                  echo "<li><a href='my_page_result.php?page=$pre'>이전</a></li>";
+                  echo "<li><a href='my_page.php?page=$pre'>이전</a></li>";
                 }
                 for($i=$block_start; $i<=$block_end; $i++){
                   //for문 반복문을 사용하여, 초기값을 블록의 시작번호를 조건으로 블록시작번호가 마지박블록보다 작거나 같을 때까지 $i를 반복시킨다
                   if($page == $i){
                     echo "<li class='fo_re'>[$i]</li>"; //현재 페이지에 해당하는 번호에 굵은 빨간색을 적용
                   }else{
-                    echo "<li><a href='my_page_result.php?page=$i'>[$i]</a></li>";
+                    echo "<li><a href='my_page.php?page=$i'>[$i]</a></li>";
                 }
               }
                 if($page < $total_page){
                   $next = $page + 1;
-                  echo "<li><a href='my_page_result.php?page=$next'>다음</a></li>";
+                  echo "<li><a href='my_page.php?page=$next'>다음</a></li>";
                 }
                 if($page >= $total_page){ //만약 page가 페이지수보다 크거나 같다면
                   echo "<li class='fo_re'>마지막</li>"; //마지막 글자에 긁은 빨간색을 적용한다.
                 }else{
-                  echo "<li><a href='my_page_result.php?page=$total_page'>마지막</a></li>"; //아니라면 마지막글자에 total_page를 링크한다.
+                  echo "<li><a href='my_page.php?page=$total_page'>마지막</a></li>"; //아니라면 마지막글자에 total_page를 링크한다.
                 }
 
                 ?>
