@@ -171,8 +171,6 @@ button{
 	<?php
 		$bno = $_GET['num']; /* bno함수에 idx값을 받아와 넣음*/
 		$hit = mysqli_fetch_array(mq("select * from book_board where idx ='".$bno."'"));
-		// $hit = $hit['hit'] + 1;
-		// $fet = mq("update ".$board_id." set hit = '".$hit."' where idx = '".$bno."'");
 		$sql = mq("select * from book_board where idx='".$bno."'"); /* 받아온 idx값을 선택 */
 		$board = $sql->fetch_array();
 		$_SESSION['board_idx'] = $bno; 
@@ -188,22 +186,11 @@ button{
 		</div>
 		   <div id="user_info">
 			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
-                  <!-- 조회:<?php echo $board['hit']; ?> -->
 				  <div id="bo_line"></div> 
 			</div>
 			<div>
 	</div>
-			
-			
-			<?php
-			if ($board['file']){
-			?>
-			<!-- <div>
-				파일 : <a href="uploads/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
-			</div> -->
-			<?php
-			}
-			?>
+
 
 <div id="popup_menu_area" style="z-index: 9999; display: none;">
 			

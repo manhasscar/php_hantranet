@@ -15,9 +15,12 @@
 
 
 <div class="sidebar one_quarter first"> 
-      <h6>전공</h6>
+      <h6></h6>
       <nav class="sdb_holder">
         <ul>
+         <li class="nav" style="cursor: pointer;"><a class="btn1" href="book_category_result.php?college=교양">교양</a>
+         <li class="nav" style="cursor: pointer;"><a class="btn1">전공</a> 
+          </li>
           <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a class="btn1">문과대학</a>
             <ul id = "subMenu1" style="display: none;">
               <li><a href="book_category_result.php?college=문과&major=국어국문 창작학과">국어국문 창작학과</a></li>

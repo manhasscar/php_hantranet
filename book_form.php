@@ -107,18 +107,18 @@ h1 {
           document.board_form.price.focus();
           return;
       }
-	  if (!document.board_form.college.value)
-      {
-          alert("단과대를 선택하세요!");    
-          document.board_form.college.focus();
-          return;
-      }
-	  if (!document.board_form.major.value)
-      {
-          alert("전공을 선택하세요!");    
-          document.board_form.major.focus();
-          return;
-      }
+	//   if (!document.board_form.college.value)
+    //   {
+    //       alert("단과대를 선택하세요!");    
+    //       document.board_form.college.focus();
+    //       return;
+    //   }
+	//   if (!document.board_form.major.value)
+    //   {
+    //       alert("전공을 선택하세요!");    
+    //       document.board_form.major.focus();
+    //       return;
+    //   }
 	  if (!document.board_form.file.value)
       {
           alert("이미지는 필수입니다!");    
@@ -169,7 +169,6 @@ h1 {
                         <option value="" selected>선택하세요!</option>
                         <option value="전공" >전공</option>
                         <option value="교양" >교양</option>
-                        <option value="기타" >기타</option>
                     </select></span>
 				</li>
 				<li>
