@@ -1,14 +1,23 @@
 <?php
-  include ('db_connect.php');
+  
 ?>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>게시판</title>
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
 </head>
 <body>
 <div id="board_area">
+<header>
+      <?php include "header.php";?>
+</header>
+<div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <div class="content">
 
 <?php
 
@@ -16,7 +25,9 @@
   $catagory = $_GET['catgo'];
   $search_con = $_GET['search'];
 ?>
-  <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
+  <h1><?php if($catagory == "title")echo "제목"; 
+            else if($catagory == "name")echo "글쓴이";
+            else if($catagory == "content")echo "내용";?>에서 '<?php echo $search_con; ?>'검색결과</h1>
   <h4 style="margin-top:30px;"><a href="board.php?board_id=board">홈으로</a></h4>
   <div id="search_box2">
       <form action="search_result.php" method="get">
@@ -74,6 +85,7 @@
       <input type="text" name="search" size="40" required="required"/> <button>검색</button>
     </form>
   </div>-->
+            </div>
 </div>
 </body>
 </html>

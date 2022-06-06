@@ -15,14 +15,16 @@
     <header>
         <?php include "header.php";?>
     </header>
+    
       <div class="wrapper row3">
+      
         <main class="hoc container clear">
-         <?php include('category.php');?>
+        <?php include('category.php');?>
         <div class="content three_quarter"> 
         <h1>도서 거래 게시판</h1>
         <h4>중고거래 게시판입니다.</h4>
         <div id="search_box">
-          <form action="book_search_result.php" method="get" style="display:flex;">
+          <form action="book_search_result.php" method="get">
             <select name="catgo">
               <option value="제목">제목</option>
               <option value="저자">저자</option>
