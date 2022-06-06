@@ -269,7 +269,7 @@ $sql = mq("update message set read_ok = 1 where idx='".$bno."'");
 	     <div id="bo_ser">
 		     <ul>
 			     <li>
-                     <a href="message_box.php?mode=<?=$mode?>">[목록으로]</a>
+                     <a href="my_message_result.php?info=message&board=rv">[목록으로]</a>
                 </li>
 			    <li>
 					<a href="message_delete.php?mode=<?=$mode?>">[삭제]</a>

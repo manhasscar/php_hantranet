@@ -228,8 +228,8 @@ button{
   <main class="hoc container clear"> 
     <div class="content"> 
 	<?php
-		$rep_number = $_SESSION['message_idx'];
-		$mode = $_GET["mode"];
+		$rep_number = $_GET['num'];
+		$mode = $_GET['mode'];
 		$bno = $_GET['num']; /* bno함수에 message idx값을 받아와 넣음*/
 		$sql = mq("select * from message where idx='".$bno."'"); /* 받아온 idx값을 선택 */
 		
@@ -261,7 +261,7 @@ button{
 	    <div id="bo_ser">
 		     <ul>
 			     <li>
-                     <a href="message_box.php?mode=send">[목록으로]</a>
+                     <a href="my_message_result.php?info=message&board=send">[목록으로]</a>
                 </li>
 				<li>
 					<a href="message_delete.php?mode=<?=$mode?>">[삭제]</a>

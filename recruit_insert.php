@@ -1,7 +1,7 @@
 <?php
     include ('db_connect.php');
     
-	$username = $_SESSION['userid'];
+	$userid = $_SESSION['userid'];
 	$usernic = $_SESSION['user_nic'];
     $title = $_POST['title'];
 	$category = $_POST['category'];
@@ -52,9 +52,9 @@
 	
 	}
 	
-	if($username && $title && $content){
-	$sql = mq("insert into recruit_board (nic_name, title, category, period_s, period_e, content, file, file_type, date, file_copied) 
-	values('".$usernic."', '".$title."', '".$category."', '".$startdate."', '".$enddate."', '".$content."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
+	if($userid && $title && $content){
+	$sql = mq("insert into recruit_board (user_id, nic_name, title, category, period_s, period_e, content, file, file_type, date, file_copied) 
+	values('".$userid."','".$usernic."', '".$title."', '".$category."', '".$startdate."', '".$enddate."', '".$content."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
 	$sql2 = mq("select * from recruit_board where nic_name='".$usernic."' and date='".$date."';");
       while($idx = $sql2->fetch_array()){

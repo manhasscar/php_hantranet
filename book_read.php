@@ -167,25 +167,19 @@ button{
 <div class="wrapper row3">
 	<main class="hoc container clear">
 		<div class="content"> 
-	<h1>
-	<?php
-		$bno = $_GET['num']; /* bno함수에 idx값을 받아와 넣음*/
-		$hit = mysqli_fetch_array(mq("select * from book_board where idx ='".$bno."'"));
-		// $hit = $hit['hit'] + 1;
-		// $fet = mq("update ".$board_id." set hit = '".$hit."' where idx = '".$bno."'");
-		$sql = mq("select * from book_board where idx='".$bno."'"); /* 받아온 idx값을 선택 */
-		$board = $sql->fetch_array();
-		$_SESSION['board_idx'] = $bno; 
-		
-	?>
-	</h1>
+		<h1>
+		<?php
+			$bno = $_GET['num']; /* bno함수에 idx값을 받아와 넣음*/
+			$sql = mq("select * from book_board where idx='".$bno."'"); /* 받아온 idx값을 선택 */
+			$board = $sql->fetch_array();
+			$_SESSION['board_idx'] = $bno; 
+		?>
+		</h1>
 <!-- 글 불러오기 -->
-
   <div id="board_read">
-
 	  <div id="board_title">
-		  <h2><?php echo $board['book_name'];?></h2>
-		</div>
+		  <h2><?=$board['title']?></h2>
+	</div>
 		   <div id="user_info">
 			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
                   <!-- 조회:<?php echo $board['hit']; ?> -->
@@ -194,16 +188,6 @@ button{
 			<div>
 	</div>
 			
-			
-			<?php
-			if ($board['file']){
-			?>
-			<!-- <div>
-				파일 : <a href="uploads/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
-			</div> -->
-			<?php
-			}
-			?>
 
 <div id="popup_menu_area" style="z-index: 9999; display: none;">
 			
@@ -215,7 +199,7 @@ button{
             <div class="proudctimage">
 			    <div class="borad_img">
                 <?php 
-                echo "<img src = 'uploads/$board[file_copied]' style=width:170px; height:114px>";
+                echo "<img src = './uploads/$board[file_copied]' style=width:170px; height:114px>";
                 ?>
 			    </div>
             </div>
@@ -230,8 +214,8 @@ button{
 								else
 								echo "기타";
                             ?>
-                        <p class="book_name">
-                            <?php echo $board['book_name'];?>
+                        <p class="title">
+                            <?php echo $board['title'];?>
                         </p>
                         <div class="prouctprice">
                             <strong class="cost"><?=$board['bo_price']?>원</strong>
@@ -253,9 +237,9 @@ button{
 		     <ul>
 			        <li><a href="book_list.php">[목록으로]</a></li>
               <?php
-			  if (isset($_SESSION['userid']) && $board['user_name'] == $_SESSION['userid']){
+			  if (isset($_SESSION['userid']) && ($board['user_id'] == $userid)){
 				 
-				  ?>
+			?>
 			  	
 			        <li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			        <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>

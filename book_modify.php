@@ -63,7 +63,7 @@ include ('db_connect.php');
 	    	 <ul id="board_form">		
 	    		<li>
 	    			<span class="col1">책 이름 : </span>
-	    			<span class="col2"><input name="name" type="text" value=<?php echo $board['book_name']; ?>></span>
+	    			<span class="col2"><input name="name" type="text" value=<?php echo $board['title']; ?>></span>
 	    		</li>	   
                 <li>
 	    			<span class="col1">저자 : </span>

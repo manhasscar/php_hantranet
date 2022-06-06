@@ -66,7 +66,7 @@
         <?php
         if($college && $major){
           if($catagory == "제목")
-            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(book_name,' ','') like '%$search_con%' order by idx desc");
+            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(title,' ','') like '%$search_con%' order by idx desc");
           elseif($catagory == "저자")
             $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
           elseif($catagory == " 출판사")
@@ -74,7 +74,7 @@
         }
         elseif($college){
           if($catagory == "제목")
-          $sql = mq("select * from book_board where college like '$college%' and replace(book_name,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where college like '$college%' and replace(title,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == "저자")
           $sql = mq("select * from book_board where college like '$college%' and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == " 출판사")
@@ -82,7 +82,7 @@
         }
         elseif($major){
           if($catagory == "제목")
-          $sql = mq("select * from book_board where major = '$major' and replace(book_name,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where major = '$major' and replace(title,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == "저자")
           $sql = mq("select * from book_board where major = '$major' and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == " 출판사")
@@ -90,7 +90,7 @@
         }
         else{
           if($catagory == "제목")
-          $sql = mq("select * from book_board where replace(book_name,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where replace(title,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == "저자")
           $sql = mq("select * from book_board where and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
         elseif($catagory == " 출판사")
@@ -99,10 +99,10 @@
       
           while($board = $sql->fetch_array()){
 
-            $book_name=$board["book_name"];
-            if(strlen($book_name)>30)
+            $title=$board["title"];
+            if(strlen($title)>30)
             {
-            $title=str_replace($board["book_name"],mb_substr($board["book_name"],0,30,"utf-8")."...",$board["book_name"]);
+            $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
             }
             if($board["file"]){
               $bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
@@ -121,7 +121,7 @@
                   <div style = 'width:150px'id="book">
                 <ul>
                 <li>
-					        <a href="book_read.php?num=<?=$board['idx']?>"><?php echo $book_name;?><br></a>
+					        <a href="book_read.php?num=<?=$board['idx']?>"><?php echo $title;?><br></a>
 					        <?php echo $board['bo_author'];?><br>
 					        <?php echo $board['bo_date'];?>
                 </li>

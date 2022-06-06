@@ -65,7 +65,7 @@
     $_SESSION['user_nic'] = $user[2];
     echo "
     <script>
-      location.href='index1.php'
+      location.href='index.php'
     </script>";
   }
 }

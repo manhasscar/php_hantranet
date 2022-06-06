@@ -5,7 +5,7 @@
 	else $college = "";
 	if (isset($_POST['major'])) $major = $_POST['major'];
 	else $major = "";
-	$username = $_SESSION['userid'];
+	$userid = $_SESSION['userid'];
 	$usernic = $_SESSION['user_nic'];
     $name = $_POST['name'];
     $author = $_POST['author'];
@@ -60,16 +60,15 @@
 
 
 	
-	if($username && $name && $content){
-	$sql = mq("insert into book_board (user_name, book_name, bo_author, bo_publisher, bo_date,  bo_price, bo_state, category, college, major, file, file_type, date, file_copied) 
-	values('".$usernic."', '".$name."', '".$author."', '".$publisher."', '".$publidate."', '".$price."', '".$content."' ,'".$category."', '".$college."', '".$major."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
+	if($userid && $name && $content){
+	$sql = mq("insert into book_board (user_id, nic_name, title, bo_author, bo_publisher, bo_date,  bo_price, bo_state, category, college, major, file, file_type, date, file_copied) 
+	values('".$userid."','".$usernic."', '".$name."', '".$author."', '".$publisher."', '".$publidate."', '".$price."', '".$content."' ,'".$category."', '".$college."', '".$major."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
-	$sql2 = mq("select * from book_board where user_name='".$usernic."' and date='".$date."';");
+	$sql2 = mq("select * from book_board where nic_name='".$usernic."' and date='".$date."';");
       while($idx = $sql2->fetch_array()){
         $idx2 = $idx['idx'];
       } //글 작성이후 작성한 글로 바로 갈수 있게.
 
-	// mysqli_close($db);                // DB 연결 끊기
 
 	echo "<script>
 			alert('글쓰기 완료되었습니다.');

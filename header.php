@@ -22,7 +22,7 @@
                 echo "
                 
                     <div style='margin-left: 15px;' id = 'new_message'>
-                    <a  href='message_box.php?mode=rv'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
+                    <a  href='my_message_result.php?info=message&board=rv'>새로운 쪽지가 ".$row_num."개 있습니다!</a>
                     </div>
                     
                     <li>
@@ -55,7 +55,7 @@
 </div>
 <div class="wrapper row1">
   <header id="header" class="hoc clear"> 
-    <h1><a href="index1.php">Hantranet</a></h1>
+    <h1><a href="index.php">Hantranet</a></h1>
   </header>
 </div>
 <div class="wrapper row4">

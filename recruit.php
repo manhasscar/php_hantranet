@@ -7,6 +7,7 @@
     <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
     <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
     <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+    <link rel="stylesheet" type="text/css" href="css/common.css"/>
     <style>
   .row1 {
     color: #4aa8d8;
@@ -245,7 +246,7 @@ td{
           <?php
             if(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){
               ?>
-              <footer><a class="btn" href="recruit_form.php">글쓰기</a></footer>
+              <footer><a class="btn" href="recruit_form.php"  style="float:right;">글쓰기</a></footer>
               <?php
 
              }
@@ -257,6 +258,8 @@ td{
         ?>
         
         </div>
-
+        </div>
+      </main>
+      </div>
       </body>
   </html>

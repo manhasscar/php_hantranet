@@ -62,7 +62,7 @@
 
 	
 	if($username && $name && $content){
-	$sql = mq("update book_board set book_name = '".$name."', bo_author = '".$author."', bo_publisher = '".$publisher."', bo_date = '".$publidate."', bo_price = '".$price."', bo_state = '".$content."', category = '".$category."', college = '".$college."', major = '".$major."',file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$bno."'");
+	$sql = mq("update book_board set title = '".$name."', bo_author = '".$author."', bo_publisher = '".$publisher."', bo_date = '".$publidate."', bo_price = '".$price."', bo_state = '".$content."', category = '".$category."', college = '".$college."', major = '".$major."',file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$bno."'");
 
 
 

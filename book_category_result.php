@@ -104,11 +104,11 @@
                   while($board = $sql->fetch_array())
                   {
                    $num = $board["idx"];
-                   $book_name=$board["book_name"];
-                  if(strlen($book_name)>30)
+                   $title=$board["title"];
+                  if(strlen($title)>30)
                   {
                     //title이 30을 넘어서면 ...표시
-                    $book_name=str_replace($board["book_name"],mb_substr($board["book_name"],0,30,"utf-8")."...",$board["book_name"]);
+                    $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
                   }
         
                   if($board["file"]){
@@ -127,7 +127,7 @@
                   <div style = 'width:150px'id="book">
                <ul>
                 <li>
-                    <a href="book_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $book_name;?></a><br>
+                    <a href="book_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $title;?></a><br>
                   <?php echo $board['bo_author']?><br>
                   <?php echo $board['bo_date']?>
                   </li>

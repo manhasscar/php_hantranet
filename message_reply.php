@@ -40,7 +40,7 @@
 
 	echo "
 	   <script>
-	    location.href = 'message_box.php?mode=send';
+	    location.href = 'my_message_result.php?info=message&board=send';
 	   </script>
 	";
 ?>
