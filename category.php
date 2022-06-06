@@ -95,6 +95,14 @@
               <li><a href="book_category_result.php?college=탈메이지교양.융합&major=창의융합학부">창의융합학부</a></li>
             </ul>
           </li>
+          <li class="nav" onclick = "dp_menu('subMenu9')" style="cursor: pointer;"><a class="btn1">아트&디자인테크놀로지대학</a>
+            <ul id = "subMenu9" style="display: none;">
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=융합디자인학과">융합디자인학과</a></li>
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=회화과">회화과</a></li>
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=의류학과">의류학과</a></li>
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=회화과">회화과</a></li>
+            </ul>
+          </li>
 
         </ul>
       </nav>
