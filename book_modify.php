@@ -9,6 +9,9 @@
 <link rel="stylesheet" type="text/css" href="css/board.css">
 <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
+<style>
+.container {padding: 20px 0;}
+</style>
 <script>
   function check_input() {
       if (!document.board_form.name.value)
@@ -29,24 +32,24 @@
           document.board_form.category.focus();
           return;
       }
-	  if (!document.board_form.college.value)
-      {
-          alert("단과대를 선택하세요!");    
-          document.board_form.college.focus();
-          return;
-      }
+	//   if (!document.board_form.college.value)
+    //   {
+    //       alert("단과대를 선택하세요!");    
+    //       document.board_form.college.focus();
+    //       return;
+    //   }
 	  if (!document.board_form.price.value)
 	  {
           alert("가격은 숫자만 입력 가능합니다!");    
           document.board_form.price.focus();
           return;
       }
-	  if (!document.board_form.major.value)
-      {
-          alert("전공을 선택하세요!");    
-          document.board_form.major.focus();
-          return;
-      }
+	//   if (!document.board_form.major.value)
+    //   {
+    //       alert("전공을 선택하세요!");    
+    //       document.board_form.major.focus();
+    //       return;
+    //   }
 	  if (!document.board_form.file.value)
       {
           alert("이미지는 필수입니다!");    
@@ -99,17 +102,17 @@
 	    		</li> 
 				<li>
 					<span class="col1">분류 : </span>
-					<select name ="category">
+					<span><select name ="category">
                         <option value="<?php echo $board['category']; ?>" selected><?php echo $board['category']; ?></option>
                         <option value="전공" >전공</option>
                         <option value="교양" >교양</option>
                         <option value="기타" >기타</option>
-                    </select>
+                    </select></span>
 				</li>
 				<li>
 					<span class="col1">전공: </span>
-					<select id="major1" name="college" onchange="changeMajor2();"></select>
-        			<select id="major2" name="major"></select>
+					<span><select id="major1" name="college" onchange="changeMajor2();"></select></span>
+        			<span><select id="major2" name="major"></select></span>
 				</li>
 	    		<li id="text_area">	
 	    			<span class="col1">상태 : </span>
@@ -123,8 +126,8 @@
 			    </li>
 	    	    </ul>
 	    	<ul class="buttons">
-				<li><button type="button" onclick="check_input()">완료</button></li>
-				<li><button type="button" onclick="location.href='book_list.php'">목록</button></li>
+				<li><button type="button" class="btn" onclick="check_input()">완료</button></li>
+				<li><button type="button" class="btn"  onclick="location.href='book_list.php'">목록</button></li>
 			</ul>
 	    </form>
 	</div> <!-- board_box -->

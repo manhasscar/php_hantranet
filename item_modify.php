@@ -6,9 +6,13 @@
 <head> 
 <meta charset="utf-8">
 <title>게시판</title>
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
 <link rel="stylesheet" type="text/css" href="css/board.css">
 <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
+<style>
+.container {padding: 20px 0;}
+</style>
 <script>
   function check_input() {
       if (!document.board_form.name.value)
@@ -105,8 +109,8 @@
 			    </li>
 	    	    </ul>
 	    	<ul class="buttons">
-				<li><button type="button" onclick="check_input()">완료</button></li>
-				<li><button type="button" onclick="location.href='item_list.php'">목록</button></li>
+				<li><button type="button" class = "btn" onclick="check_input()">완료</button></li>
+				<li><button type="button" class = "btn" onclick="location.href='item_list.php'">목록</button></li>
 			</ul>
 	    </form>
 	</div> 

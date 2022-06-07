@@ -7,8 +7,10 @@
 <meta charset="utf-8">
 <title>게시판</title>
 <link rel="stylesheet" type="text/css" href="css/board.css">
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
 <script>
   function check_input() {
       if (!document.board_form.title.value)
@@ -98,8 +100,8 @@
 			    </li>
 	    	    </ul>
 	    	<ul class="buttons">
-				<li><button type="button" onclick="check_input()">완료</button></li>
-				<li><button type="button" onclick="location.href='recruit.php'">목록</button></li>
+				<li><button type="button" class="btn" onclick="check_input()">완료</button></li>
+				<li><button type="button" class="btn" onclick="location.href='recruit.php'">목록</button></li>
 			</ul>
 	    </form>
 	</div> <!-- board_box -->
