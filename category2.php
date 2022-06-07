@@ -15,7 +15,6 @@
 <div class="sidebar one_quarter first"> 
       <nav class="sdb_holder">
         <ul>
-        <li class="nav" style="cursor: pointer;"><a class="btn1">분야</a></li>
         <li class="nav" style="cursor: pointer;"><a href="recruit_category_result.php?category=봉사" class="btn1">봉사</a></li>
           <li class="nav" style="cursor: pointer;"><a href="recruit_category_result.php?category=과제" class="btn1">과제</a></li>
           <li class="nav" style="cursor: pointer;"><a href="recruit_category_result.php?category=팀플" class="btn1">프로젝트</a></li>
