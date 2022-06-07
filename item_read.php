@@ -49,11 +49,10 @@
 <!-- 글 불러오기 -->
   <div id="board_read">
 	  <div id="board_title">
-		  <h2><?=$board['item_name']?></h2>
+		  <h2><?=$board['title']?></h2>
 	</div>
 		   <div id="user_info">
 			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
-                  <!-- 조회:<?php echo $board['hit']; ?> -->
 				  <div id="bo_line"></div> 
 			</div>
 			<div>
@@ -137,14 +136,12 @@
 				 
 				  ?>
 			  	
-				  <!--<a class="dat_edit_bt" href="#">수정</a>-->
-				<a class="dat_delete_bt" href="item_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
+				<a class="dat_delete_bt" href="item_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $ino; ?>">삭제</a>
 			  
               <?php
 			}
 			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<!--<a class="dat_edit_bt" href="#">수정</a>-->
-				<a class="dat_delete_bt" href="item_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
+				<a class="dat_delete_bt" href="item_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $ino; ?>">삭제</a>
 			<?php
 			}
 			?>	

@@ -68,11 +68,11 @@
                 while($board = $sql2->fetch_array())
                 {
                     //title변수에 DB에서 가져온 title을 선택
-                    $item_name=$board["item_name"];
-                    if(strlen($item_name)>30)
+                    $title=$board["title"];
+                    if(strlen($title)>30)
                     {
                       //title이 30을 넘어서면 ...표시
-                      $title=str_replace($item_name,mb_substr($item_name,0,30,"utf-8")."...",$item_name);
+                      $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
                     }
 					if($board["file"]){
 						$bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
@@ -93,7 +93,7 @@
                   <div style = 'width:150px'id="book">
                <ul>
                 <li>
-                    <a href="item_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $item_name;?></a><br>
+                    <a href="item_read.php?num=<?=$board['idx']?>&page=<?=$page?>"><?php echo $title;?></a><br>
                   </li>
                 </ul>
 					    </div>

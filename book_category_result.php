@@ -22,14 +22,18 @@
         <?php
         if(isset($_GET["college"])){
             $college=$_GET["college"];
-            if($college != "교양"){
+            if($college == "교양"){
            ?>
-            <h1><?php echo "{$college}대학";?></h1>
+            <h1><?php echo "교양";?></h1>
         <?php
         }
-         else{ ?> 
-         <h1><?php echo "교양";?></h1>
+         elseif($college == "전공"){ ?> 
+         <h1><?php echo "전공";?></h1>
       <?php 
+         }
+         else { ?>
+         <h1><?php echo "{$college}대학";?></h1>
+         <?php 
          }
       }
         else
@@ -74,10 +78,15 @@
             </tr>
         </thead>
         <?php
-        if($major && $college){
+
+      if($college == "교양" || $college == "전공"){
+          $sql = mq("select * from book_board where category like '$college%' order by idx desc" );
+        }
+
+        elseif($major && $college){
          $sql = mq("select * from book_board where college like '$college%' and major='$major' order by idx desc" );
         }
-        elseif($college){
+        elseif($college != "교양" || $college != "전공"){
         $sql = mq("select * from book_board where college like '$college%' order by idx desc " );
         }
         elseif($major){
@@ -96,15 +105,16 @@
         $block_end = $total_page; //만약 블록의 마지막 번호가 페이지수보다 많다면 마지막번호는 페이지 수
         $total_block = ceil($total_page/$block_ct); //블럭 총 개수
         $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다.
+
+        if($college == "교양" or $college == "전공"){
+          $sql = mq("select * from book_board where category like '$college%' order by idx desc limit $start_num, $list" );
+         }
         
-        if($major && $college){
+        elseif($major && $college){
             $sql = mq("select * from book_board where college like '$college%' and major='$major' order by idx desc limit $start_num, $list" );
            }
-           elseif($college != "교양"){
+           elseif($college != "교양" or $college != "전공"){
            $sql = mq("select * from book_board where college like '$college%' order by idx desc limit $start_num, $list" );
-           }
-           elseif($college == "교양"){
-            $sql = mq("select * from book_board where category like '$college%' order by idx desc limit $start_num, $list" );
            }
            elseif($major){
                $sql = mq("select * from book_board where major='$major' order by idx desc limit $start_num, $list" );
@@ -209,5 +219,3 @@
 </div>
 </body>
 </html>
-
-

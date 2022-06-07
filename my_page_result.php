@@ -24,7 +24,8 @@
           <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a class="btn1">내가 쓴 글</a>
             <ul id = "subMenu1" style="display: none;">
               <li><a href="my_page_result.php?info=content">커뮤니티</a></li>
-              <li><a href="my_page_result.php?info=content&board=book">거래게시판</a></li>
+              <li><a href="my_page_result.php?info=content&board=book">도서래게시판</a></li>
+              <li><a href="my_page_result.php?info=content&board=item">중고거래게시판</a></li>
               <li><a href="my_page_result.php?info=content&board=recruit">정보게시판</a></li>
             </ul>
           </li>
@@ -57,7 +58,7 @@
         ?>
               <?php
             
-                if($info == "content" && $board =="book"){
+                if($info == "content" && ($board =="book" || $board == "item")){
                 ?>
                  <table class="list-table">
                   <thead>
@@ -68,9 +69,15 @@
                     <th width="100">작성일</th>
                     </tr>
                  </thead>
-                  <form method="post" action="book_delete.php">
                 <?php
-                    $sql2 = mq("select * from book_board where user_id='$userid' order by idx desc");
+                  if($board == "book"){ ?>
+                   <form method="post" action="book_delete.php">
+                  <?php 
+                    $sql2 = mq("select * from book_board where user_id='$userid' order by idx desc");}
+                    else { ?>
+                    <form method="post" action="item_delete.php">
+                    <?php 
+                      $sql2 = mq("select * from item_board where user_id='$userid' order by idx desc");}
                     while($board = $sql2->fetch_array())
                     {
                         $num = $board["idx"];
@@ -84,7 +91,11 @@
                      <tr>
                      <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
                       <td width="70"><?php echo $board['idx']; ?></td>
+                      <?php if($board == "book"){ ?>
                       <td width="500"><a href="book_read.php?num=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
+                      <?php } else { ?>
+                        <td width="500"><a href="item_read.php?num=<?php echo $board["idx"];?>"><?php echo $title;?></a></td> 
+                        <?php } ?>
                       <td width="100"><?php echo $board['date']?></td>
                   </tr>
                 </tbody>       
@@ -184,11 +195,11 @@
                     <th width="100">작성일</th>
                 </tr>
             </thead>
-              <form method="post" action="my_reply_delete.php">
                  <?php
                 $sql2 = mq("SELECT book_board.idx, book_board.title, book_board_reply. * from book_board inner join book_board_reply on book_board.idx = book_board_reply.con_num where book_board_reply.id = '$userid' UNION ALL 
                 SELECT board.idx, board.title, board_reply. * from board inner join board_reply on board.idx = board_reply.con_num where board_reply.id = '$userid' UNION ALL
-                SELECT recruit_board.idx, recruit_board.title, recruit_board_reply. * from recruit_board join recruit_board_reply on recruit_board.idx = recruit_board_reply.con_num where recruit_board_reply.id = '$userid'");
+                SELECT recruit_board.idx, recruit_board.title, recruit_board_reply. * from recruit_board join recruit_board_reply on recruit_board.idx = recruit_board_reply.con_num where recruit_board_reply.id = '$userid' UNION ALL
+                SELECT item_board.idx, item_board.title, item_board_reply. * from item_board join item_board_reply on item_board.idx = item_board_reply.con_num where item_board_reply.id = '$userid';");
                     while($board = $sql2->fetch_array())
             {
                 

@@ -23,7 +23,7 @@
       $sql = mq("select * from board where idx = $num");
       $row = mysqli_fetch_array($sql);
   
-      $copied_name = $row["file_copied"];
+      $copied_name = $row["file"];
   
       if ($copied_name)
       {

@@ -28,7 +28,7 @@
 		$copied_file_name = $new_file_name.".".$file_ext;  //날짜형식으로 저장     
 		$uploaded_file = $upload_dir.$copied_file_name; //경로 저장
 	
-		if(move_uploaded_file($upfile_tmp_name,$uploaded_file)!==false){
+		if(!move_uploaded_file($upfile_tmp_name,$uploaded_file)){
 		print "파일 업로드  실패 : ";
 		switch ($upfile_error) {
 			case UPLOAD_ERR_INI_SIZE:
@@ -47,7 +47,6 @@
 			print "임시 디렉토리가 없습니다.<br>";
 			break;
 		}
-		print_r($_FILES);
 		}
 	
 	}
@@ -55,7 +54,7 @@
 
 	
 	if($username && $name && $content){
-	$sql = mq("insert into item_board (user_id, nic_name, item_name, item_price, item_state, item_content, category, file, file_type, date, file_copied) 
+	$sql = mq("insert into item_board (user_id, nic_name, title, item_price, item_state, item_content, category, file, file_type, date, file_copied) 
 	values('".$username."', '".$usernic."', '".$name."', '".$price."', '".$state."', '".$content."' ,'".$category."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
 	$sql2 = mq("select * from item_board where nic_name='".$usernic."' order by idx desc limit 1;");

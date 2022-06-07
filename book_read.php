@@ -178,8 +178,7 @@ img{
 		</form>
 	</div>
 </div><!--- 댓글 불러오기 끝 -->
-<div id="foot_box"></div>
-</div>
+
 </body>
 </html>
 <script type="text/javascript">

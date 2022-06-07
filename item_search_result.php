@@ -62,7 +62,7 @@
             </thead>
         <?php
         if($catagory == "name")
-          $sql2 = mq("select * from item_board where replace(item_name,' ','') like '%$search_con%' order by idx desc");
+          $sql2 = mq("select * from item_board where replace(title,' ','') like '%$search_con%' order by idx desc");
         else if($catagory == "user_nic")
           $sql2 = mq("select * from item_board where replace(nic_name,' ','') like '%$search_con%' order by idx desc");
         else if($catagory == "content")
@@ -71,10 +71,10 @@
             $con_idx = $board["idx"];
             $reply_count = mq("SELECT COUNT(*) AS cnt FROM item_board_reply where con_num=$con_idx");
             $con_reply_count = $reply_count->fetch_array();
-            $name=$board["item_name"];
+            $name=$board["title"];
             if(strlen($name)>30)
             {
-            $name=str_replace($board["item_name"],mb_substr($board["item_name"],0,30,"utf-8")."...",$board["item_name"]);
+            $name=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
             }
         ?>
        <tbody>

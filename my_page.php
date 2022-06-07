@@ -30,7 +30,8 @@
           <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a class="btn1">내가 쓴 글</a>
             <ul id = "subMenu1" style="display: none;">
               <li><a href="my_page_result.php?info=content">커뮤니티</a></li>
-              <li><a href="my_page_result.php?info=content&board=book">거래게시판</a></li>
+              <li><a href="my_page_result.php?info=content&board=book">도서거래게시판</a></li>
+              <li><a href="my_page_result.php?info=content&board=item">중고거래게시판</a></li>
               <li><a href="my_page_result.php?info=content&board=recruit">정보게시판</a></li>
             </ul>
           </li>

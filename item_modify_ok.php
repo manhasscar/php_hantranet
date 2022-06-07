@@ -63,7 +63,7 @@
 	$ino = $_GET['num'];
 
     if($username && $name && $content){
-        $sql = mq("update item_board set item_name = '".$name."', item_price = '".$price."', category = '".$category."', item_state = '".$state."', item_content = '".$content."', file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$ino."'");
+        $sql = mq("update item_board set title = '".$name."', item_price = '".$price."', category = '".$category."', item_state = '".$state."', item_content = '".$content."', file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$ino."'");
     
 
         // mysqli_close($db);                // DB 연결 끊기

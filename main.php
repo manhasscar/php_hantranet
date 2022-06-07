@@ -87,7 +87,7 @@
              for($i=1; $i<=$total; $i++)
              {   
                  $board_item = $sql -> fetch_array();
-                 $title=$board_item["item_name"];
+                 $title=$board_item["title"];
                  if(strlen($title)>30)
                  {
                      

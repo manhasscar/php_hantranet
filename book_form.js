@@ -11,7 +11,7 @@ let major1 = [
     {v:"아트&디자인테크놀로지대학", t:"아트&디자인테크놀로지대학"}
 
 ];
-let major_0=[
+let major_0 = [
     {v:"",t:"전공"}
 ];
 let major_1 = [
