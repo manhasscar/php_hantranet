@@ -248,7 +248,7 @@ button{
 		     <ul>
 			        <li><a href="recruit.php">[목록으로]</a></li>
               <?php
-			  if (isset($_SESSION['userid']) && $board['nic_name'] == $_SESSION['userid']){
+			  if (isset($_SESSION['userid']) && $board['user_id'] == $_SESSION['userid']){
 				 
 				  ?>
 			  	
@@ -257,7 +257,7 @@ button{
 			  
               <?php
 			}
-			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
+			elseif(isset($_SESSION['userid']) && $_SESSION['user_id'] == 'admin'){?>
 				<li><a href="recruit_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			    <li><a href="recurit_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 			<?php
