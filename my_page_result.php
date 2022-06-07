@@ -89,8 +89,11 @@
                   </tr>
                 </tbody>       
                 <?php
-                    }
-                  }
+                    }?>
+                    </table>
+                    <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
+                   </form
+                <?php  } 
                 elseif($info == "content" && $board == "recruit"){
                   ?>
                   <table class="list-table">
@@ -124,8 +127,11 @@
                   </tr>
                 </tbody>       
                 <?php
-                    }
-                }
+                    }?>
+                    </table>
+                    <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
+                   </form>
+               <?php }
                 elseif($info == "content"){
                   ?>
                 <table class="list-table">
@@ -160,17 +166,19 @@
               </tr>
             </tbody>    
             <?php
-              }
-               }
+              } ?>
+              </table>
+               <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
+              </form>
+             <?php }
             ?>
-       
+         
           <?php
             if($info == "reply"){  
               ?>
               <table class="list-table">
               <thead>
               <tr>
-                    <th width="70">선택</th>
                     <th width="70">글</th>
                     <th width="500">댓글</th>
                     <th width="100">작성일</th>
@@ -188,14 +196,11 @@
                 $content=$board["content"];
                 if(strlen($content)>30)
                 {
-                  //title이 30을 넘어서면 ...표시
                   $content=str_replace($content,mb_substr($content,0,30,"utf-8")."...",$content);
                 }
             ?>
               <tbody>
-                  <input type = "hidden" name="idx" value="<?=$num?>">
                  <tr> 
-                 <td width="70"><input type="checkbox" name="item[]" value="<?=$content?>"></td>
                   <td width="70"><?php echo $board['title']; ?></td>
                   <td width="500"><?php echo $content;?></a></td>
                   <td width="100"><?php echo $board['date']?></td>
@@ -205,8 +210,7 @@
             } 
             ?>
           </table>
-          <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
-          </form>
+   
 
           </div>  
         </div>

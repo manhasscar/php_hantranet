@@ -15,9 +15,12 @@
 
 
 <div class="sidebar one_quarter first"> 
-      <h6>전공</h6>
+      <h6></h6>
       <nav class="sdb_holder">
         <ul>
+         <li class="nav" style="cursor: pointer;"><a class="btn1" href="book_category_result.php?college=교양">교양</a>
+         <li class="nav" style="cursor: pointer;"><a class="btn1">전공</a> 
+          </li>
           <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a class="btn1">문과대학</a>
             <ul id = "subMenu1" style="display: none;">
               <li><a href="book_category_result.php?college=문과&major=국어국문 창작학과">국어국문 창작학과</a></li>
@@ -90,6 +93,14 @@
             <ul id = "subMenu8" style="display: none;">
               <li><a href="book_category_result.php?college=탈메이지교양.융합&major=자유전공학부">자유전공학부</a></li>
               <li><a href="book_category_result.php?college=탈메이지교양.융합&major=창의융합학부">창의융합학부</a></li>
+            </ul>
+          </li>
+          <li class="nav" onclick = "dp_menu('subMenu9')" style="cursor: pointer;"><a class="btn1">아트&디자인테크놀로지대학</a>
+            <ul id = "subMenu9" style="display: none;">
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=융합디자인학과">융합디자인학과</a></li>
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=회화과">회화과</a></li>
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=의류학과">의류학과</a></li>
+              <li><a href="book_category_result.php?college=탈메이지교양.융합&major=회화과">회화과</a></li>
             </ul>
           </li>
 

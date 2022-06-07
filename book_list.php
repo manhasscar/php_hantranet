@@ -77,14 +77,14 @@
                       //title이 30을 넘어서면 ...표시
                       $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
                     }
-					if($board["file"]){
-						$bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
-          }
+				          	if($board["file"]){
+					                	$bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
+                     }
               ?>
             
               
             <tbody>
-              <tr>
+              <tr id="board_list">
                 <td width="70"><?php echo $board['idx']; ?></td>
                 <td width="500">
                   <div class="items">

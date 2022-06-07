@@ -22,10 +22,16 @@
         <?php
         if(isset($_GET["college"])){
             $college=$_GET["college"];
+            if($college != "교양"){
            ?>
             <h1><?php echo "{$college}대학";?></h1>
         <?php
         }
+         else{ ?> 
+         <h1><?php echo "교양";?></h1>
+      <?php 
+         }
+      }
         else
         $college="";
         if(isset($_GET["major"])){
@@ -94,8 +100,11 @@
         if($major && $college){
             $sql = mq("select * from book_board where college like '$college%' and major='$major' order by idx desc limit $start_num, $list" );
            }
-           elseif($college){
+           elseif($college != "교양"){
            $sql = mq("select * from book_board where college like '$college%' order by idx desc limit $start_num, $list" );
+           }
+           elseif($college == "교양"){
+            $sql = mq("select * from book_board where category like '$college%' order by idx desc limit $start_num, $list" );
            }
            elseif($major){
                $sql = mq("select * from book_board where major='$major' order by idx desc limit $start_num, $list" );

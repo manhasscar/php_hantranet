@@ -6,79 +6,10 @@
 <link rel="stylesheet" type="text/css" href="css/board.css">
 <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
 <style>
-	.row1 {
-    color: #4aa8d8;
-    background-color: #FFFFFF;
-}
-	.container {
-	padding: 20px 0;
-}
-.row3 {
-    color: #222222;
-    background-color: #FFFFFF;
-}
-.row4 {
-    color: #CBCBCB;
-    background-color: #4aa8d8;
-}
-.heading{
-    color: #171414;
-    font-weight: bold;
-}
-a {
-    color: #05B3F2;
-}
-p{
-    color: #171414;
-}
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-    #page_num ul li {
-      float: left;
-      float:left;
-      margin-left: 10px;
-      text-align: center;
-      
-    }
-    .fo_re {
-      font-weight: bold;
-    }
-    #write_btn, .btn, .btn.inverse:hover {
-    color: #FFFFFF;
-    background-color: #05B3F2;
-    border-color: #05B3F2;
-    border-radius: 10px;
-    background-clip: padding-box;
-    }
-    #wrarper{
-      position: fixed;
-      top:0px;
-      background-color:white;
-      width:1200px;
-
-    }
-	button {
-	color: #FFFFFF;
-    background-color: #05B3F2;
-    padding: 2px; 
-    border-radius: 10px;
-	border-color: #05B3F2;
-    /* background-clip: padding-box;
-    text-transform: uppercase;
-    font-weight: 700;
-    cursor: pointer; */
-}
-#board_box .buttons { text-align: right; margin: 20px 0 40px 0; }
-#board_box .buttons li { display: inline; }
-#board_box .buttons button { padding: 5px 10px; cursor: pointer; }
+.container {padding: 20px 0;}
 </style>
 
 <script>
@@ -107,18 +38,18 @@ h1 {
           document.board_form.price.focus();
           return;
       }
-	  if (!document.board_form.college.value)
-      {
-          alert("단과대를 선택하세요!");    
-          document.board_form.college.focus();
-          return;
-      }
-	  if (!document.board_form.major.value)
-      {
-          alert("전공을 선택하세요!");    
-          document.board_form.major.focus();
-          return;
-      }
+	//   if (!document.board_form.college.value)
+    //   {
+    //       alert("단과대를 선택하세요!");    
+    //       document.board_form.college.focus();
+    //       return;
+    //   }
+	//   if (!document.board_form.major.value)
+    //   {
+    //       alert("전공을 선택하세요!");    
+    //       document.board_form.major.focus();
+    //       return;
+    //   }
 	  if (!document.board_form.file.value)
       {
           alert("이미지는 필수입니다!");    
@@ -169,7 +100,6 @@ h1 {
                         <option value="" selected>선택하세요!</option>
                         <option value="전공" >전공</option>
                         <option value="교양" >교양</option>
-                        <option value="기타" >기타</option>
                     </select></span>
 				</li>
 				<li>
@@ -189,8 +119,8 @@ h1 {
 			    </li>
 	    	    </ul>
 	    	<ul class="buttons">
-				<li><button type="button" onclick="check_input()">완료</button></li>
-				<li><button type="button" onclick="location.href='book_list.php'">목록</button></li>
+				<li><button type="button" class="btn" onclick="check_input()">완료</button></li>
+				<li><button type="button" class="btn" onclick="location.href='book_list.php'">목록</button></li>
 			</ul>
 	    </form>
 	</div> 
