@@ -19,18 +19,6 @@
   if($mypage_num){
     for($i=0; $i<count($_POST["item"]); $i++){
       $num = $_POST["item"][$i];
-  
-      $sql = mq("select * from board where idx = $num");
-      $row = mysqli_fetch_array($sql);
-  
-      $copied_name = $row["file"];
-  
-      if ($copied_name)
-      {
-          $file_path = "./uploads/".$copied_name;
-          unlink($file_path);
-      }
-  
       $sql = mq("delete from board where idx = '$num';");
       $sql2 = mq("delete from board_reply where con_num = '$num';");
 

@@ -1,6 +1,4 @@
 <?php
-
-  //$connect = mysqli_connect("localhost","root","","site_db");
   include ('db_connect.php');
 
   $id = $_POST['userid'];
@@ -59,7 +57,6 @@
       </script>";
   }
   else {
-    session_start();
     $user = mysqli_fetch_array($sql);
     $_SESSION['userid'] = $id;
     $_SESSION['user_nic'] = $user[2];
