@@ -50,9 +50,59 @@
           <?php } ?>
       </div>
       </div>
-      <div class="clear"></div>
-      </main>
+      <div class="split clear">
+    <div> 
+      <p class="nospace font-xs">함께해요</p>
+      <h3 class="heading">모집 정보</h3>
+      <a class="plus" target="iframe1" href="recruit.php">더보기 &raquo;</a>
+      <hr>
+      <?php
+        $sql = mq("select * from recruit_board order by idx desc limit 5");
+        while($board_recruit = $sql->fetch_array())
+        {   
+            $title=$board_recruit["title"];
+            if(strlen($title)>30)
+            {
+                //title이 30을 넘어서면 ...표시
+                $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
+            }
+    ?>
+      <p><a style="color:black;"href="recruit_read.php?num=<?php echo $board_recruit['idx']; ?>"><?=$title?></a></p>
+      <?php
+        }
+      ?>
+    </div>
+
+      <div>
+      <p class="nospace font-xs">중고거래</p>
+      <h3 class="heading">중고 물품 정보</h3>
+      <a class="plus" target="iframe1" href="item_list.php">더보기 &raquo;</a>
+      <hr>
+    
+      
+          <?php
+             $sql = mq("select * from item_board order by idx desc limit 5");
+             $total = mysqli_num_rows($sql);
+             
+             for($i=1; $i<=$total; $i++)
+             {   
+                 $board_item = $sql -> fetch_array();
+                 $title=$board_item["item_name"];
+                 if(strlen($title)>30)
+                 {
+                     
+                     $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
+                 }
+                 if($board_item["file"]){
+                    $bo_image="<img src = 'uploads/$board_item[file_copied]' style=width:120px;height:80px>";
+                 }
+        ?>
+          <p><a style="color:black;" href="item_read.php?num=<?php echo $board_item['idx']; ?>"><?php echo $title;?></a></p>
+          <?php } ?>
       </div>
+      </div>
+      <div class="clear"></div>
+</div>
 
 
 

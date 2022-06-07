@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>게시판</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
-    <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-    <link rel="stylesheet" type="text/css" href="mystyle.css"/>
-    <link rel="stylesheet" type="text/css" href="css/common.css"/>
-    <style>
-    .btn1, .btn1.inverse:hover{color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
-    </style>
-    <body id="top">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
+<link rel="stylesheet" type="text/css" href="css/common.css"/>
+<style>
+  .btn1, .btn1.inverse:hover{color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
+  /* .btn2, .btn2.inverse:hover{color:#FFFFFF; background-color:#00BFFF; border-color:#05B3F2;} */
+  </style>
+</head>
+<body id="top">
     <header>
-        <?php include "header.php";?>
-    </header>
-      <div class="wrapper row3">
-      <main class="hoc container clear">
-        <?php include('category2.php');?>
-      <div class="content three_quarter"> 
-        <h1>모집 게시판</h1>
-        <h4>자유롭게 팀을 꾸릴 수 있는 게시판입니다.</h4>
-        <div id="search_box">
+      <?php include "header.php";?>
+  </header>
+  <div class="wrapper row3">
+  <main class="hoc container clear"> 
+    <?php include('category2.php');?>
+    <div class="content three_quarter"> 
+        <?php
+        if(isset($_GET["category"])){
+            $category=$_GET["category"];
+           ?>
+            <h1><?php echo "{$category}";?></h1>
+        <?php
+        }
+        else
+        $category="";
+
+        if(isset($_GET['page'])){
+            $page = $_GET['page'];
+          }
+          else{
+            $page = 1;
+          }
+        ?>
+      
+      <div id="search_box">
         <form action="recruit_search_result.php" method="get">
           <select name="catgo">
             <option value="title">제목</option>
@@ -41,56 +58,45 @@
                     <th width="100">작성일</th>
                 </tr>
             </thead>
-              <?php
-                if(isset($_GET['page'])){
-                  $page = $_GET['page'];
-                }
-                else{
-                  $page = 1;
-                }
-                // 테이블에서 idx를 기준으로 내림차순해서 5개까지 표시
-                $sql = mq("select * from recruit_board");
-                $row_num = mysqli_num_rows($sql); //게시판 총 레코드 수
-                $list = 5; //한 페이지에 보여줄 개수
-                $block_ct = 5; //블록당 보여줄 페이지 개수
+        <?php
+        if($category){
+         $sql = mq("select * from recruit_board where category like '$category%' order by idx desc" );
+        }
+        $row_num = mysqli_num_rows($sql); //게시판 총 레코드 수
+        $list = 5; //한 페이지에 보여줄 개수
+        $block_ct = 5; //블록당 보여줄 페이지 개수
 
-                $block_num = ceil($page/$block_ct); // 현재 페이지 블록 구하기
-                $block_start = (($block_num - 1) * $block_ct) + 1; // 블록의 시작번호
-                $block_end = $block_start + $block_ct - 1; //블록 마지막 번호
+        $block_num = ceil($page/$block_ct); // 현재 페이지 블록 구하기
+        $block_start = (($block_num - 1) * $block_ct) + 1; // 블록의 시작번호
+        $block_end = $block_start + $block_ct - 1; //블록 마지막 번호
 
-                $total_page = ceil($row_num / $list); // 페이징한 페이지 수 구하기
-                if($block_end > $total_page) 
-                  $block_end = $total_page; //만약 블록의 마지막 번호가 페이지수보다 많다면 마지막번호는 페이지 수
-                $total_block = ceil($total_page/$block_ct); //블럭 총 개수
-                $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다.
-
-
-                $sql2 = mq("select * from recruit_board order by idx desc limit $start_num, $list");//5
-
-
-                
-                while($board = $sql2->fetch_array())
-                {
-                    //title변수에 DB에서 가져온 title을 선택
-                    $title=$board["title"];
-                    $con_idx = $board["idx"];
-                    $reply_count = mq("SELECT COUNT(*) AS cnt FROM recruit_board_reply where con_num=$con_idx");
-                    $con_reply_count = $reply_count->fetch_array();
-                    if(strlen($title)>30)
-                    {
-                      //title이 30을 넘어서면 ...표시
-                      $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
-                    }
-					          if($board["file"]){
-						        $file_r="<img src = 'uploads/$board[file_copied]' style=width:120px; height:80px>";
-                 }
-               ?>
-            
-              
-            <tbody>
+        $total_page = ceil($row_num / $list); // 페이징한 페이지 수 구하기
+        if($block_end > $total_page) 
+        $block_end = $total_page; //만약 블록의 마지막 번호가 페이지수보다 많다면 마지막번호는 페이지 수
+        $total_block = ceil($total_page/$block_ct); //블럭 총 개수
+        $start_num = ($page-1) * $list; //시작번호 (page-1)에서 $list를 곱한다.
+        
+        if($category){
+            $sql = mq("select * from recruit_board where category like '$category%' order by idx desc" );
+           }
+                  while($board = $sql->fetch_array())
+                  {
+                   $num = $board["idx"];
+                   $title=$board["title"];
+                  if(strlen($title)>30)
+                  {
+                    //title이 30을 넘어서면 ...표시
+                    $title=str_replace($board["title"],mb_substr($board["title"],0,30,"utf-8")."...",$board["title"]);
+                  }
+        
+                  if($board["file"]){
+                    $bo_image="<img src = 'uploads/$board[file_copied]' style= width:120px;height:150px;>";
+                  }
+        ?>
+        <tbody>
             <tr id="board_list">
               <td width="70"><?php echo $board['idx']; ?></td>
-              <td width="400"><a href="recruit_read.php?num=<?=$board['idx'];?>"><?php echo $title."[".$con_reply_count["cnt"]."]";?></a></td>
+              <td width="400"><a href="recruit_read.php?num=<?=$board['idx'];?>"><?php echo $title;?></a></td>
               <td width="200"><?php echo $board['period_s']?>~<?php echo $board['period_e']?></td>
               <td width="100"><?php echo $board['nic_name']?></td>
               <td width="100"><?php echo $board['date']?></td>
@@ -102,7 +108,7 @@
             ?>
                   
           
-          </table>       
+          </table>         
           <!---페이징 넘버 --->
           <div id="page_num">
             <ul>
@@ -154,8 +160,10 @@
         ?>
         
         </div>
-      </div>
+        </div>
       </main>
       </div>
       </body>
   </html>
+
+
