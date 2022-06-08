@@ -144,9 +144,5 @@
           </div>
           </main>
       </div>
-      <div class="wrapper row4">
-      <footer id="footer" class="hoc clear"> 
-      </footer>
-      </div>
     </body>
 </html>
