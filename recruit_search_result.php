@@ -35,6 +35,8 @@
   /* 검색 변수 */
   $catagory = $_GET['catgo'];
   $search_con = $_GET['search'];
+  $search_result = str_replace(" ","", $search_con); 
+
   
 ?>
 
@@ -64,11 +66,11 @@
             </thead>
         <?php
         if($catagory == "title")
-          $sql2 = mq("select * from recruit_board where replace(title,' ','') like '%$search_con%' order by idx desc");
+          $sql2 = mq("select * from recruit_board where replace(title,' ','') like '%$search_result%' order by idx desc");
         elseif($catagory == "user_nic")
-          $sql2 = mq("select * from recruit_board where replace(nic_name,' ','') like '%$search_con%' order by idx desc");
+          $sql2 = mq("select * from recruit_board where replace(nic_name,' ','') like '%$search_result%' order by idx desc");
         elseif($catagory == "content")
-         $sql2 = mq("select * from recruit_board where replace(content,' ','') like '%$search_con%' order by idx desc");
+         $sql2 = mq("select * from recruit_board where replace(content,' ','') like '%$search_result%' order by idx desc");
         while($board = $sql2->fetch_array()){
             $con_idx = $board["idx"];
             $reply_count = mq("SELECT COUNT(*) AS cnt FROM recruit_board_reply where con_num=$con_idx");
