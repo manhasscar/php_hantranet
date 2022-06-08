@@ -17,7 +17,7 @@
     </header>
       <div class="wrapper row3">
         <main class="hoc container clear">
-        <div class="content three_quarter"> 
+        <div class="content"> 
         <h1>물품 거래 게시판</h1>
         <h4>중고 거래 게시판입니다.</h4>
         <div id="search_box">
