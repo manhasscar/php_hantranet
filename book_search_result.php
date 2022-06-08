@@ -22,38 +22,29 @@
       /* 검색 변수 */
       $catagory = $_GET['catgo'];
       $search_con = $_GET['search'];
-      ?>
-      <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
-      <?php
-      if(isset($_GET['college'])){
-        $college = $_GET['college'];
-      ?>
-      <h3><?php echo $college; ?> 
-      <?php
+      echo "<h1>{$catagory}에서 $search_con 검색결과</h1>";
+      if(isset($_GET['college'])){  
+      $college = $_GET['college'];
+      echo "<h3>$college </h3> ";
       }
-      else
-        $college = "";
+      else $college = "";
       if(isset($_GET['major'])){
         $major = $_GET["major"];
+      echo "<h3>$major</h3>";
+      } else $major ="";
       ?>
-      <?php echo $major; ?> </h3>
-      <?php }
-      else
-        $major ="";
-      ?>
-    
-    <h4 style="margin-top:30px;"><a href="book_list.php">홈으로</a></h4>
-    <div id="search_box">
-      <form action="book_search_result.php" method="get" style="display:flex;" >
-      <select name="catgo">
-        <option value="제목">제목</option>
-        <option value="저자">저자</option>
-        <option value="출판사">출판사</option>
-      </select>
-      <input type="text" name="search" size="40" required="required"/> <button>검색</button>
-    </form>
-  </div>
-    <table class="list-table">
+      <h4 style="margin-top:30px;"><a href="book_list.php">홈으로</a></h4>
+      <div id="search_box">
+        <form action="book_search_result.php" method="get" style="display:flex;" >
+        <select name="catgo">
+          <option value="제목">제목</option>
+          <option value="저자">저자</option>
+          <option value="출판사">출판사</option>
+        </select>
+        <input type="text" name="search" size="40" required="required"/> <button>검색</button>
+        </form>
+      </div>
+      <table class="list-table">
         <thead>
             <tr>
                 <th width="70">번호</th>

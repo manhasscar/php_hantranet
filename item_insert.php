@@ -50,9 +50,6 @@
 		}
 	
 	}
-
-
-	
 	if($username && $name && $content){
 	$sql = mq("insert into item_board (user_id, nic_name, title, item_price, item_state, item_content, category, file, file_type, date, file_copied) 
 	values('".$username."', '".$usernic."', '".$name."', '".$price."', '".$state."', '".$content."' ,'".$category."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
@@ -61,8 +58,6 @@
       while($idx = $sql2->fetch_array()){
         $idx2 = $idx['idx'];
       } //글 작성이후 작성한 글로 바로 갈수 있게.
-
-	// mysqli_close($db);                // DB 연결 끊기
 
 	echo "<script>
 			alert('글쓰기 완료되었습니다.');

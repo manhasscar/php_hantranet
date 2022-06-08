@@ -7,9 +7,6 @@
 		
 	}
   
-  /*.sdb_holder > ul > li:hover > ul {
-		display:block;
-	}*/
   </style>
 
 

@@ -1,46 +1,37 @@
-<?php
-  
-?>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>게시판</title>
 <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
 <link rel="stylesheet" type="text/css" href="mystyle.css" />
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
-
 <style>
-#image{
-      float:left;
-    }
-    button{
+#image{float:left; }
+button{
       background-color: white;
 	    padding: 2px;
 	    border: solid 1px gray;
-    }
-  
-  </style>
+}
+</style>
 </head>
 <body>
 <div id="board_area">
 <header>
       <?php include "header.php";?>
-    </header>
+</header>
     <div class="wrapper row3">
-  <main class="hoc container clear"> 
-    <div class="content"> 
-
-<?php
-
-  /* 검색 변수 */
-  $catagory = $_GET['catgo'];
-  $search_con = $_GET['search'];
-?>
-
-  <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
-  <h4 style="margin-top:30px;"><a href="item_list.php">홈으로</a></h4>
-  <div id="search_box2">
+      <main class="hoc container clear"> 
+      <div class="content"> 
+      <?php
+        /* 검색 변수 */
+      $catagory = $_GET['catgo'];
+      $search_con = $_GET['search'];
+     ?>
+      <h1><?php echo $catagory; ?>에서 '<?php echo $search_con; ?>'검색결과</h1>
+      <h4 style="margin-top:30px;"><a href="item_list.php">홈으로</a></h4>
+      <div id="search_box2">
           <form action="item_search_result.php" method="get">
             <select name="catgo">
               <option value="name">제목</option>
@@ -49,10 +40,10 @@
             </select>
             <input type="text" name="search" size="40" required="required" /> <button>검색</button>
           </form>
-        </div>
-    <table class="list-table">
+      </div>
+      <table class="list-table">
          <thead>
-                <tr>
+              <tr>
                 <th width="70">번호</th>
                     <th width="500">물품 정보 </th>
 				          	<th width="120">가격</th>
@@ -88,9 +79,8 @@
             </tbody>
 
       <?php } ?>
-    </table>
-
-          </div>
-</div>
+      </table>
+    </div>
+  </div>
 </body>
 </html>

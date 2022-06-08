@@ -1,9 +1,9 @@
 <meta charset='utf-8'>
 <?php
 	include ('db_connect.php');
-    $send_id =$_POST['send_id'];
-    $rv_id = $_POST['rv_id'];
-    $content = $_POST['content'];
+    $send_id =$_POST['send_id']; //보내는 사람
+    $rv_id = $_POST['rv_id']; //받는 사람
+    $content = $_POST['content']; //내용 
 	$content = htmlspecialchars($content, ENT_QUOTES);
 	$regist_day = date("Y-m-d H:i:s");  // 현재의 '년-월-일-시-분'을 저장
 
@@ -34,8 +34,6 @@
 			");
 		exit;
 	}
-
-	// mysqli_close($con);                // DB 연결 끊기
 
 	echo "
 	   <script>

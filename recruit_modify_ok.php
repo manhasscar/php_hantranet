@@ -29,7 +29,7 @@
 		$copied_file_name = $new_file_name.".".$file_ext;  //날짜형식으로 저장     
 		$uploaded_file = $upload_dir.$copied_file_name; //경로 저장
 	
-		if(move_uploaded_file($upfile_tmp_name,$uploaded_file)!==false){
+		if(!move_uploaded_file($upfile_tmp_name,$uploaded_file)){
 		print "파일 업로드  실패 : ";
 		switch ($upfile_error) {
 			case UPLOAD_ERR_INI_SIZE:
@@ -48,15 +48,18 @@
 			print "임시 디렉토리가 없습니다.<br>";
 			break;
 		}
-		print_r($_FILES);
 		}
 	
 	}
 
 	if($username && $title && $content){
+		if($upfile_name && !$upfile_error){
 	$sql = mq("update recruit_board set title = '".$title."',  category = '".$category."', period_s = '".$startdate."', period_e = '".$enddate."', content = '".$content."', file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$rno."'");
-	// mysqli_close($db);                // DB 연결 끊기
-
+		}
+		else{
+			$sql = mq("update recruit_board set title = '".$title."',  category = '".$category."', period_s = '".$startdate."', period_e = '".$enddate."', content = '".$content."', file = '".$upfile_name."', file_type ='".$upfile_type."' where idx = '".$rno."'");
+	
+		}
 	echo "<script>
 			alert('수정이 완료되었습니다.');
 			location.href='recruit_read.php?num=$rno';

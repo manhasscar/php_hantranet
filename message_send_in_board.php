@@ -40,11 +40,6 @@
 			");
 		exit;
 	}
-	else{
-		/*$sql=mq("select * from book_board where idx='".$board_idx."'"); 
-		$board = $sql -> fetch_array();
-		$rv_id= $board['nic_name'];*/
-	}
 ?>
 <div class="wrapper row3">
 <main class="hoc container clear"> 

@@ -23,9 +23,6 @@
 	padding: 10px 0 15px 0;
     border-bottom: solid 1px gray;
 }
-  
- 
-  
   .board_img > img{
 	  width: 60%;
   }

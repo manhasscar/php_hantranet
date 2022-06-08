@@ -36,8 +36,6 @@
 		exit;
 	}
 
-	// mysqli_close($con);                // DB 연결 끊기
-
 	echo "
 	   <script>
 	    location.href = 'my_message_result.php?info=message&board=send';

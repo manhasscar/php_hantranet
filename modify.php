@@ -1,9 +1,4 @@
 <!--- 게시글 수정 -->
-
-<?php
-	
-    
- ?>
 <!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
@@ -86,10 +81,7 @@
                         <textarea name="title" id="utitle" rows="1" cols="55" placeholder="제목" maxlength="100" required><?php echo $board['title']; ?></textarea>
                     </div>
                     <div class="wi_line"></div>
-                    <!--<div id="in_name">
-                        <textarea name="name" id="uname" rows="1" cols="55" placeholder="글쓴이" maxlength="100" required><?php// echo $board['name']; ?></textarea>
-                    </div>-->
-                    <div class="wi_line"></div>
+                
                     <div id="in_content">
                         <textarea name="content" id="ucontent" placeholder="내용" required><?php echo $board['content']; ?></textarea>
                     </div>

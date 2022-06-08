@@ -38,18 +38,6 @@
           document.board_form.price.focus();
           return;
       }
-	//   if (!document.board_form.college.value)
-    //   {
-    //       alert("단과대를 선택하세요!");    
-    //       document.board_form.college.focus();
-    //       return;
-    //   }
-	//   if (!document.board_form.major.value)
-    //   {
-    //       alert("전공을 선택하세요!");    
-    //       document.board_form.major.focus();
-    //       return;
-    //   }
 	  if (!document.board_form.file.value)
       {
           alert("이미지는 필수입니다!");    

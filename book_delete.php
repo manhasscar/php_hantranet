@@ -17,6 +17,15 @@
   if($board_idx && $board_id){
   $sql = mq("delete from book_board where idx='$book_idx';");
   $sql2 = mq("delete from book_board_reply where con_num='$book_idx';");
+  
+    if($sql&&$sql2){
+    
+      echo "<script>alert('게시글이 삭제되었습니다.');
+       location.href='book_list.php';</script>";
+      }else{
+      echo "<script>alert('게시글 삭제에 실패했습니다.');
+      history.back();</script>";
+   }
   }
   
   if($mypage_num){
@@ -36,24 +45,17 @@
   
       $sql = mq("delete from book_board where idx='$num';");
       $sql2 = mq("delete from book_board_reply where con_num='$book_idx';");
-  }       
-  
-  echo "
+    }       
+    if($sql || $sql2){
+    echo "
        <script>
            location.href = 'my_page_result.php?info=content&board=book';
        </script>
      ";
-  }
-  if($sql&&$sql2){
-    
-    echo "<script>alert('게시글이 삭제되었습니다.');
-    location.href='book_list.php';</script>";
-  }else{
+    }
+    else{
       echo "<script>alert('게시글 삭제에 실패했습니다.');
-      history.back();</script>";
-  }
-  
-  
-  ?>
-
+     history.back();</script>";
+    }
+}
 ?>

@@ -24,7 +24,7 @@
           <li class="nav" onclick = "dp_menu('subMenu1')" style="cursor: pointer;"><a class="btn1">내가 쓴 글</a>
             <ul id = "subMenu1" style="display: none;">
               <li><a href="my_page_result.php?info=content">커뮤니티</a></li>
-              <li><a href="my_page_result.php?info=content&board=book">도서래게시판</a></li>
+              <li><a href="my_page_result.php?info=content&board=book">도서거래게시판</a></li>
               <li><a href="my_page_result.php?info=content&board=item">중고거래게시판</a></li>
               <li><a href="my_page_result.php?info=content&board=recruit">정보게시판</a></li>
             </ul>
@@ -43,196 +43,107 @@
         <div class="content three_quarter"> 
         <h1>내정보</h1>
         <?php
-            if(isset($_GET["info"]))
-                $info = $_GET["info"];
+            if(isset($_GET["info"])) $info = $_GET["info"];
             else $info = "";
-            if(isset($_GET["board"]))
-            $board = $_GET["board"];
+            if(isset($_GET["board"])) $board = $_GET["board"];
             else $board = "";
-            if(isset($_GET['page'])){
-                $page = $_GET['page'];
-              }
-              else{
-                $page = 1;
-              }
-        ?>
-              <?php
-            
-                if($info == "content" && ($board =="book" || $board == "item")){
-                ?>
-                 <table class="list-table">
+            if(isset($_GET['page'])) $page = $_GET['page'];
+           else $page = 1;
+          
+           if($info == "content"){
+               echo 
+                 "<table class='list-table'>
                   <thead>
                      <tr>
-                    <th width="70">선택</th>
-                    <th width="70">번호</th>
-                    <th width="500">제목</th>
-                    <th width="100">작성일</th>
+                    <th width='70'>선택</th>
+                    <th width='70'>번호</th>
+                    <th width='500'>제목</th>
+                    <th width='100'>작성일</th>
                     </tr>
-                 </thead>
-                <?php
-                  if($board == "book"){ ?>
-                   <form method="post" action="book_delete.php">
-                  <?php 
-                    $sql2 = mq("select * from book_board where user_id='$userid' order by idx desc");}
-                    else { ?>
-                    <form method="post" action="item_delete.php">
-                    <?php 
-                      $sql2 = mq("select * from item_board where user_id='$userid' order by idx desc");}
-                    while($board = $sql2->fetch_array())
-                    {
-                        $num = $board["idx"];
-                        $title=$board["title"];
-                        if(strlen($title)>30)
-                        {
-                          $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
-                        }
-                  ?>
-                    <tbody>
-                     <tr>
-                     <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
-                      <td width="70"><?php echo $board['idx']; ?></td>
-                      <?php if($board == "book"){ ?>
-                      <td width="500"><a href="book_read.php?num=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
-                      <?php } else { ?>
-                        <td width="500"><a href="item_read.php?num=<?php echo $board["idx"];?>"><?php echo $title;?></a></td> 
-                        <?php } ?>
-                      <td width="100"><?php echo $board['date']?></td>
-                  </tr>
-                </tbody>       
-                <?php
-                    }?>
-                    </table>
-                    <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
-                   </form
-                <?php  } 
-                elseif($info == "content" && $board == "recruit"){
-                  ?>
-                  <table class="list-table">
-                  <thead>
-                     <tr>
-                    <th width="70">선택</th>
-                    <th width="70">번호</th>
-                    <th width="500">제목</th>
-                    <th width="100">작성일</th>
-                    </tr>
-                 </thead>
-                <form method="post" action="recruit_delete.php">
-                  <?php
-                    $sql2 = mq("select * from recruit_board where user_id='$userid' order by idx desc");
-                    while($board = $sql2->fetch_array())
-                    {
-                        $num = $board["idx"];
-                        $title=$board["title"];
-                        if(strlen($title)>30)
-                        {
-                          //title이 30을 넘어서면 ...표시
-                          $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
-                        }
-                  ?>
-                    <tbody>
-                     <tr>
-                     <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
-                      <td width="70"><?php echo $board['idx']; ?></td>
-                      <td width="500"><a href="recruit_read.php?num=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
-                      <td width="100"><?php echo $board['date']?></td>
-                  </tr>
-                </tbody>       
-                <?php
-                    }?>
-                    </table>
-                    <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
-                   </form>
-               <?php }
-                elseif($info == "content"){
-                  ?>
-                <table class="list-table">
-                  <thead>
-                     <tr>
-                    <th width="70">선택</th>
-                    <th width="70">번호</th>
-                    <th width="500">제목</th>
-                    <th width="100">작성일</th>
-                    </tr>
-                 </thead>
-                     <form method="post" action="delete.php">
-                     <?php
+                 </thead>";
+                  if($board == "book"){
+                   echo "<form method='post' action='book_delete.php'>";
+                   $sql2 = mq("select * from book_board where user_id='$userid' order by idx desc");}
+                  elseif($board == "item") { 
+                    echo "<form method='post' action='item_delete.php'>";
+                    $sql2 = mq("select * from item_board where user_id='$userid' order by idx desc");}
+                  elseif($board == "recruit") { 
+                    echo "<form method='post' action='recruit_delete.php'>";
+                    $sql2 = mq("select * from recruit_board where user_id='$userid' order by idx desc");}
+                  else{
+                    echo "<form method='post' action='delete.php'>";
                     $sql2 = mq("select * from board where id='$userid' order by idx desc");
-                while($board = $sql2->fetch_array())
-                {
-                    $num = $board['idx'];
-                    $title=$board["title"];
-                    if(strlen($title)>30)
+                  }
+                    while($boards = $sql2->fetch_array())
                     {
-                      //title이 30을 넘어서면 ...표시
-                      $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
-                    }
-                
-              ?>
-                <tbody>
-                 <tr>
-                 <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
-                  <td width="70"><?php echo $board['idx']; ?></td>
-                  <td width="500"><a href="read.php?board_id=board&idx=<?php echo $board["idx"];?>"><?php echo $title;?></a></td>
-                  <td width="100"><?php echo $board['date']?></td>
-              </tr>
-            </tbody>    
-            <?php
-              } ?>
-              </table>
-               <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
-              </form>
-             <?php }
-            ?>
-         
-          <?php
-            if($info == "reply"){  
-              ?>
-              <table class="list-table">
-              <thead>
-              <tr>
-                    <th width="70">글</th>
-                    <th width="500">댓글</th>
-                    <th width="100">작성일</th>
-                </tr>
-            </thead>
-                 <?php
+                        $num = $boards["idx"];
+                        $title=$boards["title"];
+                        if(strlen($title)>30)
+                        {
+                          $title=str_replace($title,mb_substr($title,0,30,"utf-8")."...",$title);
+                        }
+                  ?>
+                    <tbody>
+                     <tr>
+                     <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
+                      <td width="70"><?php echo $boards['idx']; ?></td>
+                      <?php if($board == "book"){ 
+                     echo "<td width='500'><a href='book_read.php?num=$num'>$title</a></td>";
+                     } elseif($board == "item") { 
+                     echo "<td width='500'><a href='item_read.php?num=$num'>$title</a></td>"; 
+                     } elseif($board == "recruit"){
+                      echo "<td width='500'><a href='recruit_read.php?num=$num'>$title</a></td>"; 
+                     }else{
+                      echo "<td width='500'><a href='read.php?board_id=board&idx=$num'>$title</a></td>";
+                     } ?>
+                      <td width="100"><?php echo $boards['date']?></td>
+                  </tr>
+                </tbody>       
+                <?php } ?>
+                </table>   
+                <button type="submit" style="float:right;" class="btn">선택된 글 삭제</button>
+                </form>    
+                <?php  }   
+                if($info == "reply"){  
+              echo "
+                <table class='list-table'>
+                <thead>
+                  <tr>
+                    <th width='70'>글</th>
+                    <th width='500'>댓글</th>
+                    <th width='100'>작성일</th>
+                  </tr>
+               </thead>";
                 $sql2 = mq("SELECT book_board.idx, book_board.title, book_board_reply. * from book_board inner join book_board_reply on book_board.idx = book_board_reply.con_num where book_board_reply.id = '$userid' UNION ALL 
                 SELECT board.idx, board.title, board_reply. * from board inner join board_reply on board.idx = board_reply.con_num where board_reply.id = '$userid' UNION ALL
                 SELECT recruit_board.idx, recruit_board.title, recruit_board_reply. * from recruit_board join recruit_board_reply on recruit_board.idx = recruit_board_reply.con_num where recruit_board_reply.id = '$userid' UNION ALL
                 SELECT item_board.idx, item_board.title, item_board_reply. * from item_board join item_board_reply on item_board.idx = item_board_reply.con_num where item_board_reply.id = '$userid';");
                     while($board = $sql2->fetch_array())
-            {
-                
-              $num = $board["idx"];
-                $content=$board["content"];
-                if(strlen($content)>30)
-                {
-                  $content=str_replace($content,mb_substr($content,0,30,"utf-8")."...",$content);
-                }
-            ?>
-              <tbody>
-                 <tr> 
-                  <td width="70"><?php echo $board['title']; ?></td>
-                  <td width="500"><?php echo $content;?></a></td>
-                  <td width="100"><?php echo $board['date']?></td>
-              </tr>
-            </tbody>
-            <?php } 
-            } 
-            ?>
-          </table>
-   
-
-          </div>  
-        </div>
-      </main>
-      <div class="wrapper row4">
-      <footer id="footer" class="hoc clear"> 
-      </footer>
-      </div>
-      </body>
-  </html>
-  <script>
+                  {
+                      $num = $board["idx"];
+                      $content=$board["content"];
+                      if(strlen($content)>30)
+                       {
+                          $content=str_replace($content,mb_substr($content,0,30,"utf-8")."...",$content);
+                       }
+                    ?>
+                  <tbody>
+                  <tr> 
+                      <td width="70"><?php echo $board['title']; ?></td>
+                      <td width="500"><?php echo $content;?></a></td>
+                      <td width="100"><?php echo $board['date']?></td>
+                   </tr>
+                  </tbody>
+                  <?php } 
+                   } 
+                   ?>
+                </table>
+               </div>  
+            </div>
+        </main>
+    </body>
+ </html>
+<script>
         function dp_menu(a){
             
             let click = document.getElementById(a);
@@ -244,4 +155,4 @@
  
             }
         }
-    </script>
+</script>

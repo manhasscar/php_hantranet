@@ -23,38 +23,30 @@
         if(isset($_GET["college"])){
             $college=$_GET["college"];
             if($college == "교양"){
-           ?>
-            <h1><?php echo "교양";?></h1>
-        <?php
+           echo "<h1>교양</h1>";
         }
-         elseif($college == "전공"){ ?> 
-         <h1><?php echo "전공";?></h1>
-      <?php 
+         elseif($college == "전공"){
+          echo "<h1>전공</h1>";
          }
-         else { ?>
-         <h1><?php echo "{$college}대학";?></h1>
-         <?php 
+         else {
+          echo "<h1>{$college}대학</h1>";
          }
-      }
+       }
         else
         $college="";
         if(isset($_GET["major"])){
            $major = $_GET["major"];
-        ?>
-        <h1><?php echo $major;?></h1>
-        <?php
+        echo "<h1>$major</h1>";
         }
         else
         $major="";
-
-        if(isset($_GET['page'])){
+         if(isset($_GET['page'])){
             $page = $_GET['page'];
           }
           else{
             $page = 1;
           }
         ?>
-      
       <div id="search_box">
           <form action="book_search_result.php" method="get" style="display:flex;">
           <input type="hidden" name="college" value="<?php echo $college;?>">

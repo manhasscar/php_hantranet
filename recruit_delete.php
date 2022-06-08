@@ -1,13 +1,11 @@
 <?php
   include ('db_connect.php');
 
-  $board_idx = $_SESSION['board_idx'];
-  $board_id = $_SESSION['board_id'];
   if(isset($_GET['idx']))
   $recruit_idx = $_GET['idx'];
   else $recruit_idx="";
   if(isset($_POST['item']))
-  $mypage_num = $_POST['item'];
+  $mypage_num = $_POST['item']; //게시글 번호 
   else
   $mypage_num ="";
 

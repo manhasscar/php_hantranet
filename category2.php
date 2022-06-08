@@ -7,9 +7,6 @@
 		
 	}
   
-  /*.sdb_holder > ul > li:hover > ul {
-		display:block;
-	}*/
   </style>
 
 <div class="sidebar one_quarter first"> 
@@ -23,17 +20,4 @@
           <li class="nav" style="cursor: pointer;"><a href="recruit_category_result.php?category=기타" class="btn1">기타</a></li>
         </ul>
       </nav>
-    </div>
-    <!-- <script>
-        function dp_menu(a){
-            
-            let click = document.getElementById(a);
-            if(click.style.display === "none"){
-                click.style.display = "block";
- 
-            }else{
-                click.style.display = "none";
- 
-            }
-        }
-    </script> -->
+</div>

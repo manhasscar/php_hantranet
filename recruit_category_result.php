@@ -9,7 +9,6 @@
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 <style>
   .btn1, .btn1.inverse:hover{color:#FFFFFF; background-color:#F0F8FF; border-color:#05B3F2;}
-  /* .btn2, .btn2.inverse:hover{color:#FFFFFF; background-color:#00BFFF; border-color:#05B3F2;} */
   </style>
 </head>
 <body id="top">
@@ -21,21 +20,12 @@
     <?php include('category2.php');?>
     <div class="content three_quarter"> 
         <?php
-        if(isset($_GET["category"])){
-            $category=$_GET["category"];
-           ?>
-            <h1><?php echo "{$category}";?></h1>
-        <?php
+        if(isset($_GET["category"])){ $category=$_GET["category"];
+            echo "<h1>{$category}</h1>";
         }
-        else
-        $category="";
-
-        if(isset($_GET['page'])){
-            $page = $_GET['page'];
-          }
-          else{
-            $page = 1;
-          }
+        else  $category="";
+        if(isset($_GET['page'])) $page = $_GET['page'];
+          else $page = 1;   
         ?>
       
       <div id="search_box">
@@ -147,16 +137,11 @@
           </div>
           <?php
             if(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){
-              ?>
-              <footer><a class="btn" href="recruit_form.php"  style="float:right;">글쓰기</a></footer>
-              <?php
-
+            echo " <footer><a class='btn' href='recruit_form.php'  style='float:right'>글쓰기</a></footer>";
              }
             elseif(isset($_SESSION['userid'])){
-             ?>
-              <footer><a class="btn" href="recruit_form.php" style="float:right;">글쓰기</a></footer>
-        <?php
-        }
+             echo " <footer><a class='btn' href='recruit_form.php' style='float:right'>글쓰기</a></footer>";
+          }
         ?>
         
         </div>

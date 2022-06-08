@@ -1,6 +1,5 @@
 <?php
     include ('db_connect.php');
-    
 	$username = $_SESSION['userid'];
 	$usernic = $_SESSION['user_nic'];
     $name = $_POST['name'];
@@ -8,6 +7,7 @@
     $category = $_POST['category'];
     $state = $_POST['state'];
     $content = $_POST['content'];
+	$ino = $_GET['num']; //게시글 번호
     $date = date('Y-m-d H:i:s');
   
     $upload_dir = 'uploads/'; //경로
@@ -28,7 +28,7 @@
 		$copied_file_name = $new_file_name.".".$file_ext;  //날짜형식으로 저장     
 		$uploaded_file = $upload_dir.$copied_file_name; //경로 저장
 	
-		if(move_uploaded_file($upfile_tmp_name,$uploaded_file)!==false){
+		if(!move_uploaded_file($upfile_tmp_name,$uploaded_file)){
 		print "파일 업로드  실패 : ";
 		switch ($upfile_error) {
 			case UPLOAD_ERR_INI_SIZE:
@@ -47,27 +47,11 @@
 			print "임시 디렉토리가 없습니다.<br>";
 			break;
 		}
-		print_r($_FILES);
 		}
 	
 	}
-
-    $username = $_SESSION['userid'];
-	$usernic = $_SESSION['user_nic'];
-    $name = $_POST['name'];
-    $price = $_POST['price'];
-    $category = $_POST['category'];
-    $state = $_POST['state'];
-    $content = $_POST['content'];
-    $date = date('Y-m-d H:i:s');
-	$ino = $_GET['num'];
-
     if($username && $name && $content){
         $sql = mq("update item_board set title = '".$name."', item_price = '".$price."', category = '".$category."', item_state = '".$state."', item_content = '".$content."', file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$ino."'");
-    
-
-        // mysqli_close($db);                // DB 연결 끊기
-    
         echo "<script>
                 alert('수정이 완료되었습니다.');
                 location.href='item_read.php?num=$ino';

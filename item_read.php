@@ -52,8 +52,8 @@
 		  <h2><?=$board['title']?></h2>
 	</div>
 		   <div id="user_info">
-			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
-				  <div id="bo_line"></div> 
+		   <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
+		<div id="bo_line"></div> 
 			</div>
 			<div>
 	</div>

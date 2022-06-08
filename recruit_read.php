@@ -44,9 +44,6 @@
 	<h1>
 	<?php
 		$rcno = $_GET['num']; /* rcno함수에 idx값을 받아와 넣음*/
-		$hit = mysqli_fetch_array(mq("select * from recruit_board where idx ='".$rcno."'"));
-		// $hit = $hit['hit'] + 1;
-		// $fet = mq("update ".$board_id." set hit = '".$hit."' where idx = '".$rcno."'");
 		$sql = mq("select * from recruit_board where idx='".$rcno."'"); /* 받아온 idx값을 선택 */
 		$board = $sql->fetch_array();
 		$_SESSION['board_idx'] = $rcno; 
@@ -62,7 +59,6 @@
 		</div>
 		   <div id="user_info">
 			      <p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
-                  <!-- 조회:<?php echo $board['hit']; ?> -->
 				  <div id="bo_line"></div> 
 			</div>
 			<div>
@@ -72,9 +68,6 @@
 			<?php
 			if ($board['file']){
 			?>
-			<!-- <div>
-				파일 : <a href="uploads/<?php echo $board['file'];?>" download><?php echo $board['file']; ?></a>
-			</div> -->
 			<div class="proudctimage">
 			    <div class="borad_img">
                 <?php 
@@ -164,13 +157,11 @@
 				 
 				  ?>
 			  	
-				  <!--<a class="dat_edit_bt" href="#">수정</a>-->
 				<a class="dat_delete_bt" href="recruit_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $rcno; ?>">삭제</a>
 			  
               <?php
 			}
 			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<!--<a class="dat_edit_bt" href="#">수정</a>-->
 				<a class="dat_delete_bt" href="recruit_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $rcno; ?>">삭제</a>
 			<?php
 			}

@@ -1,6 +1,6 @@
 <?php
 		include ('db_connect.php');
-        $ino = $_GET['num'];
+        $ino = $_GET['num'];//중고거래게시글 번호
 		$username = $_SESSION['userid'];
         $usernic = $_SESSION['user_nic'];
 		$date = date("Y-m-d H:i:s");

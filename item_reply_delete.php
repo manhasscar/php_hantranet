@@ -2,8 +2,8 @@
 include ("db_connect.php");
 
 
-$item_num = $_GET['num'];
-$ino = $_GET['idx']; 
+$item_num = $_GET['num']; //게시글 번호
+$ino = $_GET['idx']; //댓글 번호
 
 	
 $sql = mq("delete from item_board_reply where idx='".$ino."'"); 

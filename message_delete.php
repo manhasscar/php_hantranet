@@ -2,9 +2,7 @@
   include ('db_connect.php');
 
   $message_idx = $_SESSION['message_idx'];
-  if(isset($_GET["mode"]))
-  $mode = $_GET["mode"];
-  else $mode = "";
+
   if(isset($_POST["item"]))
   $message_num=$_POST["item"];
   else $message_num ="";
@@ -45,7 +43,7 @@
     location.href='my_message_result.php?info=message&board=send';</script>";
     }else{
       echo "<script>alert('쪽지가 삭제되었습니다.');
-      location.href=my_message_result.php?info=message&board=rv';</script>";
+      location.href='my_message_result.php?info=message&board=rv';</script>";
     }
 }else{
     echo "<script>alert('쪽지 삭제에 실패했습니다.');

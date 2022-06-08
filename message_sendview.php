@@ -1,112 +1,14 @@
-<?php
-	
-	if(isset($_SESSION['user_nic'])) $user_nic=$_SESSION['user_nic'];
-	else $user_nic="";
-?>
 <!doctype html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>게시판</title>
   <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+  <link rel="icon" href="favicon.ico" type="image/x-icon" sizes="16x16">
+  <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+ <link rel="stylesheet" type="text/css" href="css/common.css"/>
+ <link rel="stylesheet" type="text/css" href="css/read.css"/>
   <style>
-.row1 {
-    color: #4aa8d8;
-    background-color: #FFFFFF;
-}
-.row3 {
-    color: #222222;
-    background-color: #FFFFFF;
-}
-.row4 {
-    color: #CBCBCB;
-    background-color: #4aa8d8;
-}
-.splitclrs {
-    color: #929292;
-    background: linear-gradient(to right, #fff 0%,#Fff 50%,#FFFFFF 50%,#FFFFFF 100%);
-}
-.heading{
-    color: #171414;
-    font-weight: bold;
-}
-p{
-    color: #171414;
-}
-.plus{
-    float: right !important;
-}
-.list-table {
-	width: 100%;
-	margin-top: 40px;
-}
-.list-table thead th{
-	height:40px;
-	border-top:2px solid #09C;
-	border-bottom:1px solid #CCC;
-	font-weight: bold;
-	font-size: 17px;
-}
-.list-table tbody td{
-	text-align:center;
-	padding:10px 0;
-	border-bottom:1px solid #CCC; height:20px;
-	font-size: 14px
-}
-th {
-    color: #000000;
-    background-color: #FFFFFF;
-    text-align: center;
-}
-thead {
-    display: table-header-group;
-    vertical-align: middle;
-    border-color: inherit;
-}
-table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#FFFFFF;}
-tr, #comments li, #comments input[type="submit"], #comments input[type="reset"] {
-    color: inherit;
-    background-color: #ffffff;
-}
-h1 {
-    display: block;
-    font-size: 2em;
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    font-weight: bold;
-}
-td{
-    color: #000000;
-}
-  #board_read {
-    width:100%;
-    position: relative;
-    word-break:break-all;
-  }
-  #user_info {
-    font-size:14px;
-	
-  }
-  #user_info ul li {
-    margin-left:10px;
-  }
-  #user_info > p {
-	display:flex;
-	justify-content: flex-end;
-	align-items: flex-end; 
-	height: 28px;
-  }
-  #bo_line {
-    width:100%;
-    height:2px;
-    background: gray;
-    margin-top:20px;
-  }
-  #bo_content {
-    margin-top:20px;
-  }
   #bo_ser {
     font-size:14px;
     color:black;
@@ -114,111 +16,7 @@ td{
     right: 0;
 	float:right;
   }
-  #bo_ser > ul > li {
-    list-style: none;
-    float:left;
-    margin-left:10px;
-  }
-  .board_img > img{
-	  width: 60%;
-  }
-  /* 댓글 */
-.reply_view {
-	width:100%;
-	margin-top:100px;
-	word-break:break-all;
-}
-.dap_lo {
-	font-size: 14px;
-	padding:10px 0 15px 0;
-	border-bottom: solid 1px gray;
-}
-.dap_to {
-	margin-top:5px;
-}
-.rep_me {
-	font-size:12px;
-}
-.rep_me ul li {
-	float:left;
-	width: 30px;
-}
-.dat_delete {
-	
-	display:none;
-}
-.dat_edit {
-	display:none;
-	
-}
-.dat_delete_bt{
-	color:black;
-	font-size:12px;
-}
-.dat_edit_bt {
-	color:black;
-	font-size:12px;
-}
-.dap_sm {
-	position: absolute;
-	top: 10px;
-}
-.dap_edit_t{
-	width:520px;
-	height:70px;
-	position: absolute;
-	top: 40px;
-}
-.re_mo_bt {
-	position: absolute;
-	top:40px;
-	right: 5px;
-	width: 90px;
-	height: 72px;
-}
-#re_content {
-	width:80%;
-	height: 56px;
-  resize: none;
-}
-.dap_ins {
-	margin-top:50px;
-}
-.re_bt {
-	position: absolute;
-	width:100px;
-	height:56px;
-	font-size:16px;
-	margin-left: 10px;
-}
-#foot_box {
-	height: 50px;
-}
-#board_title {
-	
-	float: left;
-	
-}
-
-#board_title > h2 {
-	
-	display:table-cell;
-	text-align: center;
-}
-
-button{
-      background-color: white;
-      
-      border: solid 1px gray;
-    }
-	a { 
-		text-decoration:none !important;
-		
-		color:black;
-	
-	}
-
-  </style>
+</style>
 </head>
 <body>
 <header>
@@ -228,8 +26,6 @@ button{
   <main class="hoc container clear"> 
     <div class="content"> 
 	<?php
-		$rep_number = $_GET['num'];
-		$mode = $_GET['mode'];
 		$bno = $_GET['num']; /* bno함수에 message idx값을 받아와 넣음*/
 		$sql = mq("select * from message where idx='".$bno."'"); /* 받아온 idx값을 선택 */
 		
@@ -264,24 +60,12 @@ button{
                      <a href="my_message_result.php?info=message&board=send">[목록으로]</a>
                 </li>
 				<li>
-					<a href="message_delete.php?mode=<?=$mode?>">[삭제]</a>
+					<a href="message_delete.php?board=send">[삭제]</a>
 				</li>
 		    </ul>
 		</div> 
-  <!--- 댓글 불러오기 -->
-<!--<div class="reply_view">
-	<h3>답장</h3>
-		<?php
-			$sql2 = mq("select * from message where rep_number='".$bno."' order by idx asc");
-			while($reply = $sql2->fetch_array()){
-		?>
-		<div class="dap_lo">
-			<div><b><?php echo $reply['send_id'];?></b></div>
-			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
-			<div class="rep_me dap_to"><?php echo $reply['regist_day']; ?></div>
-		</div>
-		<?php } ?>-->
+		</div>	
 </div>
-			</div>	 
+			 
 </body>
 </html>

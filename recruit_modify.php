@@ -50,9 +50,6 @@
 <body> 
 <header>
     <?php include "header.php";
-	
-    
-    
     $rno = $_GET['idx'];
 	$sql = mq("select * from recruit_board where idx='$rno';");
 	$board = $sql->fetch_array();
@@ -106,8 +103,5 @@
 	    </form>
 	</div> <!-- board_box -->
 </section> 
-<script src="book_form.js">
-</script>
-
 </body>
 </html>

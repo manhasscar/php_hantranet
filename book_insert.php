@@ -5,7 +5,7 @@
 	else $college = "";
 	if (isset($_POST['major'])) $major = $_POST['major'];
 	else $major = "";
-	$userid = $_SESSION['userid'];
+	$username = $_SESSION['userid'];
 	$usernic = $_SESSION['user_nic'];
     $name = $_POST['name'];
     $author = $_POST['author'];
@@ -59,9 +59,9 @@
 
 
 	
-	if($userid && $name && $content){
+	if($username && $name && $content){
 	$sql = mq("insert into book_board (user_id, nic_name, title, bo_author, bo_publisher, bo_date,  bo_price, bo_state, category, college, major, file, file_type, date, file_copied) 
-	values('".$userid."','".$usernic."', '".$name."', '".$author."', '".$publisher."', '".$publidate."', '".$price."', '".$content."' ,'".$category."', '".$college."', '".$major."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
+	values('".$username."','".$usernic."', '".$name."', '".$author."', '".$publisher."', '".$publidate."', '".$price."', '".$content."' ,'".$category."', '".$college."', '".$major."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
 
 	$sql2 = mq("select * from book_board where nic_name='".$usernic."' order by idx desc limit 1;");
       while($idx = $sql2->fetch_array()){

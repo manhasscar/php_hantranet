@@ -44,9 +44,7 @@ img{
     margin: 0 15px 10px 0;
     clear: left;
 }
-
-
-  </style>
+</style>
 </head>
 <body id="top">
 <header>
@@ -67,106 +65,91 @@ img{
 	</h1>
 <!-- 글 불러오기 -->
 <div id="board_read">
-
-<div id="board_title">
-	<h2><?php echo $board['title'];?></h2>
-  </div>
+	<div id="board_title">
+		<h2><?php echo $board['title'];?></h2>
+  	</div>
 	 <div id="user_info">
-			<p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
-			<div id="bo_line"></div> 
-	  </div>
-	  <div></div>
-<div class="wrapper splitclrs">
-  <div class="split clear">
-
-	  <?php 
-        echo "<img src = 'uploads/$board[file_copied]' style=width:170px; height:114p>";
-        ?>
-   
-    <div> 
-      <p class="nospace font-xs">
-	  <?php if($board['category'] == "교양")
-            echo "교양";
-           elseif($board['category']=="전공")
-            echo "전공"." > ".$board['college']." > ".$board['major'];
-		   else
-			echo "기타";
-      ?></p>
-      <h3 class="heading"><?php echo $board['title'];?></h3>
-      <p><strong class="cost"><?=$board['bo_price']?>원</strong></p>
-	  <p>저자/출판사: <?=$board['bo_author']?>/<?=$board['bo_publisher']?></p>
-	  <p>출판일: <?=$board['bo_date']?></p>
-    </div>
-	<p> 정보 : <?php echo nl2br("$board[bo_state]"); ?></p>
-  </div>
-</div>
- <div id="popup_menu_area" style="z-index: 9999; display: none;">			
-   <a href = "message_send_in_board.php?rv_id=<?php echo $board['nic_name']; ?>">쪽지 보내기</a>	
-</div>         
+		<p><a href="javascript:doDisplay();" style = margin:0px;><?php echo $board['nic_name']; ?></a>&nbsp<?php echo $board['date']; ?> </p>
+		<div id="bo_line"></div> 
+	 </div>
+	<div class="wrapper splitclrs">
+  		<div class="split clear">
+		<?php 
+			echo "<img src = 'uploads/$board[file_copied]' style=width:170px; height:114p>";
+	    ?>
+			<div> 
+			<p class="nospace font-xs">
+			<?php if($board['category'] == "교양")
+				echo "교양";
+			elseif($board['category']=="전공")
+				echo "전공"." > ".$board['college']." > ".$board['major'];
+			else
+				echo "기타";
+			?></p>
+			<h3 class="heading"><?php echo $board['title'];?></h3>
+			<p><strong class="cost"><?=$board['bo_price']?>원</strong></p>
+			<p>저자/출판사: <?=$board['bo_author']?>/<?=$board['bo_publisher']?></p>
+			<p>출판일: <?=$board['bo_date']?></p>
+    		</div>
+			<p> 정보 : <?php echo nl2br("$board[bo_state]"); ?></p>
+ 	    </div>
+	</div>
+ 	<div id="popup_menu_area" style="z-index: 9999; display: none;">			
+   		<a href = "message_send_in_board.php?rv_id=<?php echo $board['nic_name']; ?>">쪽지 보내기</a>	
+	</div>         
 	<!-- 목록, 수정, 삭제 -->
-
 	   <div id="bo_ser">
-		     <ul>
-			        <li><a href="book_list.php">[목록으로]</a></li>
-              <?php
-			  if (isset($_SESSION['userid']) && $board['user_id'] == $_SESSION['userid']){
-				 
-				  ?>
-			  	
-			        <li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
-			        <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
-			  
-              <?php
-			}
-			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
+			<ul>
+				<li><a href="book_list.php">[목록으로]</a></li>
+				<?php
+				if (isset($_SESSION['userid']) && $board['user_id'] == $_SESSION['userid']){
+				?>
+			    <li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			    <li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
-			<?php
-			}
-			?>
+              	<?php
+				}
+				elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
+				<li><a href="book_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
+				<li><a href="book_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
+				<?php
+				}
+				?>
 		    </ul>
-	  </div>
+	 	 </div>
 
-  </div>
   <!--- 댓글 불러오기 -->
-<div  id="comments" style="margin-top:100px;">
-	<h3>댓글목록</h3>
-	<ul>
-        <li>
-        <article>
-		<?php
-			$sql3 = mq("select * from book_board_reply where con_num='".$bno."' order by idx desc");
-			while($reply = $sql3->fetch_array()){
-		?>
-		<div class="dap_lo">
-			<div><b><?php echo $reply['name'];?></b></div>
-			<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
-			<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
+	<div  id="comments" style="margin-top:100px;">
+		<h3>댓글목록</h3>
+		<ul>
+        	<li>
+       		 <article>
 			<?php
-
-			  if (isset($_SESSION['userid']) && $reply['id'] == $_SESSION['userid']){
-				 
-				  ?>
-				<a class="dat_delete_bt" href="book_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
-			  
-              <?php
-			}
-			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
-				<a class="dat_delete_bt" href="book_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
-			<?php
-			}
+				$sql3 = mq("select * from book_board_reply where con_num='".$bno."' order by idx desc");
+				while($reply = $sql3->fetch_array()){
 			?>
+			<div class="dap_lo">
+				<div><b><?php echo $reply['name'];?></b></div>
+				<div class="dap_to comt_edit"><?php echo nl2br("$reply[content]"); ?></div>
+				<div class="rep_me dap_to"><?php echo $reply['date']; ?></div>
+				<?php
+			 		 if (isset($_SESSION['userid']) && $reply['id'] == $_SESSION['userid']){
+				?>
+				<a class="dat_delete_bt" href="book_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a> 
+              	<?php
+				}
+				elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
+					<a class="dat_delete_bt" href="book_reply_delete.php?idx=<?php echo $reply['idx']; ?>&num=<?php echo $bno; ?>">삭제</a>
+				<?php
+				}
+				?>
 			</div>	
 			<?php 
-				} 
-				?>
-				</article>
-          		</li>
-        	</ul>
-
-		</div>
-	
-
+			} 
+			?>
+			</article>
+          	</li>
+        </ul>
+	</div>
 	<!--- 댓글 입력 폼 -->
 	<div class="dap_ins">
 		<form action="book_reply_ok.php?board_id=book_board&num=<?php echo $bno; ?>" method="post">
@@ -178,7 +161,6 @@ img{
 		</form>
 	</div>
 </div><!--- 댓글 불러오기 끝 -->
-
 </body>
 </html>
 <script type="text/javascript">

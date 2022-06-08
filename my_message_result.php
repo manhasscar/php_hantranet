@@ -42,44 +42,33 @@
         <div class="content three_quarter"> 
         <h1>내정보</h1>
         <?php
-            if(isset($_GET["info"]))
-                $info = $_GET["info"];
-            else $info = "";
-            if(isset($_GET["board"]))
-            $board = $_GET["board"];
+            if(isset($_GET["info"])) $info = $_GET["info"];
+            else $info = "";    
+            if(isset($_GET["board"])) $board = $_GET["board"];
             else $board = "";
             if($info == "message" && $board == "send"){
-          ?>   <h3>보낸쪽지함</h3>
-              <?php
-                }
-                else{
+              echo "<h3>보낸쪽지함</h3>";
+            }
+            else echo "<h3>받은쪽지함</h3>";
               ?>
-                <h3>받은쪽지함</h3>
-              <?php 
-                }
-              ?>
-          <table class="list-table">
+            <table class="list-table">
                <thead>
                   <tr>
                     <th width="70">선택</th>
-                    <?php if($board == "send") { ?>
-                    <th width="120">받는사람</th>
-                    <?php }else { ?>
-                    <th width="120">보낸사람</th>
-                    <?php } ?>
+                    <?php if($board == "send") { 
+                    echo  "<th width='120'>받는사람</th>";
+                     }else { 
+                    echo "<th width='120'>보낸사람</th>";
+                     } ?>
                     <th width="500">내용</th>
                     <th width="100">날짜</th>
                   </tr>     
                 </thead>  
                 <form method="post" action="message_delete.php">
                 <?php      
-                     if(isset($_GET['page'])){
-                          $page = $_GET['page'];
-                        }
-                        else{
-                          $page = 1;
-                        }
-                      if($board == "send")
+                     if(isset($_GET['page'])) $page = $_GET['page'];
+                     else  $page = 1;   
+                    if($board == "send")
                         $sql = mq("select * from message where send_id = '$usernic'");
                       else
                         $sql = mq("select * from message where rv_id = '$usernic'");
@@ -106,7 +95,7 @@
                         $content=$message["content"];
                         if(strlen($content)>30)
                         {
-                          //title이 30을 넘어서면 ...표시
+                          //content 30을 넘어서면 ...표시
                           $content=str_replace($content,mb_substr($content,0,30,"utf-8")."...", $content);
                         }
                         if($board =="send"){
@@ -123,20 +112,20 @@
                     <?php if($board=="send"){ ?>
                       <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
                       <td width="120"><?=$message['rv_id'] ?></td>
-                      <td width="500"><a href="message_sendview.php?mode=send&num=<?=$message['idx']?>"><?php echo  $content;?></a></td>
+                      <td width="500"><a href="message_sendview.php?board=send&num=<?=$message['idx']?>"><?php echo  $content;?></a></td>
                       <?php
                         }
                          else if($board != "send" && $message['read_ok'] == 0) { ?>
                           <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>
                          <td width="120"><strong><?=$message['send_id']?></strong></td>
-                         <td width="500"><strong><a href="message_rvview.php?mode=rv&num=<?=$message['idx']?>"><?php echo  $content;?></a></strong></td>
+                         <td width="500"><strong><a href="message_rvview.php?board=rv&num=<?=$message['idx']?>"><?php echo  $content;?></a></strong></td>
                       <?php
                          }
                          else{
                           ?>
                         <td width="70"><input type="checkbox" name="item[]" value="<?=$num?>"></td>    
                        <td width="120"><?=$message['send_id']?></td>
-                       <td width="500"><a href="message_rvview.php?mode=rv&num=<?=$message['idx']?>"><?php echo  $content;?></a></td>
+                       <td width="500"><a href="message_rvview.php?board=rv&num=<?=$message['idx']?>"><?php echo  $content;?></a></td>
                       <?php }?>
                        <td width="100"><?php echo $message['regist_day']?></td>
                        </tr>

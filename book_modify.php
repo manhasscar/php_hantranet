@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="css/board.css">
 <link href="indripress/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
+<link rel="stylesheet" type="text/css" href="mystyle.css"/>
 <style>
 .container {padding: 20px 0;}
 </style>
@@ -32,24 +33,12 @@
           document.board_form.category.focus();
           return;
       }
-	//   if (!document.board_form.college.value)
-    //   {
-    //       alert("단과대를 선택하세요!");    
-    //       document.board_form.college.focus();
-    //       return;
-    //   }
 	  if (!document.board_form.price.value)
 	  {
           alert("가격은 숫자만 입력 가능합니다!");    
           document.board_form.price.focus();
           return;
       }
-	//   if (!document.board_form.major.value)
-    //   {
-    //       alert("전공을 선택하세요!");    
-    //       document.board_form.major.focus();
-    //       return;
-    //   }
 	  if (!document.board_form.file.value)
       {
           alert("이미지는 필수입니다!");    

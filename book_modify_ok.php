@@ -1,21 +1,20 @@
 <?php
     include ('db_connect.php');
-    session_start();
 	if (isset($_POST['college'])) $college = $_POST['college'];
 	else $college = "";
 	if (isset($_POST['major'])) $major = $_POST['major'];
 	else $major = "";
 	$username = $_SESSION['userid'];
 	$usernic = $_SESSION['user_nic'];
-    $name = $_POST['name'];
+    $name = $_POST['name']; //책 제목
     $author = $_POST['author'];
     $publisher = $_POST['publisher'];
     $publidate = $_POST['publidate'];
     $price = $_POST['price'];
-    $category = $_POST['category'];
+    $category = $_POST['category'];//분류
     $content = $_POST['content'];
     $date = date('Y-m-d H:i:s');
-    $bno = $_GET['idx'];
+    $bno = $_GET['idx'];//게시글 번호
   
     $upload_dir = 'uploads/'; //경로
 	$upfile_name	 = $_FILES["file"]["name"]; //업로드된 파일명
@@ -35,7 +34,7 @@
 		$copied_file_name = $new_file_name.".".$file_ext;  //날짜형식으로 저장     
 		$uploaded_file = $upload_dir.$copied_file_name; //경로 저장
 	
-		if(move_uploaded_file($upfile_tmp_name,$uploaded_file)!==false){
+		if(!move_uploaded_file($upfile_tmp_name,$uploaded_file)){
 		print "파일 업로드  실패 : ";
 		switch ($upfile_error) {
 			case UPLOAD_ERR_INI_SIZE:
@@ -54,20 +53,11 @@
 			print "임시 디렉토리가 없습니다.<br>";
 			break;
 		}
-		print_r($_FILES);
 		}
 	
 	}
-
-
-	
 	if($username && $name && $content){
 	$sql = mq("update book_board set title = '".$name."', bo_author = '".$author."', bo_publisher = '".$publisher."', bo_date = '".$publidate."', bo_price = '".$price."', bo_state = '".$content."', category = '".$category."', college = '".$college."', major = '".$major."',file = '".$upfile_name."', file_type ='".$upfile_type."', file_copied = '".$copied_file_name."' where idx = '".$bno."'");
-
-
-
-	// mysqli_close($db);                // DB 연결 끊기
-
 	echo "<script>
 			alert('수정이 완료되었습니다.');
 			location.href='book_read.php?num=$bno';

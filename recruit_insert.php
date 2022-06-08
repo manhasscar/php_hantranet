@@ -1,7 +1,7 @@
 <?php
     include ('db_connect.php');
     
-	$userid = $_SESSION['userid'];
+	$username = $_SESSION['userid'];
 	$usernic = $_SESSION['user_nic'];
     $title = $_POST['title'];
 	$category = $_POST['category'];
@@ -28,7 +28,7 @@
 		$copied_file_name = $new_file_name.".".$file_ext;  //날짜형식으로 저장     
 		$uploaded_file = $upload_dir.$copied_file_name; //경로 저장
 	
-		if(move_uploaded_file($upfile_tmp_name,$uploaded_file)!==false){
+		if(!move_uploaded_file($upfile_tmp_name,$uploaded_file)){
 		print "파일 업로드  실패 : ";
 		switch ($upfile_error) {
 			case UPLOAD_ERR_INI_SIZE:
@@ -47,21 +47,25 @@
 			print "임시 디렉토리가 없습니다.<br>";
 			break;
 		}
-		print_r($_FILES);
 		}
 	
 	}
 	
-	if($userid && $title && $content){
+	if($username && $title && $content ){
+		if($upfile_name && !$upfile_error){
 	$sql = mq("insert into recruit_board (user_id, nic_name, title, category, period_s, period_e, content, file, file_type, date, file_copied) 
-	values('".$userid."','".$usernic."', '".$title."', '".$category."', '".$startdate."', '".$enddate."', '".$content."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
+	values('".$username."','".$usernic."', '".$title."', '".$category."', '".$startdate."', '".$enddate."', '".$content."', '".$upfile_name."', '".$upfile_type."','".$date."', '".$copied_file_name."');");
+		}
+		else{
+			$sql = mq("insert into recruit_board (user_id, nic_name, title, category, period_s, period_e, content, file, file_type, date, file_copied) 
+	values('".$username."','".$usernic."', '".$title."', '".$category."', '".$startdate."', '".$enddate."', '".$content."', '".$upfile_name."', '".$upfile_type."','".$date."', 0);");
+		}
 
 	$sql2 = mq("select * from recruit_board where nic_name='".$usernic."' order by idx desc limit 1;");
       while($idx = $sql2->fetch_array()){
         $idx2 = $idx['idx'];
       } //글 작성이후 작성한 글로 바로 갈수 있게.
 
-	// mysqli_close($db);                // DB 연결 끊기
 
 	echo "<script>
 			alert('글쓰기 완료되었습니다.');

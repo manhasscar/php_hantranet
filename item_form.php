@@ -9,13 +9,8 @@
 <link rel="stylesheet" type="text/css" href="css/common.css"/>
 <link rel="stylesheet" type="text/css" href="mystyle.css"/>
 <style>
-	.container {
-	padding: 20px 0;
-}
-
-a {
-    color: #05B3F2;
-}
+.container {padding: 20px 0;}
+a {color: #05B3F2;}
 </style>
 
 <script>
