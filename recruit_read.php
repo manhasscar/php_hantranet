@@ -127,7 +127,7 @@
 			  
               <?php
 			}
-			elseif(isset($_SESSION['userid']) && $_SESSION['user_id'] == 'admin'){?>
+			elseif(isset($_SESSION['userid']) && $_SESSION['userid'] == 'admin'){?>
 				<li><a href="recruit_modify.php?idx=<?php echo $board['idx']; ?>">[수정]</a></li>
 			    <li><a href="recurit_delete.php?idx=<?php echo $board['idx']; ?>">[삭제]</a></li>
 			<?php
