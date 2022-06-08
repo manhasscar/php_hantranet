@@ -23,6 +23,7 @@
       $catagory = $_GET['catgo'];
       $search_con = $_GET['search'];
       echo "<h1>{$catagory}에서 $search_con 검색결과</h1>";
+      $search_result = str_replace(" ","", $search_con);
       if(isset($_GET['college'])){  
       $college = $_GET['college'];
       echo "<h3>$college </h3> ";
@@ -57,35 +58,43 @@
         <?php
         if($college && $major){
           if($catagory == "제목")
-            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(title,' ','') like '%$search_con%' order by idx desc");
+            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(title,' ','') like '%$search_result%' order by idx desc");
           elseif($catagory == "저자")
-            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
-          elseif($catagory == " 출판사")
-          $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+            $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_author,' ','') like '%$search_result%' order by idx desc");
+          elseif($catagory == "출판사")
+          $sql = mq("select * from book_board where (college like '$college%' and major = '$major') and replace(bo_publisher,' ','') like '%$search_result%' order by idx desc");
+        }
+        elseif($college=="전공" || $college=="교양"){
+          if($catagory == "제목")
+          $sql = mq("select * from book_board where (category ='전공' or category = '교양') and replace(title,' ','') like '%$search_result%' order by idx desc");
+        elseif($catagory == "저자")
+          $sql = mq("select * from book_board where (category ='전공' or category = '교양') and replace(bo_author,' ','') like '%$search_result%' order by idx desc");
+        elseif($catagory == "출판사")
+        $sql = mq("select * from book_board where c(category ='전공' or category = '교양')  and replace(bo_publisher,' ','') like '%$search_result%' order by idx desc");
         }
         elseif($college){
           if($catagory == "제목")
-          $sql = mq("select * from book_board where college like '$college%' and replace(title,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where college = '$college' and replace(title,' ','') like '%$search_result%' order by idx desc");
         elseif($catagory == "저자")
-          $sql = mq("select * from book_board where college like '$college%' and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
-        elseif($catagory == " 출판사")
-        $sql = mq("select * from book_board where college like '$college%'  and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where college = '$college' and replace(bo_author,' ','') like '%$search_result%' order by idx desc");
+        elseif($catagory == "출판사")
+        $sql = mq("select * from book_board where college = '$college'  and replace(bo_publisher,' ','') like '%$search_result%' order by idx desc");
         }
         elseif($major){
           if($catagory == "제목")
-          $sql = mq("select * from book_board where major = '$major' and replace(title,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where major = '$major' and replace(title,' ','') like '%$search_result%' order by idx desc");
         elseif($catagory == "저자")
-          $sql = mq("select * from book_board where major = '$major' and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
-        elseif($catagory == " 출판사")
-        $sql = mq("select * from book_board where major = '$major'  and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where major = '$major' and replace(bo_author,' ','') like '%$search_result%' order by idx desc");
+        elseif($catagory == "출판사")
+        $sql = mq("select * from book_board where major = '$major'  and replace(bo_publisher,' ','') like '%$search_result%' order by idx desc");
         }
         else{
           if($catagory == "제목")
-          $sql = mq("select * from book_board where replace(title,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where replace(title,' ','') like '%$search_result%' order by idx desc");
         elseif($catagory == "저자")
-          $sql = mq("select * from book_board where and replace(bo_author,' ','') like '%$search_con%' order by idx desc");
-        elseif($catagory == " 출판사")
-        $sql = mq("select * from book_board where and replace(bo_publisher,' ','') like '%$search_con%' order by idx desc");
+          $sql = mq("select * from book_board where replace(bo_author,' ','') like '%$search_result%' order by idx desc");
+        elseif($catagory == "출판사")
+        $sql = mq("select * from book_board where replace(bo_publisher,' ','') like '%$search_result%' order by idx desc");
         }
       
           while($board = $sql->fetch_array()){
