@@ -17,8 +17,8 @@ function mailer($fname, $fmail, $to, $subject, $content, $type=0, $file="", $cc=
       $mail->SMTPAuth = true;
       $mail->Host = "smtp.naver.com";
       $mail->Port = 465;
-      $mail->Username = "vvs234@naver.com";
-      $mail->Password = "121312qz!";
+      $mail->Username = "이메일 보낼계정";
+      $mail->Password = "계정 비번";
       $mail->CharSet = 'UTF-8';
       $mail->From = $fmail;
       $mail->FromName = $fname;
